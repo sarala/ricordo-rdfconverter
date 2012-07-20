@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:config.properties" />
+    </bean>
+
+    <bean id="sbmlToRdf" class="uk.ac.ebi.ricordo.rdfconverter.sbmltordf.SBMLtoRDFCreatorImpl">
+        <property name="outputFolder" value="${outputFolder}"/>
+    </bean>
+
+    <bean id="biomodelswsclient" class="uk.ac.ebi.biomodels.BioModelsWSClient"/>
+
+    <bean id="sbmlToRdfGeneratorImpl" class="uk.ac.ebi.ricordo.rdfconverter.sbmltordf.SBMLtoRDFGeneratorImpl">
+        <constructor-arg name="client" ref="biomodelswsclient"/>
+        <constructor-arg name="sbmLtoRDFGenerator" ref="sbmlToRdf"/>
+    </bean>
+
+
+</beans>
