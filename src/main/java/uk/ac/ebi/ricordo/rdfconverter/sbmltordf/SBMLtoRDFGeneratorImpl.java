@@ -17,8 +17,8 @@
 package uk.ac.ebi.ricordo.rdfconverter.sbmltordf;
 
 import org.apache.log4j.Logger;
-import uk.ac.ebi.biomodels.BioModelsWSClient;
-import uk.ac.ebi.biomodels.BioModelsWSException;
+import uk.ac.ebi.biomodels.ws.BioModelsWSClient;
+import uk.ac.ebi.biomodels.ws.BioModelsWSException;
 import uk.ac.ebi.ricordo.rdfconverter.tordf.RDFGenerator;
 
 /**
