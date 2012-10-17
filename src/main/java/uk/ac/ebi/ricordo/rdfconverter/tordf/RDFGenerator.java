@@ -24,6 +24,8 @@ package uk.ac.ebi.ricordo.rdfconverter.tordf;
  *         Time: 17:34
  */
 public interface RDFGenerator {
-    public void allModelsToRDF();
-    public void aModelToRDF(String modelId);
+    public void allModelsFromBioModelsDBToRDF();
+    public void aModelFromBioModelsDBToRDF(String modelId);
+    public void allModelsFromFolderToRDF(String folderPath);
+    public void aModelFromFileToRDF(String filePath);
 }

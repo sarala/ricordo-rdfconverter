@@ -16,6 +16,11 @@
 
 package uk.ac.ebi.ricordo.rdfconverter.sbmltordf;
 
+import org.sbml.jsbml.SBMLDocument;
+
+import java.io.File;
+import java.net.URL;
+
 /**
  * Created by IntelliJ IDEA.
  *
@@ -28,5 +33,6 @@ public interface SBMLtoRDFCreator {
      * creates RDF for a given model
      * @param modelId modelId
     */
-    void generateSBMLtoRDF(String modelId);
+    void generateSBMLtoRDFFromURL(String modelId);
+    void generateSBMLtoRDFFromFile(String modelId, File file);
 }

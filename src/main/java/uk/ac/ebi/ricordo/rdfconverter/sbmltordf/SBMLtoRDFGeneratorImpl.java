@@ -21,6 +21,14 @@ import uk.ac.ebi.biomodels.ws.BioModelsWSClient;
 import uk.ac.ebi.biomodels.ws.BioModelsWSException;
 import uk.ac.ebi.ricordo.rdfconverter.tordf.RDFGenerator;
 
+import javax.xml.stream.XMLStreamException;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by IntelliJ IDEA.
  *
@@ -39,11 +47,11 @@ public class SBMLtoRDFGeneratorImpl implements RDFGenerator {
         this.sbmLtoRDFGenerator = sbmLtoRDFGenerator;
     }
 
-    public void allModelsToRDF(){
+    public void allModelsFromBioModelsDBToRDF(){
         try {
             for(String modelId : client.getAllCuratedModelsId()){
                 logger.info("Converting to RDF: " + modelId);
-                sbmLtoRDFGenerator.generateSBMLtoRDF(modelId);
+                sbmLtoRDFGenerator.generateSBMLtoRDFFromURL(modelId);
             }
 
         } catch (BioModelsWSException e) {
@@ -51,11 +59,34 @@ public class SBMLtoRDFGeneratorImpl implements RDFGenerator {
         }
     }
 
-    public void aModelToRDF(String modelId){
+    public void aModelFromBioModelsDBToRDF(String modelId){
         logger.info("Converting to RDF: " + modelId);
-        sbmLtoRDFGenerator.generateSBMLtoRDF(modelId);
+        sbmLtoRDFGenerator.generateSBMLtoRDFFromURL(modelId);
     }
 
+    public void allModelsFromFolderToRDF(String folderPath) {
+        File folder = new File(folderPath);
+        if(folder.isDirectory()){
+            ArrayList<File> files = new ArrayList<File>(Arrays.asList(folder.listFiles()));
+            for(File file:files){
+                String modelId = file.getName().substring(0,file.getName().indexOf("."));
+                logger.info("Converting to RDF: " + modelId);
+                sbmLtoRDFGenerator.generateSBMLtoRDFFromFile(modelId, file);
+            }
+        }else{
+            logger.info("Path not found: " + folderPath);
+        }
 
+    }
 
+    public void aModelFromFileToRDF(String filePath) {
+        File file = new File(filePath);
+        if(file.exists()){
+            String modelId = file.getName().substring(0,file.getName().indexOf("."));
+            logger.info("Converting to RDF: " + modelId);
+            sbmLtoRDFGenerator.generateSBMLtoRDFFromFile(modelId, file);
+        }else{
+            logger.info("Path not found: " + filePath);
+        }
+    }
 }

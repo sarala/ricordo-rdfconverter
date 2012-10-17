@@ -17,14 +17,19 @@
 package uk.ac.ebi.ricordo.rdfconverter.sbmltordf;
 
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.vocabulary.DCTerms;
 import com.hp.hpl.jena.vocabulary.RDF;
 
+import com.hp.hpl.jena.vocabulary.VCARD;
 import org.sbml.jsbml.*;
+import org.sbml.jsbml.xml.XMLNode;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
 import java.net.URL;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -41,14 +46,10 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
     private String outputFolder ="";
     private String modelId="";
     private HashMap<String, Resource> resourceMap = new HashMap<String, Resource>();
+    private String modelns ="";
 
-    public void generateSBMLtoRDF(String modelId){
+    public void generateSBMLtoRDFFromURL(String modelId){
         this.modelId = modelId;
-        readSBML();
-        writeToFile();
-    }
-
-    private void readSBML(){
         SBMLReader reader  = new SBMLReader();
         SBMLDocument document = null;
         try {
@@ -59,83 +60,257 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        generateSBMLtoRDF(document);
+    }
 
+    public void generateSBMLtoRDFFromFile(String modelId, File file) {
+        this.modelId = modelId;
+        SBMLReader reader  = new SBMLReader();
+        SBMLDocument document = null;
+        try {
+            document = reader.readSBML(file);
+        } catch (XMLStreamException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        generateSBMLtoRDF(document);
+    }
+
+    private void generateSBMLtoRDF(SBMLDocument document){
+        readSBML(document);
+        writeToFile();
+    }
+
+    private void readSBML(SBMLDocument document){
         sbmlModel = document.getModel();
         rdfModel = ModelFactory.createDefaultModel();
-        rdfModel.setNsPrefix(SBMLConstants.URIPREFIX, SBMLConstants.URI);
+
+        modelns =  SBMLConstants.URI + modelId + "#";
+        rdfModel.setNsPrefix(SBMLConstants.URIPREFIX, modelns);
         rdfModel.setNsPrefix(SBMLConstants.BQURIPREFIX, SBMLConstants.BQURI);
         rdfModel.setNsPrefix(SBMLConstants.BMURIPREFIX, SBMLConstants.BMURI);
+        rdfModel.setNsPrefix(SBMLConstants.RSMURIPREFIX, SBMLConstants.RSMURI);
+        rdfModel.setNsPrefix(SBMLConstants.VCARDPREFIX, VCARD.getURI());
+        rdfModel.setNsPrefix(SBMLConstants.TERMSPREFIX, DCTerms.getURI());
 
         createModelResource();
 
     }
 
     private void createModelResource(){
-        Resource modelResource = rdfModel.createResource(SBMLConstants.URI+modelId);
-        modelResource.addProperty(SBMLConstants.HASNAME, sbmlModel.getName());
+        Resource modelResource = rdfModel.createResource(modelns+sbmlModel.getMetaId());
 
-        modelResource.addProperty(RDF.type, SBMLConstants.SBMLMODEL);
-
-        extractRDF(modelResource, sbmlModel.getCVTerms());
         createUnitsDefs(modelResource);
+        createParameters(modelResource);
+        createModel(modelResource);
         createCompartments(modelResource);
         createSpecies(modelResource);
         createReactions(modelResource);
-        createParameters(modelResource);
+        createInitialAssignment(modelResource);
         createRules(modelResource);
+        createConstraint(modelResource);
         createEvents(modelResource);
         createFunctionDefs(modelResource);
 
     }
 
+    private void createUnitsDefs(Resource modelResource) {
+        ListOf<UnitDefinition> listOfUnitDefinitions = sbmlModel.getListOfUnitDefinitions();
+        for (UnitDefinition unitDefinition : listOfUnitDefinitions) {
+            Resource unitResource = rdfModel.createResource(modelns + unitDefinition.getMetaId());
+            unitResource.addProperty(RDF.type, SBMLConstants.UNITSDEF_CLASS);
+            if (!unitDefinition.getName().isEmpty())
+                unitResource.addProperty(SBMLConstants.NAME, unitDefinition.getName());
+            if (!unitDefinition.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(unitResource, unitDefinition.getSBOTermID());
+            extractRDF(unitResource, unitDefinition.getCVTerms());
+            modelResource.addProperty(SBMLConstants.UNITSDEF, unitResource);
+//            unitResource.addProperty(SBMLConstants.NOTES, unitDefinition.getNotesString());
+
+            resourceMap.put(unitDefinition.getId(), unitResource);
+            createListOfUnits(unitDefinition, unitResource);
+
+        }
+    }
+
+    private void createListOfUnits(UnitDefinition unitDefinition, Resource unitDefResource) {
+        ListOf<Unit> listOfUnits = unitDefinition.getListOfUnits();
+        for (Unit unit : listOfUnits) {
+            Resource unitResource = rdfModel.createResource(modelns + unit.getMetaId());
+            unitResource.addProperty(RDF.type, SBMLConstants.UNIT_CLASS);
+            unitResource.addLiteral(SBMLConstants.KIND, unit.getKind());
+            unitResource.addLiteral(SBMLConstants.MULTIPLIER, unit.getMultiplier());
+            unitResource.addLiteral(SBMLConstants.SCALE, unit.getScale());
+            unitResource.addLiteral(SBMLConstants.EXPONENT, unit.getExponent());
+            if (!unitDefinition.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(unitResource, unitDefinition.getSBOTermID());
+            extractRDF(unitResource, unitDefinition.getCVTerms());
+//            unitResource.addProperty(SBMLConstants.NOTES, unit.getNotesString());
+            unitDefResource.addProperty(SBMLConstants.UNIT, unitResource);
+        }
+    }
+
+    private void setUnits( Resource resource, Property property, String units){
+        if(!units.isEmpty()){
+            Resource unitResource =  resourceMap.get(units);
+            if(unitResource != null)
+                resource.addProperty(property, unitResource);
+            else
+                resource.addLiteral(property, units);
+        }
+    }
+
+    private void createParameters(Resource modelResource) {
+        ListOf<Parameter> listOfParameters = sbmlModel.getListOfParameters();
+        for (Parameter parameter : listOfParameters) {
+            Resource parameterResource = rdfModel.createResource(modelns + parameter.getMetaId());
+            parameterResource.addProperty(RDF.type, SBMLConstants.PARAMETER_CLASS);
+            if (!parameter.getName().isEmpty())
+                parameterResource.addProperty(SBMLConstants.NAME, parameter.getName());
+            parameterResource.addLiteral(SBMLConstants.VALUE, parameter.getValue());
+            setUnits(parameterResource,SBMLConstants.UNITS,parameter.getUnits());
+            parameterResource.addLiteral(SBMLConstants.CONSTANT, parameter.getConstant());
+            if (!parameter.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(parameterResource, parameter.getSBOTermID());
+            extractRDF(parameterResource, parameter.getCVTerms());
+//            parameterResource.addProperty(SBMLConstants.NOTES, parameter.getNotesString());
+            modelResource.addProperty(SBMLConstants.PARAMETER, parameterResource);
+            resourceMap.put(parameter.getId(), parameterResource);
+
+        }
+    }
+
+    private void createModel(Resource modelResource){
+        modelResource.addProperty(RDF.type, SBMLConstants.SBMLMODEL);
+        if(!sbmlModel.getName().isEmpty())
+            modelResource.addProperty(SBMLConstants.NAME, sbmlModel.getName());
+        setUnits(modelResource,SBMLConstants.SUBSTANCEUNITS,sbmlModel.getSubstanceUnits());
+        setUnits(modelResource,SBMLConstants.TIMEUNITS,sbmlModel.getTimeUnits());
+        setUnits(modelResource,SBMLConstants.VOLUMEUNITS,sbmlModel.getVolumeUnits());
+        setUnits(modelResource,SBMLConstants.AREAUNITS,sbmlModel.getAreaUnits());
+        setUnits(modelResource,SBMLConstants.LENGTHUNIT,sbmlModel.getLengthUnits());
+        setUnits(modelResource,SBMLConstants.EXTENTUNITS,sbmlModel.getExtentUnits());
+        if(!sbmlModel.getConversionFactor().isEmpty())
+            modelResource.addProperty(SBMLConstants.CONVERSIONfACTOR, resourceMap.get(sbmlModel.getConversionFactor()));
+        extractRDF(modelResource, sbmlModel.getCVTerms());
+//        modelResource.addProperty(SBMLConstants.NOTES, sbmlModel.getNotesString());
+        createHistory(modelResource);
+    }
+
+    private void createHistory(Resource modelResource){
+        History history = sbmlModel.getHistory();
+        List<Creator> listOfCreator = history.getListOfCreators();
+        for(Creator creator : listOfCreator){
+            Resource creatorResource = rdfModel.createResource();
+            Resource nameResource = rdfModel.createResource();
+            if(!creator.getFamilyName().isEmpty())
+                nameResource.addProperty(VCARD.Family, creator.getFamilyName());
+            if(!creator.getGivenName().isEmpty())
+                nameResource.addProperty(VCARD.Given, creator.getGivenName());
+            creatorResource.addProperty(VCARD.N,nameResource);
+
+            if(!creator.getEmail().isEmpty())
+                creatorResource.addProperty(VCARD.EMAIL,creator.getEmail());
+
+            Resource organisationResource = rdfModel.createResource();
+            if(!creator.getOrganization().isEmpty())
+                organisationResource.addProperty(VCARD.Orgname, creator.getOrganization());
+            creatorResource.addProperty(VCARD.ORG,organisationResource);
+
+            modelResource.addProperty(DCTerms.creator, creatorResource);
+        }
+
+        if(history.getCreatedDate()!=null){
+            Resource createdResource = rdfModel.createResource();
+            createdResource.addProperty(SBMLConstants.DCTERMSW3CDTF, history.getCreatedDate().toString());
+            modelResource.addProperty(DCTerms.created, createdResource);
+        }
+
+        List<Date> modifierDates= history.getListOfModifiedDates();
+        for (Date modifierDate : modifierDates){
+            Resource modifierResource = rdfModel.createResource();
+            modifierResource.addProperty(SBMLConstants.DCTERMSW3CDTF, modifierDate.toString());
+            modelResource.addProperty(DCTerms.modified, modifierResource);
+        }
+    }
+
     private void createCompartments(Resource modelResource) {
         ListOf<Compartment> listOfCompartments = sbmlModel.getListOfCompartments();
-        for(int i=0; i< listOfCompartments.size(); i++){
-            Compartment compartment = listOfCompartments.get(i);
-            Resource compartmentResource = rdfModel.createResource(SBMLConstants.URI+modelId+"_"+compartment.getId());
-            compartmentResource.addProperty(SBMLConstants.HASID, compartment.getId());
-            compartmentResource.addProperty(SBMLConstants.HASMetaID, compartment.getMetaId());
-            if(!compartment.getSBOTermID().isEmpty())compartmentResource.addProperty(SBMLConstants.HASSBOTERM, compartment.getSBOTermID());
-            compartmentResource.addLiteral(SBMLConstants.HASSIZE, compartment.getSize());
-            compartmentResource.addProperty(SBMLConstants.COMPELEOF, modelResource);
-            setUnits(compartment.getUnits(), compartmentResource);
-
-            resourceMap.put(compartment.getId(),compartmentResource);
-            extractRDF(compartmentResource,compartment.getCVTerms());
+        for (Compartment compartment : listOfCompartments) {
+            Resource compartmentResource = rdfModel.createResource(modelns + compartment.getMetaId());
+            compartmentResource.addProperty(RDF.type, SBMLConstants.COMPARTMENT_CLASS);
+            if (!compartment.getName().isEmpty())
+                compartmentResource.addProperty(SBMLConstants.NAME, compartment.getName());
+            compartmentResource.addLiteral(SBMLConstants.SPATIALDIMENSIONS, compartment.getSpatialDimensions());
+            compartmentResource.addLiteral(SBMLConstants.SIZE, compartment.getSize());
+            setUnits(compartmentResource,SBMLConstants.UNITS,compartment.getUnits());
+            compartmentResource.addLiteral(SBMLConstants.CONSTANT, compartment.getConstant());
+            if (!compartment.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(compartmentResource, compartment.getSBOTermID());
+            extractRDF(compartmentResource, compartment.getCVTerms());
+//            compartmentResource.addProperty(SBMLConstants.NOTES, compartment.getNotesString());
+            modelResource.addProperty(SBMLConstants.COMPARTMENT, compartmentResource);
+            resourceMap.put(compartment.getId(), compartmentResource);
         }
     }
 
     private void createSpecies(Resource modelResource) {
         ListOf<Species> listOfSpecies = sbmlModel.getListOfSpecies();
-        for(int i = 0; i < listOfSpecies.size(); i++){
-            Species species = listOfSpecies.get(i);
-            Resource speciesResource = rdfModel.createResource(SBMLConstants.URI+modelId+"_"+species.getId());
-            speciesResource.addProperty(SBMLConstants.HASID, species.getId());
-            speciesResource.addProperty(SBMLConstants.HASNAME, species.getName());
-            speciesResource.addProperty(SBMLConstants.HASMetaID, species.getMetaId());
-            speciesResource.addLiteral(SBMLConstants.HASINITCON, species.getInitialConcentration());
-            speciesResource.addProperty(SBMLConstants.HASCOMPARTMENT, resourceMap.get(species.getCompartment()));
-            if(!species.getSBOTermID().isEmpty())speciesResource.addProperty(SBMLConstants.HASSBOTERM, species.getSBOTermID());
-            speciesResource.addProperty(SBMLConstants.SPECIESELEOF, modelResource);
-            setUnits(species.getUnits(), speciesResource);
-
-            resourceMap.put(species.getId(),speciesResource);
-            extractRDF(speciesResource,species.getCVTerms());
+        for (Species species : listOfSpecies) {
+            Resource speciesResource = rdfModel.createResource(modelns + species.getMetaId());
+            speciesResource.addProperty(RDF.type, SBMLConstants.SPECIES_CLASS);
+            if (!species.getName().isEmpty())
+                speciesResource.addProperty(SBMLConstants.NAME, species.getName());
+            speciesResource.addProperty(SBMLConstants.COMPARTMENT, resourceMap.get(species.getCompartment()));
+            speciesResource.addLiteral(SBMLConstants.INITIALAMOUNT, species.getInitialAmount());
+            speciesResource.addLiteral(SBMLConstants.INITIALCONCENTRATION, species.getInitialConcentration());
+            setUnits(speciesResource,SBMLConstants.SUBSTANCEUNITS,species.getSubstanceUnits());
+            speciesResource.addLiteral(SBMLConstants.HASONLYSUBSTANCEUNITS, species.hasOnlySubstanceUnits());
+            speciesResource.addLiteral(SBMLConstants.BOUNDARYCONDITIONS, species.getBoundaryCondition());
+            speciesResource.addLiteral(SBMLConstants.CONSTANT, species.getConstant());
+            if (species.getConversionFactor()!=null)
+                speciesResource.addProperty(SBMLConstants.CONVERSIONfACTOR, resourceMap.get(species.getConversionFactor()));
+            if (!species.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(speciesResource, species.getSBOTermID());
+            extractRDF(speciesResource, species.getCVTerms());
+//            speciesResource.addProperty(SBMLConstants.NOTES, species.getNotesString());
+            modelResource.addProperty(SBMLConstants.SPECIES, speciesResource);
+            resourceMap.put(species.getId(), speciesResource);
         }
+    }
+
+    private void createInitialAssignment(Resource modelResource){
+        ListOf<InitialAssignment> listOfInitalAssig = sbmlModel.getListOfInitialAssignments();
+        for(InitialAssignment initialAssignment : listOfInitalAssig){
+            Resource initAssigResource = rdfModel.createResource(modelns + listOfInitalAssig.getMetaId());
+            initAssigResource.addProperty(RDF.type,SBMLConstants.INITIALASSIGNMENT_CLASS);
+            initAssigResource.addProperty(SBMLConstants.SYMBOL, resourceMap.get(initialAssignment.getVariable()));
+            if (!initialAssignment.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(initAssigResource, initialAssignment.getSBOTermID());
+            extractRDF(initAssigResource, initialAssignment.getCVTerms());
+//            initAssigResource.addProperty(SBMLConstants.NOTES, initialAssignment.getNotesString());
+            modelResource.addProperty(SBMLConstants.INITASSIGNMENT,initAssigResource);
+        }
+
     }
 
     private void createReactions(Resource modelResource) {
         ListOf<Reaction> listOfReactions = sbmlModel.getListOfReactions();
-        for(int i = 0; i < listOfReactions.size(); i++){
-            Reaction reaction = listOfReactions.get(i);
-            Resource reactionResource = rdfModel.createResource(SBMLConstants.URI+modelId+"_"+reaction.getId());
-            reactionResource.addProperty(SBMLConstants.HASID, reaction.getId());
-            reactionResource.addProperty(SBMLConstants.HASNAME, reaction.getName());
-            reactionResource.addProperty(SBMLConstants.HASMetaID, reaction.getMetaId());
-            if(!reaction.getSBOTermID().isEmpty())reactionResource.addProperty(SBMLConstants.HASSBOTERM, reaction.getSBOTermID());
+        for (Reaction reaction : listOfReactions) {
+            Resource reactionResource = rdfModel.createResource(modelns + reaction.getMetaId());
+            reactionResource.addProperty(RDF.type, SBMLConstants.REACTION_CLASS);
+            reactionResource.addProperty(SBMLConstants.NAME, reaction.getName());
+            reactionResource.addLiteral(SBMLConstants.REVERSIBLE, reaction.getReversible());
+            reactionResource.addLiteral(SBMLConstants.FAST, reaction.getFast());
+            if(!reaction.getCompartment().isEmpty())
+                reactionResource.addProperty(SBMLConstants.INCOMPARTMENT, resourceMap.get(reaction.getCompartment()));
+            if (!reaction.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(reactionResource, reaction.getSBOTermID());
+            extractRDF(reactionResource, reaction.getCVTerms());
+//            reactionResource.addProperty(SBMLConstants.NOTES, reaction.getNotesString());
 
-            reactionResource.addProperty(SBMLConstants.REACTELEOF, modelResource);
-            extractRDF(reactionResource,reaction.getCVTerms());
+            modelResource.addProperty(SBMLConstants.REACTION, reactionResource);
 
             createReactants(reaction, reactionResource);
             createProducts(reaction, reactionResource);
@@ -147,154 +322,218 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
 
     private void createReactants(Reaction reaction, Resource reactionResource) {
         ListOf<SpeciesReference> listOfSpeciesReferences = reaction.getListOfReactants();
-        for(int i = 0; i < listOfSpeciesReferences.size(); i++){
-            SimpleSpeciesReference speciesReference = listOfSpeciesReferences.get(i);
-            Resource speciesRefResource = rdfModel.createResource(SBMLConstants.URI+modelId+"_"+reaction.getId()+"_reactantSpeciesRef_"+i);
-            speciesRefResource.addProperty(SBMLConstants.HASSPECIES, resourceMap.get(speciesReference.getSpecies()));
-            if(!speciesReference.getSBOTermID().isEmpty())speciesRefResource.addProperty(SBMLConstants.HASSBOTERM, speciesReference.getSBOTermID());
-
-            speciesRefResource.addProperty(SBMLConstants.REACTANTELEOF, reactionResource);
-            extractRDF(speciesRefResource,speciesReference.getCVTerms());
+        for (SpeciesReference speciesReference : listOfSpeciesReferences) {
+            Resource speciesRefResource = rdfModel.createResource(modelns + speciesReference.getMetaId());
+            speciesRefResource.addProperty(RDF.type, SBMLConstants.SPECIESREF_CLASS);
+            if (!speciesReference.getName().isEmpty())
+                speciesRefResource.addProperty(SBMLConstants.NAME, speciesReference.getName());
+            speciesRefResource.addProperty(SBMLConstants.SPECIES, resourceMap.get(speciesReference.getSpecies()));
+            speciesRefResource.addLiteral(SBMLConstants.STOICHIOMETRY, speciesReference.getStoichiometry());
+            if (!speciesReference.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(speciesRefResource, speciesReference.getSBOTermID());
+            extractRDF(speciesRefResource, speciesReference.getCVTerms());
+//            speciesRefResource.addProperty(SBMLConstants.NOTES, speciesReference.getNotesString());
+            reactionResource.addProperty(SBMLConstants.REACTANT, speciesRefResource);
+            resourceMap.put(speciesReference.getId(), speciesRefResource);
         }
     }
 
     private void createProducts(Reaction reaction, Resource reactionResource) {
         ListOf<SpeciesReference> listOfSpeciesReferences = reaction.getListOfProducts();
-        for(int i = 0; i < listOfSpeciesReferences.size(); i++){
-            SimpleSpeciesReference speciesReference = listOfSpeciesReferences.get(i);
-            Resource speciesRefResource = rdfModel.createResource(SBMLConstants.URI+modelId+"_"+reaction.getId()+"_productsSpeciesRef_"+i);
-            speciesRefResource.addProperty(SBMLConstants.HASSPECIES, resourceMap.get(speciesReference.getSpecies()));
-            if(!speciesReference.getSBOTermID().isEmpty())speciesRefResource.addProperty(SBMLConstants.HASSBOTERM, speciesReference.getSBOTermID());
-
-            speciesRefResource.addProperty(SBMLConstants.PRODUCTELEOF, reactionResource);
-            extractRDF(speciesRefResource,speciesReference.getCVTerms());
+        for (SpeciesReference speciesReference : listOfSpeciesReferences) {
+            Resource speciesRefResource = rdfModel.createResource(modelns + speciesReference.getMetaId());
+            speciesRefResource.addProperty(RDF.type, SBMLConstants.SPECIESREF_CLASS);
+            if (!speciesReference.getName().isEmpty())
+                speciesRefResource.addProperty(SBMLConstants.NAME, speciesReference.getName());
+            speciesRefResource.addProperty(SBMLConstants.SPECIES, resourceMap.get(speciesReference.getSpecies()));
+            speciesRefResource.addLiteral(SBMLConstants.STOICHIOMETRY, speciesReference.getStoichiometry());
+            if (!speciesReference.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(speciesRefResource, speciesReference.getSBOTermID());
+            extractRDF(speciesRefResource, speciesReference.getCVTerms());
+//            speciesRefResource.addProperty(SBMLConstants.NOTES, speciesReference.getNotesString());
+            reactionResource.addProperty(SBMLConstants.PRODUCT, speciesRefResource);
+            resourceMap.put(speciesReference.getId(), speciesRefResource);
         }
     }
 
     private void createModifiers(Reaction reaction, Resource reactionResource) {
         ListOf<ModifierSpeciesReference> listOfSpeciesReferences = reaction.getListOfModifiers();
-        for(int i = 0; i < listOfSpeciesReferences.size(); i++){
-            SimpleSpeciesReference speciesReference = listOfSpeciesReferences.get(i);
-            Resource speciesRefResource = rdfModel.createResource(SBMLConstants.URI+modelId+"_"+reaction.getId()+"_modifierSpeciesRef_"+i);
-            speciesRefResource.addProperty(SBMLConstants.HASSPECIES, resourceMap.get(speciesReference.getSpecies()));
-            if(!speciesReference.getSBOTermID().isEmpty())speciesRefResource.addProperty(SBMLConstants.HASSBOTERM, speciesReference.getSBOTermID());
-
-            speciesRefResource.addProperty(SBMLConstants.MODIFIERELEOF, reactionResource);
-            extractRDF(speciesRefResource,speciesReference.getCVTerms());
+        for (ModifierSpeciesReference speciesReference : listOfSpeciesReferences) {
+            Resource speciesRefResource = rdfModel.createResource(modelns + speciesReference.getMetaId());
+            speciesRefResource.addProperty(RDF.type, SBMLConstants.MODIFIERSPECIESREFERENCE_CLASS);
+            if (!speciesReference.getName().isEmpty())
+                speciesRefResource.addProperty(SBMLConstants.NAME, speciesReference.getName());
+            speciesRefResource.addProperty(SBMLConstants.SPECIES, resourceMap.get(speciesReference.getSpecies()));
+            if (!speciesReference.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(speciesRefResource, speciesReference.getSBOTermID());
+            extractRDF(speciesRefResource, speciesReference.getCVTerms());
+//            speciesRefResource.addProperty(SBMLConstants.NOTES, speciesReference.getNotesString());
+            reactionResource.addProperty(SBMLConstants.MODIFIER, speciesRefResource);
+            resourceMap.put(speciesReference.getId(), speciesRefResource);
         }
     }
 
     private void createKineticLaw(Reaction reaction, Resource reactionResource) {
         KineticLaw kineticLaw = reaction.getKineticLaw();
-        Resource kineticLawResource = rdfModel.createResource(SBMLConstants.URI+modelId+"_"+reaction.getId()+"_kineticLaw");
-        if(!kineticLaw.getSBOTermID().isEmpty())kineticLawResource.addProperty(SBMLConstants.HASSBOTERM, kineticLaw.getSBOTermID());
-        kineticLawResource.addProperty(SBMLConstants.KINETICELEOF, reactionResource);
+        Resource kineticLawResource = rdfModel.createResource(modelns+kineticLaw.getMetaId());
+        kineticLawResource.addProperty(RDF.type,SBMLConstants.KINETICLAW_CLASS);
+        if(!kineticLaw.getSBOTermID().isEmpty())
+            sboIdentifiersOrg(kineticLawResource, kineticLaw.getSBOTermID());
         extractRDF(kineticLawResource,kineticLaw.getCVTerms());
+//        kineticLawResource.addProperty(SBMLConstants.NOTES, kineticLaw.getNotesString());
+        reactionResource.addProperty(SBMLConstants.KINETICLAW, kineticLawResource);
+        createLocalParameters(kineticLaw,kineticLawResource);
     }
 
-    private void createParameters(Resource modelResource) {
-        ListOf<Parameter> listOfParameters = sbmlModel.getListOfParameters();
-        for(int i = 0; i < listOfParameters.size(); i++){
-            Parameter parameter = listOfParameters.get(i);
-            Resource parameterResource = rdfModel.createResource(SBMLConstants.URI+modelId+"_"+parameter.getId());
-            parameterResource.addProperty(SBMLConstants.HASID, parameter.getId());
-            parameterResource.addProperty(SBMLConstants.HASNAME, parameter.getName());
-            parameterResource.addProperty(SBMLConstants.HASMetaID, parameter.getMetaId());
-            if(!parameter.getSBOTermID().isEmpty())parameterResource.addProperty(SBMLConstants.HASSBOTERM, parameter.getSBOTermID());
-            parameterResource.addLiteral(SBMLConstants.HASVALUE, parameter.getValue());
-            parameterResource.addProperty(SBMLConstants.PARAMELEOF, modelResource);
-            setUnits(parameter.getUnits(), parameterResource);
-
-            resourceMap.put(parameter.getId(),parameterResource);
-            extractRDF(parameterResource,parameter.getCVTerms());
+    private void createLocalParameters(KineticLaw kineticLaw, Resource kineticLawResource){
+        ListOf<LocalParameter> listOfLocalParameter = kineticLaw.getListOfLocalParameters();
+        for(LocalParameter localParameter : listOfLocalParameter){
+            Resource localParamResource = rdfModel.createResource(modelns+localParameter.getMetaId());
+            localParamResource.addProperty(RDF.type, SBMLConstants.LOCALPARAMETER_CLASS);
+            if (!localParameter.getName().isEmpty())
+                localParamResource.addProperty(SBMLConstants.NAME, localParameter.getName());
+            localParamResource.addLiteral(SBMLConstants.VALUE, localParameter.getValue());
+            setUnits(localParamResource,SBMLConstants.UNITS,localParameter.getUnits());
+            if(!localParameter.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(localParamResource, localParameter.getSBOTermID());
+            extractRDF(localParamResource,localParameter.getCVTerms());
+//            localParamResource.addProperty(SBMLConstants.NOTES, localParameter.getNotesString());
+            kineticLawResource.addProperty(SBMLConstants.LOCALPARAMETERS, localParamResource);
         }
+
     }
+
+
 
     private void createRules(Resource modelResource) {
         ListOf<Rule> listOfRules = sbmlModel.getListOfRules();
-        for(int i=0; i<listOfRules.size(); i++){
-            Rule rule = listOfRules.get(i);
-            Resource ruleResource = rdfModel.createResource(SBMLConstants.URI+modelId+"_"+rule.getMetaId());
-            ruleResource.addProperty(SBMLConstants.HASMetaID, rule.getMetaId());
-            if(ruleResource instanceof AssignmentRule)
-                ruleResource.addProperty(SBMLConstants.HASVAR, resourceMap.get(((AssignmentRule)rule).getVariable()));
-            if(ruleResource instanceof RateRule)
-                ruleResource.addProperty(SBMLConstants.HASVAR, resourceMap.get(((RateRule) rule).getVariable()));
-            if(!rule.getSBOTermID().isEmpty())ruleResource.addProperty(SBMLConstants.HASSBOTERM, rule.getSBOTermID());
-            ruleResource.addProperty(SBMLConstants.RULEELEOF, modelResource);
-            extractRDF(ruleResource,rule.getCVTerms());
+        for (Rule rule : listOfRules) {
+            Resource ruleResource = rdfModel.createResource(modelns + rule.getMetaId());
+            if (ruleResource instanceof AssignmentRule) {
+                ruleResource.addProperty(RDF.type, SBMLConstants.ASSIGNMENTRULE_CLASS);
+                ruleResource.addProperty(SBMLConstants.VARIABLE, resourceMap.get(((AssignmentRule) rule).getVariable()));
+            }
+            if (ruleResource instanceof RateRule){
+                ruleResource.addProperty(RDF.type, SBMLConstants.RATERULE_CLASS);
+                ruleResource.addProperty(SBMLConstants.VARIABLE, resourceMap.get(((RateRule) rule).getVariable()));
+            }
+            if (ruleResource instanceof AlgebraicRule){
+                ruleResource.addProperty(RDF.type, SBMLConstants.ALGEBRAICRULE_CLASS);
+            }
+            if (!rule.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(ruleResource, rule.getSBOTermID());
+            extractRDF(ruleResource, rule.getCVTerms());
+//            ruleResource.addProperty(SBMLConstants.NOTES, rule.getNotesString());
+            modelResource.addProperty(SBMLConstants.RULE, ruleResource);
+        }
+    }
+
+    private void createConstraint(Resource modelResource){
+        ListOf<Constraint> listOfConstraints = sbmlModel.getListOfConstraints();
+        for (Constraint constraint : listOfConstraints){
+            Resource constraintResource = rdfModel.createResource(modelns+constraint.getMetaId());
+            constraintResource.addProperty(RDF.type, SBMLConstants.CONSTRAINT_CLASS);
+            constraintResource.addLiteral(SBMLConstants.MESSAGE, constraint.getMessageString());
+            if (!constraint.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(constraintResource, constraint.getSBOTermID());
+            extractRDF(constraintResource, constraint.getCVTerms());
+//            constraintResource.addProperty(SBMLConstants.NOTES, constraint.getNotesString());
+            modelResource.addProperty(SBMLConstants.CONSTRAINT, constraintResource);
         }
     }
 
 
     private void createEvents(Resource modelResource) {
         ListOf<Event> listOfEvents = sbmlModel.getListOfEvents();
-        for(int i=0; i<listOfEvents.size(); i++){
-            Event event = listOfEvents.get(i);
-            Resource eventResource = rdfModel.createResource(SBMLConstants.URI+modelId+"_"+event.getId());
-            eventResource.addProperty(SBMLConstants.HASID, event.getId());
-            eventResource.addProperty(SBMLConstants.HASMetaID, event.getMetaId());
-            eventResource.addProperty(SBMLConstants.HASNAME, event.getName());
-            if(!event.getSBOTermID().isEmpty())eventResource.addProperty(SBMLConstants.HASSBOTERM, event.getSBOTermID());
-            eventResource.addProperty(SBMLConstants.EVENTELEOF, modelResource);
-            extractRDF(eventResource,event.getCVTerms());
+        for (Event event : listOfEvents) {
+            Resource eventResource = rdfModel.createResource(modelns + event.getMetaId());
+            eventResource.addProperty(RDF.type, SBMLConstants.EVENT_CLASS);
+            if(!event.getName().isEmpty())
+                eventResource.addProperty(SBMLConstants.NAME, event.getName());
+            eventResource.addLiteral(SBMLConstants.USEVALUESFROMTRIGGERTIME, event.getUseValuesFromTriggerTime());
+            if (!event.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(eventResource, event.getSBOTermID());
+            extractRDF(eventResource, event.getCVTerms());
+//            eventResource.addProperty(SBMLConstants.NOTES, event.getNotesString());
+            modelResource.addProperty(SBMLConstants.EVENT, eventResource);
+
+            createTrigger(event,eventResource);
+            createPriority(event, eventResource);
+            createDelay(event, eventResource);
+            createEventAssignment(event,eventResource);
         }
     }
+
+    private void createTrigger(Event event, Resource eventResource){
+        Trigger trigger = event.getTrigger();
+        if(trigger==null) return;
+        Resource triggerResource = rdfModel.createResource(modelns + trigger.getMetaId());
+        triggerResource.addProperty(RDF.type, SBMLConstants.TRIGGER_CLASS);
+        triggerResource.addLiteral(SBMLConstants.INITIALVALUE, trigger.getInitialValue());
+        triggerResource.addLiteral(SBMLConstants.PERSISTANT,trigger.getPersistent());
+        if (!trigger.getSBOTermID().isEmpty())
+            sboIdentifiersOrg(triggerResource, trigger.getSBOTermID());
+        extractRDF(triggerResource, trigger.getCVTerms());
+//        triggerResource.addProperty(SBMLConstants.NOTES, trigger.getNotesString());
+        eventResource.addProperty(SBMLConstants.TRIGGER,triggerResource);
+    }
+
+    private void createPriority(Event event, Resource eventResource){
+        Priority priority = event.getPriority();
+        if(priority==null) return;
+        Resource priorityResource = rdfModel.createResource(modelns + priority.getMetaId());
+        priorityResource.addProperty(RDF.type, SBMLConstants.PRIORITY_CLASS);
+        if (!priority.getSBOTermID().isEmpty())
+            sboIdentifiersOrg(priorityResource, priority.getSBOTermID());
+        extractRDF(priorityResource, priority.getCVTerms());
+//        priorityResource.addProperty(SBMLConstants.NOTES, priority.getNotesString());
+        eventResource.addProperty(SBMLConstants.PRIORITY,priorityResource);
+    }
+
+    private void createDelay(Event event, Resource eventResource){
+        Delay delay = event.getDelay();
+        if(delay==null) return;
+        Resource delayResource = rdfModel.createResource(modelns + delay.getMetaId());
+        delayResource.addProperty(RDF.type, SBMLConstants.DELAY_CLASS);
+        if (!delay.getSBOTermID().isEmpty())
+            sboIdentifiersOrg(delayResource, delay.getSBOTermID());
+        extractRDF(delayResource, delay.getCVTerms());
+//        delayResource.addProperty(SBMLConstants.NOTES, delay.getNotesString());
+        eventResource.addProperty(SBMLConstants.DELAY,delayResource);
+    }
+
+    private void createEventAssignment(Event event, Resource eventResource){
+        ListOf<EventAssignment> eventAssignments = event.getListOfEventAssignments();
+        for(EventAssignment eventAssignment: eventAssignments){
+            Resource eventAssignmentResource = rdfModel.createResource(modelns + eventAssignment.getMetaId());
+            eventAssignmentResource.addProperty(RDF.type, SBMLConstants.EVENTASSIGNMENT_CLASS);
+            if(!eventAssignment.getVariable().isEmpty())
+                eventAssignmentResource.addProperty(SBMLConstants.VARIABLE, resourceMap.get(eventAssignment.getVariable()));
+            if (!eventAssignment.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(eventAssignmentResource, eventAssignment.getSBOTermID());
+            extractRDF(eventAssignmentResource, eventAssignment.getCVTerms());
+//            eventAssignmentResource.addProperty(SBMLConstants.NOTES, eventAssignment.getNotesString());
+            eventResource.addProperty(SBMLConstants.EVENTASSIGNMENT,eventAssignmentResource);
+        }
+    }
+
 
     private void createFunctionDefs(Resource modelResource) {
         ListOf<FunctionDefinition> listOfFunctionDefinitions = sbmlModel.getListOfFunctionDefinitions();
-        for(int i=0; i<listOfFunctionDefinitions.size(); i++){
-            FunctionDefinition functionDefinition = listOfFunctionDefinitions.get(i);
-            Resource functionResource = rdfModel.createResource(SBMLConstants.URI+modelId+"_"+functionDefinition.getId());
-            functionResource.addProperty(SBMLConstants.HASMetaID, functionDefinition.getMetaId());
-            functionResource.addProperty(SBMLConstants.HASID, functionDefinition.getId());
-            if(!functionDefinition.getSBOTermID().isEmpty())functionResource.addProperty(SBMLConstants.HASSBOTERM, functionDefinition.getSBOTermID());
-            functionResource.addProperty(SBMLConstants.FUNCTIONELEOF, modelResource);
-            extractRDF(functionResource,functionDefinition.getCVTerms());
+        for (FunctionDefinition functionDefinition : listOfFunctionDefinitions) {
+            Resource functionResource = rdfModel.createResource(modelns + functionDefinition.getMetaId());
+            functionResource.addProperty(RDF.type, SBMLConstants.FUNCTIONDEF_CLASS);
+            if(!functionDefinition.getName().isEmpty())
+                modelResource.addProperty(SBMLConstants.NAME, functionDefinition.getName());
+            if (!functionDefinition.getSBOTermID().isEmpty())
+                sboIdentifiersOrg(functionResource, functionDefinition.getSBOTermID());
+            extractRDF(functionResource, functionDefinition.getCVTerms());
+//            functionResource.addProperty(SBMLConstants.NOTES, functionDefinition.getNotesString());
+            modelResource.addProperty(SBMLConstants.FUNCTIONDEF, functionResource);
         }
     }
 
-    private void createUnitsDefs(Resource modelResource) {
-        ListOf<UnitDefinition> listOfUnitDefinitions = sbmlModel.getListOfUnitDefinitions();
-        for(int i=0; i<listOfUnitDefinitions.size(); i++){
-            UnitDefinition unitDefinition = listOfUnitDefinitions.get(i);
-            Resource unitResource = rdfModel.createResource(SBMLConstants.URI+modelId+"_"+unitDefinition.getId());
-            unitResource.addProperty(SBMLConstants.HASMetaID, unitDefinition.getMetaId());
-            unitResource.addProperty(SBMLConstants.HASID, unitDefinition.getId());
-            unitResource.addProperty(SBMLConstants.HASNAME, unitDefinition.getName());
-            if(!unitDefinition.getSBOTermID().isEmpty())unitResource.addProperty(SBMLConstants.HASSBOTERM, unitDefinition.getSBOTermID());
-            unitResource.addProperty(SBMLConstants.UNITSDEFELEOF, modelResource);
-            extractRDF(unitResource,unitDefinition.getCVTerms());
-            resourceMap.put(unitDefinition.getId(),unitResource);
 
-            createListOfUnits(unitDefinition, unitResource);
-        }
-    }
-
-    private void createListOfUnits(UnitDefinition unitDefinition, Resource unitDefResource) {
-        ListOf<Unit> listOfUnits = unitDefinition.getListOfUnits();
-        for(int i=0; i<listOfUnits.size(); i++){
-            Unit unit = listOfUnits.get(i);
-            Resource unitResource = rdfModel.createResource(SBMLConstants.URI+modelId+"_"+unitDefinition.getId()+"_unit_"+i);
-            unitResource.addLiteral(SBMLConstants.HASKIND, unit.getKind());
-            unitResource.addLiteral(SBMLConstants.HASMULTIPLIER, unit.getMultiplier());
-            unitResource.addLiteral(SBMLConstants.HASSCALE, unit.getScale());
-            if(!unitDefinition.getSBOTermID().isEmpty())unitResource.addProperty(SBMLConstants.HASSBOTERM, unitDefinition.getSBOTermID());
-            unitResource.addProperty(SBMLConstants.UNITELEOF, unitDefResource);
-            extractRDF(unitResource,unitDefinition.getCVTerms());
-
-        }
-    }
-
-    private void setUnits(String units, Resource resource){
-        if(!units.isEmpty()){
-            Resource unitResource =  resourceMap.get(units);
-            if(unitResource != null)
-                resource.addProperty(SBMLConstants.HASUNITS, unitResource);
-            else
-                resource.addLiteral(SBMLConstants.HASUNITS, units);
-        }
-    }
 
     private void extractRDF(Resource resource, List<CVTerm> cvTerms) {
         if(cvTerms==null){
@@ -311,6 +550,13 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
                 }
             }
         }
+    }
+
+    private void sboIdentifiersOrg(Resource resource, String sboterm){
+        Resource annotationResource = rdfModel.createResource("http://identifiers.org/biomodels.sbo/"+sboterm);
+        resource.addProperty(SBMLConstants.createProperty(SBMLConstants.BQURI, "is"), annotationResource);
+
+
     }
 
     private void writeToFile(){

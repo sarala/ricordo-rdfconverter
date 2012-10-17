@@ -11,7 +11,7 @@
         <property name="outputFolder" value="${outputFolder}"/>
     </bean>
 
-    <bean id="biomodelswsclient" class="uk.ac.ebi.biomodels.BioModelsWSClient"/>
+    <bean id="biomodelswsclient" class="uk.ac.ebi.biomodels.ws.BioModelsWSClient"/>
 
     <bean id="sbmlToRdfGeneratorImpl" class="uk.ac.ebi.ricordo.rdfconverter.sbmltordf.SBMLtoRDFGeneratorImpl">
         <constructor-arg name="client" ref="biomodelswsclient"/>
