@@ -1,0 +1,618 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://biomodels.net/qulifiers#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://biomodels.net/qulifiers">
+  <owl:Ontology rdf:about=""/>
+  <rdfs:Class rdf:ID="Rule">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:ID="SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Trigger">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="SpeciesReference">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Parameter">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Reaction">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Species">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Delay">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="InitialAssignment">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="LocalParameter">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="KineticLaw">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Event">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="EventAssignment">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Compartment">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="ModifierSpeciesReference">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.ebi.ac.uk/rdfmodel#Model">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.ebi.ac.uk/rdfmodel#ModellingEntity"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="RateRule">
+    <rdfs:subClassOf rdf:resource="#Rule"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Constraint">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Priority">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="#SBMLElement"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.ebi.ac.uk/rdfmodel#Element">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.ebi.ac.uk/rdfmodel#ModellingEntity"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="SBMLModel">
+    <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/rdfmodel#Model"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#SBMLElement">
+    <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/rdfmodel#Element"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.ebi.ac.uk/rdfmodel#ModellingEntity">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="AlgebraicRule">
+    <rdfs:subClassOf rdf:resource="#Rule"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Unit">
+    <rdfs:subClassOf rdf:resource="#SBMLElement"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="AssignmentRule">
+    <rdfs:subClassOf rdf:resource="#Rule"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="UnitsDef">
+    <rdfs:subClassOf rdf:resource="#SBMLElement"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="FunctionDef">
+    <rdfs:subClassOf rdf:resource="#SBMLElement"/>
+  </rdfs:Class>
+  <rdf:Property rdf:ID="volumeUnits">
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:ID="sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#UnitsDef"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="parameter">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:ID="sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#Parameter"/>
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/biology-qualifiers#isPartOf">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:ID="sbmlAnnotation"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="initialAmount">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#Species"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/biology-qualifiers#isVersionOf">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAnnotation"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasOnlySubstanceUnits">
+    <rdfs:domain rdf:resource="#Species"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="priority">
+    <rdfs:range rdf:resource="#Priority"/>
+    <rdfs:domain rdf:resource="#Rule"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+  </rdf:Property>
+  <rdf:Property rdf:ID="trigger">
+    <rdfs:range rdf:resource="#Trigger"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#Rule"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="initialAssignment">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#Event"/>
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/biology-qualifiers#isHomologTo">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAnnotation"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="notes">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/model-qualifiers#isDescribedBy">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAnnotation"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="constraint">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#Event"/>
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="units">
+    <rdfs:domain rdf:resource="#Compartment"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#UnitsDef"/>
+    <rdfs:domain rdf:resource="#Parameter"/>
+    <rdfs:domain rdf:resource="#LocalParameter"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="isReversible">
+    <rdfs:domain rdf:resource="#Reaction"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+  </rdf:Property>
+  <rdf:Property rdf:ID="lengthUnits">
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#UnitsDef"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="areaUnits">
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#UnitsDef"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.ebi.ac.uk/rdfmodel#element">
+    <rdfs:range rdf:resource="http://www.ebi.ac.uk/rdfmodel#ModellingEntity"/>
+    <rdfs:domain rdf:resource="http://www.ebi.ac.uk/rdfmodel#ModellingEntity"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="eventAssingment">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#Rule"/>
+    <rdfs:range rdf:resource="#EventAssignment"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="size">
+    <rdfs:domain rdf:resource="#Compartment"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="reactant">
+    <rdfs:range rdf:resource="#SpeciesReference"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#Reaction"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/model-qualifiers#is">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAnnotation"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="fast">
+    <rdfs:domain rdf:resource="#Reaction"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+  </rdf:Property>
+  <rdf:Property rdf:ID="extentUnits">
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#UnitsDef"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/biology-qualifiers#isDescribedBy">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAnnotation"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="kind">
+    <rdfs:domain rdf:resource="#Unit"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="constant">
+    <rdfs:domain rdf:resource="#SpeciesReference"/>
+    <rdfs:domain rdf:resource="#Compartment"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="#Species"/>
+    <rdfs:domain rdf:resource="#Parameter"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="persistant">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#Trigger"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/biology-qualifiers#hasTaxon">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAnnotation"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/biology-qualifiers#hasProperty">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAnnotation"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="spatialDimensions">
+    <rdfs:domain rdf:resource="#Compartment"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="reaction">
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#Reaction"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="multiplier">
+    <rdfs:domain rdf:resource="#Unit"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="stoichiometry">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SpeciesReference"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="inCompartment">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#Compartment"/>
+    <rdfs:domain rdf:resource="#Species"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/biology-qualifiers#isPropertyOf">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAnnotation"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="unitsDef">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#UnitsDef"/>
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.ebi.ac.uk/rdfmodel#annotation"/>
+  <rdf:Property rdf:ID="unit">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#Unit"/>
+    <rdfs:domain rdf:resource="#UnitsDef"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="rule">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#Rule"/>
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/biology-qualifiers#is">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAnnotation"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="refSpecies">
+    <rdfs:range rdf:resource="#Species"/>
+    <rdfs:domain rdf:resource="#ModifierSpeciesReference"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SpeciesReference"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="boundaryCondition">
+    <rdfs:domain rdf:resource="#Species"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="rateRule">
+    <rdfs:domain rdf:resource="#Rule"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#RateRule"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="message">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/biology-qualifiers#hasVersion">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAnnotation"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="#sbmlAnnotation">
+    <rdfs:subPropertyOf rdf:resource="http://www.ebi.ac.uk/rdfmodel#annotation"/>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="localParameters">
+    <rdfs:domain rdf:resource="#Reaction"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#LocalParameter"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="value">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Parameter"/>
+    <rdfs:domain rdf:resource="#LocalParameter"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="initialValue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#Trigger"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="substanceUnits">
+    <rdfs:domain rdf:resource="#Species"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#UnitsDef"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="functionDef">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#FunctionDef"/>
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="modifier">
+    <rdfs:range rdf:resource="#ModifierSpeciesReference"/>
+    <rdfs:domain rdf:resource="#Reaction"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+  </rdf:Property>
+  <rdf:Property rdf:ID="species">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#Species"/>
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="exponent">
+    <rdfs:domain rdf:resource="#Unit"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/model-qualifiers#isDerivedFrom">
+    <rdfs:subPropertyOf rdf:resource="#sbmlAnnotation"/>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="compartment">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+    <rdfs:range rdf:resource="#Compartment"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="conversionFactor">
+    <rdfs:range rdf:resource="#Parameter"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+    <rdfs:domain rdf:resource="#Species"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.ebi.ac.uk/rdfmodel#attribute"/>
+  <rdf:Property rdf:ID="name">
+    <rdfs:domain rdf:resource="#Species"/>
+    <rdfs:domain rdf:resource="#Reaction"/>
+    <rdfs:domain rdf:resource="#Parameter"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#FunctionDef"/>
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+    <rdfs:domain rdf:resource="#LocalParameter"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Compartment"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="kineticLaw">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#KineticLaw"/>
+    <rdfs:domain rdf:resource="#Reaction"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/biology-qualifiers#hasPart">
+    <rdfs:subPropertyOf rdf:resource="#sbmlAnnotation"/>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="event">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#Event"/>
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="scale">
+    <rdfs:domain rdf:resource="#Unit"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlAttribute"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/biology-qualifiers#occursIn">
+    <rdfs:subPropertyOf rdf:resource="#sbmlAnnotation"/>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="#sbmlAttribute">
+    <rdfs:subPropertyOf rdf:resource="http://www.ebi.ac.uk/rdfmodel#attribute"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="symbol">
+    <rdfs:domain rdf:resource="#InitialAssignment"/>
+    <rdfs:subPropertyOf rdf:resource="#sbmlAttribute"/>
+    <rdfs:range rdf:resource="#Compartment"/>
+    <rdfs:range rdf:resource="#Species"/>
+    <rdfs:range rdf:resource="#SpeciesReference"/>
+    <rdfs:range rdf:resource="#Parameter"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="timeUnits">
+    <rdfs:domain rdf:resource="#SBMLModel"/>
+    <rdfs:subPropertyOf rdf:resource="#sbmlAttribute"/>
+    <rdfs:range rdf:resource="#UnitsDef"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/biology-qualifiers#encodes">
+    <rdfs:subPropertyOf rdf:resource="#sbmlAnnotation"/>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="variable">
+    <rdfs:domain rdf:resource="#EventAssignment"/>
+    <rdfs:subPropertyOf rdf:resource="#sbmlAttribute"/>
+    <rdfs:range rdf:resource="#Compartment"/>
+    <rdfs:range rdf:resource="#Parameter"/>
+    <rdfs:range rdf:resource="#Species"/>
+    <rdfs:range rdf:resource="#SpeciesReference"/>
+    <rdfs:domain rdf:resource="#AssignmentRule"/>
+    <rdfs:domain rdf:resource="#RateRule"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="delay">
+    <rdfs:range rdf:resource="#Delay"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#Rule"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="product">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="#sbmlElement"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#Reaction"/>
+    <rdfs:range rdf:resource="#SpeciesReference"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://biomodels.net/biology-qualifiers#isEncodedBy">
+    <rdfs:subPropertyOf rdf:resource="#sbmlAnnotation"/>
+    <rdfs:domain rdf:resource="#SBMLElement"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="initialConcentration">
+    <rdfs:subPropertyOf rdf:resource="#sbmlAttribute"/>
+    <rdfs:domain rdf:resource="#Species"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="#sbmlElement">
+    <rdfs:subPropertyOf rdf:resource="http://www.ebi.ac.uk/rdfmodel#element"/>
+  </rdf:Property>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->
