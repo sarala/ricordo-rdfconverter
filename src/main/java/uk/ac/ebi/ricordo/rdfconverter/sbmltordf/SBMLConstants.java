@@ -38,7 +38,7 @@ public class SBMLConstants {
     public static final String BMURI ="http://biomodels.net/model-qualifiers#";
     public static final String BMURIPREFIX ="bqmodel";
     public static final String RSMURI ="http://biomodels.net/qualifiers#";
-    public static final String RSMURIPREFIX ="rdfmodel";
+    public static final String RSMURIPREFIX ="sbmlRdf";
     public static final String VCARDPREFIX ="vCard";
     public static final String TERMSPREFIX ="dcterms";
 

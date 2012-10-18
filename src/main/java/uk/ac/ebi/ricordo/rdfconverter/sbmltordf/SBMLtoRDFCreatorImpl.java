@@ -262,7 +262,7 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             speciesResource.addProperty(RDF.type, SBMLConstants.SPECIES_CLASS);
             if (!species.getName().isEmpty())
                 speciesResource.addProperty(SBMLConstants.NAME, species.getName());
-            speciesResource.addProperty(SBMLConstants.COMPARTMENT, resourceMap.get(species.getCompartment()));
+            speciesResource.addProperty(SBMLConstants.INCOMPARTMENT, resourceMap.get(species.getCompartment()));
             speciesResource.addLiteral(SBMLConstants.INITIALAMOUNT, species.getInitialAmount());
             speciesResource.addLiteral(SBMLConstants.INITIALCONCENTRATION, species.getInitialConcentration());
             setUnits(speciesResource,SBMLConstants.SUBSTANCEUNITS,species.getSubstanceUnits());
