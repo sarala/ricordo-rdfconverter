@@ -4,6 +4,7 @@
     xmlns:bqmodel="http://biomodels.net/model-qualifiers#"
     xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:bqbiol="http://biomodels.net/biology-qualifiers#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:biodb="http://identifiers.org/biomodels.db/BIOMD0000000292#">
   <sbmlRdf:SBMLModel rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#rovers95">
@@ -16,13 +17,21 @@
             <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000461"/>
             <sbmlRdf:species>
               <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#NADP">
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:18009"/>
                 <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
                 >false</sbmlRdf:constant>
                 <sbmlRdf:name>NADP_super_+</sbmlRdf:name>
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:18009">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:18009"/>
+                  </rdf:Description>
+                </bqbiol:is>
                 <sbmlRdf:inCompartment>
                   <sbmlRdf:Compartment rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#c">
-                    <bqbiol:is rdf:resource="http://identifiers.org/obo.go/GO:0009570"/>
+                    <bqbiol:is>
+                      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0009570">
+                        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0009570"/>
+                      </rdf:Description>
+                    </bqbiol:is>
                     <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000290"/>
                     <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
                     >true</sbmlRdf:constant>
@@ -78,12 +87,16 @@
             >2.0</sbmlRdf:stoichiometry>
             <sbmlRdf:species>
               <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#ATP">
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:15422">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15422"/>
+                  </rdf:Description>
+                </bqbiol:is>
                 <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00002"/>
                 <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#c"/>
                 <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
                 >false</sbmlRdf:boundaryCondition>
                 <sbmlRdf:name>ATP</sbmlRdf:name>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15422"/>
                 <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
                 >NaN</sbmlRdf:initialAmount>
                 <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -112,10 +125,14 @@
                 >false</sbmlRdf:hasOnlySubstanceUnits>
                 <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000247"/>
                 <sbmlRdf:name>ADP</sbmlRdf:name>
-                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00008"/>
                 <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
                 >NaN</sbmlRdf:initialAmount>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16761"/>
+                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00008"/>
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:16761">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16761"/>
+                  </rdf:Description>
+                </bqbiol:is>
                 <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#c"/>
                 <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
                 >true</sbmlRdf:boundaryCondition>
@@ -124,9 +141,16 @@
           </sbmlRdf:SpeciesReference>
         </sbmlRdf:reactant>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000216"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0009777"/>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0009777">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0009777"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
+    <dcterms:modified rdf:parseType="Resource">
+      <dcterms:W3CDTF>Wed Jul 11 19:04:33 BST 2012</dcterms:W3CDTF>
+    </dcterms:modified>
     <sbmlRdf:substanceUnits>
       <sbmlRdf:SBMLUnitsDef rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#substance">
         <sbmlRdf:unit>
@@ -144,6 +168,7 @@
         <sbmlRdf:name>mmole</sbmlRdf:name>
       </sbmlRdf:SBMLUnitsDef>
     </sbmlRdf:substanceUnits>
+    <sbmlRdf:notes>This is the model described in the article: Photosynthetic oscillations and the interdependence of photophosphorylation and electron transport as studied by a mathematical model. Rovers W, Giersch C. Biosystems. 1995;35(1):63-73. PMID: 7772723 Abstract: A simple mathematical model of photosynthetic carbon metabolism as driven by ATP and NADPH has been formulated to analyse photosynthetic oscillations. Two essential assumptions of this model are: (i) reduction of 3-phosphoglycerate to triosephosphate in the Clavin cycle is limited by ATP, not by NADPH, and (ii) photophosphorylation is affected by the availability of both ADP and NADP, while electron transport is limited by NADP only. The model produces oscillations of observed damping and period in ATP and NADP concentrations which are about 180 degrees out of phase, while three alternative proposals regarding coupling of electron transport and photophosphorylation do not produce oscillatory model solutions. The phases of ATP and NADPH are in reasonable agreement with the available experimental data. The model (which assumes that redox control of photophosphorylation is part of the oscillatory mechanism) is compared with an alternative proposal (that oscillations are due to interdependence of turnover of adenylates and Calvin cycle intermediates). From the similarity of the mathematical structures of both models it is inviting to speculate that both models are partial aspects of the oscillatory mechanism. To the extent possible under law, all copyright and related or neighbouring rights to this encoded model have been dedicated to the public domain worldwide. Please refer to CC0 Public Domain Dedication for more information. In summary, you are entitled to use this encoded model in absolutely any manner you deem suitable, verbatim, or with modification, alone or embedded it in a larger context, redistribute it, commercially or not, in a restricted way or not. To cite BioModels Database, please use: Li C, Donizelli M, Rodriguez N, Dharuri H, Endler L, Chelliah V, Li L, He E, Henry A, Stefan MI, Snoep JL, Hucka M, Le Novère N, Laibe C (2010) BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models. BMC Syst Biol., 4:92.</sbmlRdf:notes>
     <sbmlRdf:unitsDef>
       <sbmlRdf:SBMLUnitsDef rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#area">
         <sbmlRdf:unit>
@@ -179,16 +204,6 @@
       </sbmlRdf:SBMLUnitsDef>
     </sbmlRdf:unitsDef>
     <sbmlRdf:unitsDef rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#volume"/>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>University of Vienna</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>raim@tbi.univie.ac.at</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Rainer</vCard:Given>
-        <vCard:Family>Machne</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
     <bqbiol:occursIn rdf:resource="http://identifiers.org/taxonomy/33090"/>
     <bqbiol:isVersionOf rdf:resource="http://identifiers.org/kegg.pathway/rn00710"/>
     <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#ATP"/>
@@ -196,47 +211,77 @@
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#N0">
         <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C00006"/>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C00005"/>
-        <bqbiol:hasPart rdf:resource="http://identifiers.org/obo.chebi/CHEBI:18009"/>
-        <bqbiol:hasPart rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16474"/>
+        <bqbiol:hasPart rdf:resource="http://purl.obolibrary.org/obo/CHEBI:18009"/>
+        <bqbiol:hasPart>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:16474">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16474"/>
+          </rdf:Description>
+        </bqbiol:hasPart>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000472"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
         <sbmlRdf:units>
-          <sbmlRdf:SBMLUnit rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#">
-            <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
-            >LITRE</sbmlRdf:kind>
-            <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-            >0</sbmlRdf:scale>
-            <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
-            >MOLE</sbmlRdf:kind>
-            <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-            >1.0</sbmlRdf:multipler>
+          <sbmlRdf:SBMLUnitsDef rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#_254783">
+            <sbmlRdf:unit>
+              <sbmlRdf:SBMLUnit rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#_254807">
+                <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >-1.0</sbmlRdf:exponent>
+                <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+                >0</sbmlRdf:scale>
+                <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >1.0</sbmlRdf:multipler>
+                <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
+                >LITRE</sbmlRdf:kind>
+              </sbmlRdf:SBMLUnit>
+            </sbmlRdf:unit>
+            <sbmlRdf:unit>
+              <sbmlRdf:SBMLUnit rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#_254795">
+                <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >1.0</sbmlRdf:exponent>
+                <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+                >-3</sbmlRdf:scale>
+                <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >1.0</sbmlRdf:multipler>
+                <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
+                >MOLE</sbmlRdf:kind>
+              </sbmlRdf:SBMLUnit>
+            </sbmlRdf:unit>
             <sbmlRdf:name>mM</sbmlRdf:name>
-            <rdf:type rdf:resource="http://biomodels.net/qualifiers#SBMLUnitsDef"/>
-            <sbmlRdf:name>per_mM_per_s</sbmlRdf:name>
-            <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-            >-1.0</sbmlRdf:exponent>
-            <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-            >1.0</sbmlRdf:exponent>
-            <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
-            >SECOND</sbmlRdf:kind>
-            <sbmlRdf:name>per_s</sbmlRdf:name>
-            <sbmlRdf:unit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#"/>
-            <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-            >-3</sbmlRdf:scale>
-          </sbmlRdf:SBMLUnit>
+          </sbmlRdf:SBMLUnitsDef>
         </sbmlRdf:units>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >1.2</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <bqbiol:isVersionOf>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0019253">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0019253"/>
+      </rdf:Description>
+    </bqbiol:isVersionOf>
+    <sbmlRdf:unitsDef>
+      <sbmlRdf:SBMLUnitsDef rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#_254867">
+        <sbmlRdf:unit>
+          <sbmlRdf:SBMLUnit rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#_254879">
+            <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >-1.0</sbmlRdf:exponent>
+            <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+            >0</sbmlRdf:scale>
+            <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:multipler>
+            <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
+            >SECOND</sbmlRdf:kind>
+          </sbmlRdf:SBMLUnit>
+        </sbmlRdf:unit>
+        <sbmlRdf:name>per_s</sbmlRdf:name>
+      </sbmlRdf:SBMLUnitsDef>
+    </sbmlRdf:unitsDef>
     <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/MODEL1101060001"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#k4">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000035"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
-        <sbmlRdf:units rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#"/>
+        <sbmlRdf:units rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#_254867"/>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >0.614</sbmlRdf:value>
       </sbmlRdf:Parameter>
@@ -254,15 +299,23 @@
             <sbmlRdf:species>
               <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#Y">
                 <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#c"/>
-                <bqbiol:hasPart rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17794"/>
+                <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C01182"/>
                 <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
                 >true</sbmlRdf:constant>
-                <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C01182"/>
                 <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
                 >NaN</sbmlRdf:initialAmount>
-                <bqbiol:hasPart rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16710"/>
                 <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
                 >false</sbmlRdf:hasOnlySubstanceUnits>
+                <bqbiol:hasPart>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:17794">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17794"/>
+                  </rdf:Description>
+                </bqbiol:hasPart>
+                <bqbiol:hasPart>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:16710">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16710"/>
+                  </rdf:Description>
+                </bqbiol:hasPart>
                 <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
                 >1.0</sbmlRdf:initialConcentration>
                 <sbmlRdf:name>Y</sbmlRdf:name>
@@ -310,12 +363,12 @@
             >1.0</sbmlRdf:stoichiometry>
             <sbmlRdf:species>
               <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#NADPH">
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16474"/>
                 <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
                 >0.7</sbmlRdf:initialConcentration>
                 <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000247"/>
                 <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
                 >false</sbmlRdf:boundaryCondition>
+                <bqbiol:is rdf:resource="http://purl.obolibrary.org/obo/CHEBI:16474"/>
                 <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
                 >NaN</sbmlRdf:initialAmount>
                 <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#c"/>
@@ -337,20 +390,39 @@
             >1.0</sbmlRdf:stoichiometry>
             <sbmlRdf:species>
               <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#X">
+                <bqbiol:hasPart>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:48153">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:48153"/>
+                  </rdf:Description>
+                </bqbiol:hasPart>
                 <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C05382"/>
-                <bqbiol:hasPart rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15946"/>
-                <bqbiol:hasPart rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15721"/>
-                <bqbiol:hasPart rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16108"/>
+                <bqbiol:hasPart>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:17969">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17969"/>
+                  </rdf:Description>
+                </bqbiol:hasPart>
+                <bqbiol:hasPart>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:16108">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16108"/>
+                  </rdf:Description>
+                </bqbiol:hasPart>
+                <bqbiol:hasPart>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:17363">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17363"/>
+                  </rdf:Description>
+                </bqbiol:hasPart>
                 <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C00447"/>
                 <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000247"/>
                 <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
                 >false</sbmlRdf:constant>
-                <bqbiol:hasPart rdf:resource="http://identifiers.org/obo.chebi/CHEBI:29052"/>
                 <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C00117"/>
                 <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C00279"/>
                 <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C00118"/>
-                <bqbiol:hasPart rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17363"/>
-                <bqbiol:hasPart rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16905"/>
+                <bqbiol:hasPart>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:29052">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:29052"/>
+                  </rdf:Description>
+                </bqbiol:hasPart>
                 <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
                 >false</sbmlRdf:hasOnlySubstanceUnits>
                 <sbmlRdf:name>X</sbmlRdf:name>
@@ -358,16 +430,33 @@
                 >false</sbmlRdf:boundaryCondition>
                 <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
                 >2.0</sbmlRdf:initialConcentration>
+                <bqbiol:hasPart>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:15721">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15721"/>
+                  </rdf:Description>
+                </bqbiol:hasPart>
                 <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C00111"/>
                 <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C00085"/>
-                <bqbiol:hasPart rdf:resource="http://identifiers.org/obo.chebi/CHEBI:48153"/>
+                <bqbiol:hasPart>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:17797">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17797"/>
+                  </rdf:Description>
+                </bqbiol:hasPart>
                 <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C00354"/>
-                <bqbiol:hasPart rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17969"/>
                 <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#c"/>
+                <bqbiol:hasPart>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:15946">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15946"/>
+                  </rdf:Description>
+                </bqbiol:hasPart>
                 <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C00199"/>
+                <bqbiol:hasPart>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:16905">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16905"/>
+                  </rdf:Description>
+                </bqbiol:hasPart>
                 <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
                 >NaN</sbmlRdf:initialAmount>
-                <bqbiol:hasPart rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17797"/>
               </sbmlRdf:Species>
             </sbmlRdf:species>
           </sbmlRdf:SpeciesReference>
@@ -383,37 +472,80 @@
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
     <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#NADP"/>
+    <sbmlRdf:unitsDef>
+      <sbmlRdf:SBMLUnitsDef rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#_254819">
+        <sbmlRdf:unit>
+          <sbmlRdf:SBMLUnit rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#_254855">
+            <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:exponent>
+            <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+            >0</sbmlRdf:scale>
+            <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:multipler>
+            <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
+            >LITRE</sbmlRdf:kind>
+          </sbmlRdf:SBMLUnit>
+        </sbmlRdf:unit>
+        <sbmlRdf:unit>
+          <sbmlRdf:SBMLUnit rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#_254843">
+            <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >-1.0</sbmlRdf:exponent>
+            <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+            >-3</sbmlRdf:scale>
+            <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:multipler>
+            <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
+            >MOLE</sbmlRdf:kind>
+          </sbmlRdf:SBMLUnit>
+        </sbmlRdf:unit>
+        <sbmlRdf:unit>
+          <sbmlRdf:SBMLUnit rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#_254831">
+            <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >-1.0</sbmlRdf:exponent>
+            <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+            >0</sbmlRdf:scale>
+            <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:multipler>
+            <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
+            >SECOND</sbmlRdf:kind>
+          </sbmlRdf:SBMLUnit>
+        </sbmlRdf:unit>
+        <sbmlRdf:name>per_mM_per_s</sbmlRdf:name>
+      </sbmlRdf:SBMLUnitsDef>
+    </sbmlRdf:unitsDef>
     <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292"/>
-    <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#NADPH"/>
     <sbmlRdf:rule>
       <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#CDMT00026">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000064"/>
       </rdf:Description>
     </sbmlRdf:rule>
+    <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#NADPH"/>
     <sbmlRdf:areaUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#area"/>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0019253"/>
-    <sbmlRdf:unitsDef rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#"/>
+    <sbmlRdf:unitsDef rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#_254783"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#A0">
-        <bqmodel:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15422"/>
-        <bqmodel:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16761"/>
+        <bqmodel:is rdf:resource="http://purl.obolibrary.org/obo/CHEBI:15422"/>
+        <bqmodel:is rdf:resource="http://purl.obolibrary.org/obo/CHEBI:16761"/>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C00008"/>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.compound/C00002"/>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000472"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
-        <sbmlRdf:units rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#"/>
+        <sbmlRdf:units rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#_254783"/>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >2.5</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <dcterms:created rdf:parseType="Resource">
+      <dcterms:W3CDTF>Thu Jan 06 23:40:34 GMT 2011</dcterms:W3CDTF>
+    </dcterms:created>
     <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#X"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#k3">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000036"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
-        <sbmlRdf:units rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#"/>
+        <sbmlRdf:units rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#_254819"/>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >0.3</sbmlRdf:value>
       </sbmlRdf:Parameter>
@@ -435,15 +567,12 @@
         <sbmlRdf:name>length</sbmlRdf:name>
       </sbmlRdf:SBMLUnitsDef>
     </sbmlRdf:lengthUnit>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Tue May 15 22:56:05 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#k2">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000035"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
-        <sbmlRdf:units rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#"/>
+        <sbmlRdf:units rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#_254867"/>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >0.625</sbmlRdf:value>
       </sbmlRdf:Parameter>
@@ -472,7 +601,11 @@
             <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#NADP"/>
           </sbmlRdf:SpeciesReference>
         </sbmlRdf:reactant>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0009780"/>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0009780">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0009780"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000202"/>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
@@ -530,9 +663,6 @@
         </sbmlRdf:reactant>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
-    <dcterms:created rdf:parseType="Resource">
-      <dcterms:W3CDTF>Thu Jan 06 23:40:34 GMT 2011</dcterms:W3CDTF>
-    </dcterms:created>
     <sbmlRdf:unitsDef rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#length"/>
     <sbmlRdf:rule>
       <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000292#CDMT00027">
@@ -540,6 +670,16 @@
       </rdf:Description>
     </sbmlRdf:rule>
     <bqmodel:isDescribedBy rdf:resource="http://identifiers.org/pubmed/7772723"/>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>University of Vienna</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>raim@tbi.univie.ac.at</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Rainer</vCard:Given>
+        <vCard:Family>Machne</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <sbmlRdf:compartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#c"/>
     <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#ADP"/>
     <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#Y"/>
@@ -549,7 +689,7 @@
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000035"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
-        <sbmlRdf:units rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#"/>
+        <sbmlRdf:units rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#_254867"/>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >0.123</sbmlRdf:value>
       </sbmlRdf:Parameter>

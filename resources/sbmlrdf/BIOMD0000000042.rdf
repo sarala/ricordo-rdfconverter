@@ -4,6 +4,7 @@
     xmlns:bqmodel="http://biomodels.net/model-qualifiers#"
     xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:bqbiol="http://biomodels.net/biology-qualifiers#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:biodb="http://identifiers.org/biomodels.db/BIOMD0000000042#">
   <sbmlRdf:SBMLModel rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000002">
@@ -11,7 +12,11 @@
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000035">
         <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00118"/>
-        <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:29052"/>
+        <bqbiol:is>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:29052">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:29052"/>
+          </rdf:Description>
+        </bqbiol:is>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -24,7 +29,11 @@
         >0.00190919</sbmlRdf:initialAmount>
         <sbmlRdf:inCompartment>
           <sbmlRdf:Compartment rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028">
-            <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0005737"/>
+            <bqbiol:isVersionOf>
+              <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0005737">
+                <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0005737"/>
+              </rdf:Description>
+            </bqbiol:isVersionOf>
             <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
             >true</sbmlRdf:constant>
             <sbmlRdf:size rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -36,6 +45,7 @@
       </sbmlRdf:Species>
     </sbmlRdf:species>
     <bqbiol:isHomologTo rdf:resource="http://identifiers.org/reactome/REACT_1383"/>
+    <sbmlRdf:notes>Reference: Nielsen et al; Biophys. Chem. (1998) 72:49-62 The reaction looks like this: reaction_1: GLC + ATP -&gt; F6P + ADP; reaction_2: F6P + ATP -&gt; FBP + ADP; reaction_3: FBP =&gt; 2 * GAP; reaction_4: GAP + NAD -&gt; DPG + NADH; reaction_5: DPG + ADP =&gt; PEP + ATP; reaction_6: PEP + ADP -&gt; PYR + ATP; reaction_7: PYR -&gt; ACA; reaction_8: ACA + NADH =&gt; EtOH + NAD; reaction_9: AMP + ATP =&gt; 2 * ADP; reaction_10: F6P -&gt; P; flow reactor: flow = 1.1e-2 reactorvolume/s inflow concentrations: ATP = 3.5 mM ADP = 1.1 mM NADH = 0.24 mM NAD = 4.0 mM GLC = 50 mM specific flow rates (in reactorvolume/seconds): flow = 1.1e-2 : periodic oscillations flow = 8.25e-3 : complex periodic oscillations flow = 8.154e-3 : complex periodic oscillations flow = 1e-3 : harmonic periodic oscillations V4 = 10 mM/s instead of 20 in the paper, in order to reproduce the figures. we can reproduce the results from the paper only If we interpret the *seconds* for the constants from table 2 as *minutes* (to correspond to the flow units in figure 9) Initial amounts are taken from a version of the model on JWS Online because table 3 of the paper contains only the input flows for the reactor and no initial conditions for the various species.</sbmlRdf:notes>
     <bqbiol:occursIn rdf:resource="http://identifiers.org/taxonomy/4932"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000025">
@@ -48,105 +58,20 @@
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000047">
         <sbmlRdf:kineticLaw>
-          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#">
-            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000035"/>
-            <sbmlRdf:species>
-              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000032">
-                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00293"/>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17234"/>
-                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:constant>
-                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:boundaryCondition>
-                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:hasOnlySubstanceUnits>
-                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >NaN</sbmlRdf:initialConcentration>
-                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >0.0112817</sbmlRdf:initialAmount>
-                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
-              </sbmlRdf:Species>
-            </sbmlRdf:species>
-            <sbmlRdf:species>
-              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000037">
-                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00004"/>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16908"/>
-                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:constant>
-                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:boundaryCondition>
-                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:hasOnlySubstanceUnits>
-                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >NaN</sbmlRdf:initialConcentration>
-                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >0.616118</sbmlRdf:initialAmount>
-                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
-              </sbmlRdf:Species>
-            </sbmlRdf:species>
-            <sbmlRdf:species>
-              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000034">
-                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C05378"/>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16905"/>
-                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:constant>
-                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:boundaryCondition>
-                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:hasOnlySubstanceUnits>
-                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >NaN</sbmlRdf:initialConcentration>
-                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >0.00770135</sbmlRdf:initialAmount>
-                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
-              </sbmlRdf:Species>
-            </sbmlRdf:species>
-            <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-            >1.0</sbmlRdf:multipler>
-            <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-            >1.0</sbmlRdf:exponent>
-            <sbmlRdf:species>
-              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000039">
-                <bqmodel:is rdf:resource="http://identifiers.org/kegg.compound/C00074"/>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:18021"/>
-                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:constant>
-                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:boundaryCondition>
-                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:hasOnlySubstanceUnits>
-                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >NaN</sbmlRdf:initialConcentration>
-                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >0.0021125</sbmlRdf:initialAmount>
-                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
-              </sbmlRdf:Species>
-            </sbmlRdf:species>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748629"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748617">
             <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-            >2.0</sbmlRdf:stoichiometry>
-            <sbmlRdf:species>
-              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000041">
-                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00084"/>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15343"/>
-                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:constant>
-                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:boundaryCondition>
-                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:hasOnlySubstanceUnits>
-                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >NaN</sbmlRdf:initialConcentration>
-                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >0.0738334</sbmlRdf:initialAmount>
-                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
-              </sbmlRdf:Species>
-            </sbmlRdf:species>
-            <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
-            >MOLE</sbmlRdf:kind>
+            >1.0</sbmlRdf:stoichiometry>
             <sbmlRdf:species>
               <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000036">
                 <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00003"/>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15846"/>
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:15846">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15846"/>
+                  </rdf:Description>
+                </bqbiol:is>
                 <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
                 >false</sbmlRdf:constant>
                 <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -160,157 +85,13 @@
                 <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
               </sbmlRdf:Species>
             </sbmlRdf:species>
-            <sbmlRdf:species>
-              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000040">
-                <bqmodel:is rdf:resource="http://identifiers.org/kegg.compound/C00022"/>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15361"/>
-                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:constant>
-                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:boundaryCondition>
-                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:hasOnlySubstanceUnits>
-                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >NaN</sbmlRdf:initialConcentration>
-                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >0.00422702</sbmlRdf:initialAmount>
-                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
-              </sbmlRdf:Species>
-            </sbmlRdf:species>
-            <sbmlRdf:species>
-              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000043">
-                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:constant>
-                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:boundaryCondition>
-                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:hasOnlySubstanceUnits>
-                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >NaN</sbmlRdf:initialConcentration>
-                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >0.0</sbmlRdf:initialAmount>
-                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
-              </sbmlRdf:Species>
-            </sbmlRdf:species>
-            <sbmlRdf:species>
-              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000038">
-                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00236"/>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16001"/>
-                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:constant>
-                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:boundaryCondition>
-                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:hasOnlySubstanceUnits>
-                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >NaN</sbmlRdf:initialConcentration>
-                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >0.299109</sbmlRdf:initialAmount>
-                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
-              </sbmlRdf:Species>
-            </sbmlRdf:species>
-            <sbmlRdf:species>
-              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000042">
-                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00469"/>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16236"/>
-                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:constant>
-                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:boundaryCondition>
-                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:hasOnlySubstanceUnits>
-                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >NaN</sbmlRdf:initialConcentration>
-                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >0.33981</sbmlRdf:initialAmount>
-                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
-              </sbmlRdf:Species>
-            </sbmlRdf:species>
-            <rdf:type rdf:resource="http://biomodels.net/qualifiers#ModifierSpeciesReference"/>
-            <rdf:type rdf:resource="http://biomodels.net/qualifiers#SBMLUnit"/>
-            <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-            >60.0</sbmlRdf:multipler>
-            <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
-            >SECOND</sbmlRdf:kind>
-            <sbmlRdf:species>
-              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000031">
-                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00020"/>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16027"/>
-                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:constant>
-                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:boundaryCondition>
-                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:hasOnlySubstanceUnits>
-                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >NaN</sbmlRdf:initialConcentration>
-                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >0.00261149</sbmlRdf:initialAmount>
-                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
-              </sbmlRdf:Species>
-            </sbmlRdf:species>
-            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-            >1.0</sbmlRdf:stoichiometry>
-            <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-            >-3</sbmlRdf:scale>
-            <rdf:type rdf:resource="http://biomodels.net/qualifiers#SpeciesReference"/>
-            <sbmlRdf:species>
-              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000029">
-                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00002"/>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15422"/>
-                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:constant>
-                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:boundaryCondition>
-                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:hasOnlySubstanceUnits>
-                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >NaN</sbmlRdf:initialConcentration>
-                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >4.49064</sbmlRdf:initialAmount>
-                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
-              </sbmlRdf:Species>
-            </sbmlRdf:species>
-            <sbmlRdf:species>
-              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000033">
-                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C05345"/>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:20935"/>
-                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:constant>
-                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:boundaryCondition>
-                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:hasOnlySubstanceUnits>
-                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >NaN</sbmlRdf:initialConcentration>
-                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >0.65939</sbmlRdf:initialAmount>
-                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
-              </sbmlRdf:Species>
-            </sbmlRdf:species>
-            <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-            >0</sbmlRdf:scale>
-            <sbmlRdf:species>
-              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000030">
-                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00008"/>
-                <bqbiol:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16761"/>
-                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:constant>
-                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:boundaryCondition>
-                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:hasOnlySubstanceUnits>
-                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >NaN</sbmlRdf:initialConcentration>
-                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >0.108367</sbmlRdf:initialAmount>
-                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
-              </sbmlRdf:Species>
-            </sbmlRdf:species>
-          </sbmlRdf:KineticLaw>
-        </sbmlRdf:kineticLaw>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0009435"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0009435">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0009435"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -318,14 +99,43 @@
         <sbmlRdf:name></sbmlRdf:name>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Wed May 16 18:28:52 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000048">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0046323"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748653"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748641">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species>
+              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000032">
+                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00293"/>
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:17234">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17234"/>
+                  </rdf:Description>
+                </bqbiol:is>
+                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:constant>
+                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:boundaryCondition>
+                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:hasOnlySubstanceUnits>
+                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >NaN</sbmlRdf:initialConcentration>
+                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >0.0112817</sbmlRdf:initialAmount>
+                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
+              </sbmlRdf:Species>
+            </sbmlRdf:species>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0046323">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0046323"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -351,9 +161,41 @@
     </sbmlRdf:parameter>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000050">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030388"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748701"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748689">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species>
+              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000034">
+                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C05378"/>
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:16905">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16905"/>
+                  </rdf:Description>
+                </bqbiol:is>
+                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:constant>
+                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:boundaryCondition>
+                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:hasOnlySubstanceUnits>
+                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >NaN</sbmlRdf:initialConcentration>
+                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >0.00770135</sbmlRdf:initialAmount>
+                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
+              </sbmlRdf:Species>
+            </sbmlRdf:species>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0030388">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0030388"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -363,9 +205,21 @@
     </sbmlRdf:reaction>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000051">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0019683"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748725"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748713">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000035"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0019683">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0019683"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -376,34 +230,164 @@
     <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/MODEL6622455387"/>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000064">
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749196">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species>
+              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000039">
+                <bqmodel:is rdf:resource="http://identifiers.org/kegg.compound/C00074"/>
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:18021">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:18021"/>
+                  </rdf:Description>
+                </bqbiol:is>
+                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:constant>
+                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:boundaryCondition>
+                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:hasOnlySubstanceUnits>
+                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >NaN</sbmlRdf:initialConcentration>
+                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >0.0021125</sbmlRdf:initialAmount>
+                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
+              </sbmlRdf:Species>
+            </sbmlRdf:species>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:reversible>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749220">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species>
+              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000040">
+                <bqmodel:is rdf:resource="http://identifiers.org/kegg.compound/C00022"/>
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:15361">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15361"/>
+                  </rdf:Description>
+                </bqbiol:is>
+                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:constant>
+                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:boundaryCondition>
+                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:hasOnlySubstanceUnits>
+                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >NaN</sbmlRdf:initialConcentration>
+                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >0.00422702</sbmlRdf:initialAmount>
+                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
+              </sbmlRdf:Species>
+            </sbmlRdf:species>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
         <bqbiol:hasVersion rdf:resource="http://identifiers.org/kegg.reaction/R00200"/>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749232">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species>
+              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000029">
+                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00002"/>
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:15422">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15422"/>
+                  </rdf:Description>
+                </bqbiol:is>
+                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:constant>
+                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:boundaryCondition>
+                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:hasOnlySubstanceUnits>
+                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >NaN</sbmlRdf:initialConcentration>
+                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >4.49064</sbmlRdf:initialAmount>
+                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
+              </sbmlRdf:Species>
+            </sbmlRdf:species>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749208">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species>
+              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000030">
+                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00008"/>
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:16761">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16761"/>
+                  </rdf:Description>
+                </bqbiol:is>
+                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:constant>
+                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:boundaryCondition>
+                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:hasOnlySubstanceUnits>
+                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >NaN</sbmlRdf:initialConcentration>
+                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >0.108367</sbmlRdf:initialAmount>
+                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
+              </sbmlRdf:Species>
+            </sbmlRdf:species>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <bqbiol:hasVersion rdf:resource="http://identifiers.org/ec-code/2.7.1.40"/>
         <bqbiol:isHomologTo rdf:resource="http://identifiers.org/reactome/REACT_1911"/>
         <sbmlRdf:name></sbmlRdf:name>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749245"/>
+        </sbmlRdf:kineticLaw>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>lenov@ebi.ac.uk</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Nicolas</vCard:Given>
-        <vCard:Family>Le Novère</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000055">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0046187"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748822"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748809">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species>
+              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000041">
+                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00084"/>
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:15343">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15343"/>
+                  </rdf:Description>
+                </bqbiol:is>
+                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:constant>
+                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:boundaryCondition>
+                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:hasOnlySubstanceUnits>
+                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >NaN</sbmlRdf:initialConcentration>
+                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >0.0738334</sbmlRdf:initialAmount>
+                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
+              </sbmlRdf:Species>
+            </sbmlRdf:species>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0046187">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0046187"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -413,9 +397,21 @@
     </sbmlRdf:reaction>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000054">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0042867"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748797"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748785">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000040"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0042867">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0042867"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -433,9 +429,21 @@
     </sbmlRdf:parameter>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000045">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006172"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748581"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748569">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000030"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006172">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006172"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -451,6 +459,16 @@
         >0.5</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>lenov@ebi.ac.uk</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Nicolas</vCard:Given>
+        <vCard:Family>Le Novère</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000015">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -465,12 +483,26 @@
         >true</sbmlRdf:reversible>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.reaction/R01070"/>
         <sbmlRdf:name></sbmlRdf:name>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749063"/>
+        </sbmlRdf:kineticLaw>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/ec-code/4.1.2.13"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749039">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000034"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/ec-code/5.3.1.1"/>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749051">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >2.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000035"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
         <bqbiol:isHomologTo rdf:resource="http://identifiers.org/reactome/REACT_1693"/>
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.reaction/R01015"/>
@@ -492,12 +524,44 @@
         >0.3</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000031"/>
+    <sbmlRdf:species>
+      <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000031">
+        <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00020"/>
+        <bqbiol:is>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:16027">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16027"/>
+          </rdf:Description>
+        </bqbiol:is>
+        <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</sbmlRdf:constant>
+        <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</sbmlRdf:boundaryCondition>
+        <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</sbmlRdf:hasOnlySubstanceUnits>
+        <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+        >NaN</sbmlRdf:initialConcentration>
+        <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+        >0.00261149</sbmlRdf:initialAmount>
+        <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
+      </sbmlRdf:Species>
+    </sbmlRdf:species>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000057">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006196"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748870"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748858">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000031"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006196">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006196"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -505,16 +569,6 @@
         <sbmlRdf:name></sbmlRdf:name>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>Institute of Theoretical Chemistry, University of Vienna</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>xtof@tbi.univie.ac.at</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Christoph</vCard:Given>
-        <vCard:Family>Flamm</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
     <bqmodel:isDescribedBy rdf:resource="http://identifiers.org/pubmed/17029704"/>
     <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000030"/>
     <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000034"/>
@@ -522,9 +576,41 @@
     <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000040"/>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000046">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006735"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748605"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748593">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species>
+              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000037">
+                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00004"/>
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:16908">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16908"/>
+                  </rdf:Description>
+                </bqbiol:is>
+                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:constant>
+                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:boundaryCondition>
+                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:hasOnlySubstanceUnits>
+                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >NaN</sbmlRdf:initialConcentration>
+                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >0.616118</sbmlRdf:initialAmount>
+                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
+              </sbmlRdf:Species>
+            </sbmlRdf:species>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006735">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006735"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -532,7 +618,6 @@
         <sbmlRdf:name></sbmlRdf:name>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
-    <sbmlRdf:lengthUnit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000275#"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000012">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -552,8 +637,16 @@
     <sbmlRdf:areaUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000167#metaid_0000005"/>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000053">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748773"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748761">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000039"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -571,9 +664,21 @@
     </sbmlRdf:parameter>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000044">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006754"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748557"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748545">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000029"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006754">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006754"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -581,11 +686,27 @@
         <sbmlRdf:name></sbmlRdf:name>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Tue May 15 22:47:52 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
-    <sbmlRdf:volumeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000328#"/>
-    <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000042"/>
+    <sbmlRdf:species>
+      <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000042">
+        <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00469"/>
+        <bqbiol:is>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:16236">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16236"/>
+          </rdf:Description>
+        </bqbiol:is>
+        <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</sbmlRdf:constant>
+        <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</sbmlRdf:boundaryCondition>
+        <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</sbmlRdf:hasOnlySubstanceUnits>
+        <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+        >NaN</sbmlRdf:initialConcentration>
+        <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+        >0.33981</sbmlRdf:initialAmount>
+        <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
+      </sbmlRdf:Species>
+    </sbmlRdf:species>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000022">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -597,17 +718,69 @@
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000060">
         <bqbiol:isHomologTo rdf:resource="http://identifiers.org/reactome/REACT_1840"/>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748991">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000034"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
         <bqbiol:isVersionOf rdf:resource="http://identifiers.org/kegg.reaction/R00756"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748966">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species>
+              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000033">
+                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C05345"/>
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:20935">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:20935"/>
+                  </rdf:Description>
+                </bqbiol:is>
+                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:constant>
+                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:boundaryCondition>
+                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:hasOnlySubstanceUnits>
+                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >NaN</sbmlRdf:initialConcentration>
+                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >0.65939</sbmlRdf:initialAmount>
+                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
+              </sbmlRdf:Species>
+            </sbmlRdf:species>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749027"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749003">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000030"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
         <bqbiol:isVersionOf rdf:resource="http://identifiers.org/ec-code/2.7.1.11"/>
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:modifier>
+          <sbmlRdf:ModifierSpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749015">
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000031"/>
+          </sbmlRdf:ModifierSpeciesReference>
+        </sbmlRdf:modifier>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:reversible>
         <sbmlRdf:name></sbmlRdf:name>
-        <sbmlRdf:modifier rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748978">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000029"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
     <sbmlRdf:reaction>
@@ -615,19 +788,67 @@
         <bqbiol:hasPart rdf:resource="http://identifiers.org/ec-code/4.2.1.11"/>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:reversible>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749184"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749147">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000030"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749135">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species>
+              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000038">
+                <bqbiol:is rdf:resource="http://identifiers.org/kegg.compound/C00236"/>
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:16001">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16001"/>
+                  </rdf:Description>
+                </bqbiol:is>
+                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:constant>
+                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:boundaryCondition>
+                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:hasOnlySubstanceUnits>
+                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >NaN</sbmlRdf:initialConcentration>
+                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >0.299109</sbmlRdf:initialAmount>
+                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
+              </sbmlRdf:Species>
+            </sbmlRdf:species>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.reaction/R00658"/>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.reaction/R01512"/>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/ec-code/2.7.2.3"/>
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749172">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000029"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/reactome/REACT_1771"/>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749160">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000039"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
         <sbmlRdf:name></sbmlRdf:name>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/ec-code/5.4.2.1"/>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/reactome/REACT_1400"/>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.reaction/R01518"/>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
     <sbmlRdf:parameter>
@@ -640,21 +861,53 @@
     </sbmlRdf:parameter>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000067">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/kegg.reaction/R00127"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/ec-code/2.7.4.3"/>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749378">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >2.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000030"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749366">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000029"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/kegg.reaction/R00127"/>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:reversible>
+        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/ec-code/2.7.4.3"/>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749354">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000031"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749391"/>
+        </sbmlRdf:kineticLaw>
         <sbmlRdf:name></sbmlRdf:name>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
     <sbmlRdf:substanceUnits>
       <sbmlRdf:SBMLUnitsDef rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000069">
-        <sbmlRdf:unit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:unit>
+          <sbmlRdf:SBMLUnit rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748521">
+            <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:exponent>
+            <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+            >-3</sbmlRdf:scale>
+            <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:multipler>
+            <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
+            >MOLE</sbmlRdf:kind>
+          </sbmlRdf:SBMLUnit>
+        </sbmlRdf:unit>
         <sbmlRdf:name>millimole</sbmlRdf:name>
       </sbmlRdf:SBMLUnitsDef>
     </sbmlRdf:substanceUnits>
@@ -699,15 +952,27 @@
       <vCard:ORG rdf:parseType="Resource">
         <vCard:Orgname>Institute of Theoretical Chemistry, University of Vienna</vCard:Orgname>
       </vCard:ORG>
-      <vCard:EMAIL>luen@tbi.univie.ac.at</vCard:EMAIL>
+      <vCard:EMAIL>xtof@tbi.univie.ac.at</vCard:EMAIL>
       <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Lukas</vCard:Given>
-        <vCard:Family>Endler</vCard:Family>
+        <vCard:Given>Christoph</vCard:Given>
+        <vCard:Family>Flamm</vCard:Family>
       </vCard:N>
     </dcterms:creator>
+    <sbmlRdf:volumeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000328#_022812"/>
     <sbmlRdf:timeUnits>
       <sbmlRdf:SBMLUnitsDef rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000070">
-        <sbmlRdf:unit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:unit>
+          <sbmlRdf:SBMLUnit rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748533">
+            <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:exponent>
+            <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+            >0</sbmlRdf:scale>
+            <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >60.0</sbmlRdf:multipler>
+            <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
+            >SECOND</sbmlRdf:kind>
+          </sbmlRdf:SBMLUnit>
+        </sbmlRdf:unit>
         <sbmlRdf:name>minute</sbmlRdf:name>
       </sbmlRdf:SBMLUnitsDef>
     </sbmlRdf:timeUnits>
@@ -722,7 +987,15 @@
     <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000037"/>
     <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000041"/>
     <sbmlRdf:unitsDef rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000069"/>
+    <dcterms:modified rdf:parseType="Resource">
+      <dcterms:W3CDTF>Tue May 15 22:47:52 BST 2012</dcterms:W3CDTF>
+    </dcterms:modified>
     <sbmlRdf:unitsDef rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000070"/>
+    <bqbiol:isVersionOf>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006096">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006096"/>
+      </rdf:Description>
+    </bqbiol:isVersionOf>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000011">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -733,8 +1006,30 @@
     </sbmlRdf:parameter>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000058">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748894"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748882">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species>
+              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000043">
+                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:constant>
+                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:boundaryCondition>
+                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:hasOnlySubstanceUnits>
+                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >NaN</sbmlRdf:initialConcentration>
+                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >0.0</sbmlRdf:initialAmount>
+                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
+              </sbmlRdf:Species>
+            </sbmlRdf:species>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -744,26 +1039,66 @@
     </sbmlRdf:reaction>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000059">
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748954"/>
+        </sbmlRdf:kineticLaw>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:reversible>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.reaction/R00299"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
         <bqbiol:isHomologTo rdf:resource="http://identifiers.org/reactome/REACT_1164"/>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/ec-code/5.3.1.9"/>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:name></sbmlRdf:name>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748918">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000029"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748930">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000033"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/ec-code/2.7.1.2"/>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748906">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000032"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <bqbiol:hasPart rdf:resource="http://identifiers.org/kegg.reaction/R00771"/>
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748942">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000030"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000049">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006002"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748677"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748665">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000033"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006002">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006002"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -779,6 +1114,49 @@
         >0.1</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <sbmlRdf:reaction>
+      <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000062">
+        <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</sbmlRdf:reversible>
+        <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</sbmlRdf:fast>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749099">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000038"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
+        <bqbiol:isHomologTo rdf:resource="http://identifiers.org/reactome/REACT_587"/>
+        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/kegg.reaction/R01061"/>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749087">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000036"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749111">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000037"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749075">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000035"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749123"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:name></sbmlRdf:name>
+        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/ec-code/1.2.1.12"/>
+      </sbmlRdf:Reaction>
+    </sbmlRdf:reaction>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000016">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -788,38 +1166,46 @@
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
     <sbmlRdf:reaction>
-      <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000062">
-        <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-        >false</sbmlRdf:reversible>
+      <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000052">
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748749"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748737">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000038"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
-        <bqbiol:isHomologTo rdf:resource="http://identifiers.org/reactome/REACT_587"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/kegg.reaction/R01061"/>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</sbmlRdf:reversible>
         <sbmlRdf:name></sbmlRdf:name>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/ec-code/1.2.1.12"/>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
     <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000039"/>
-    <sbmlRdf:reaction>
-      <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000052">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-        >false</sbmlRdf:fast>
-        <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-        >false</sbmlRdf:reversible>
-        <sbmlRdf:name></sbmlRdf:name>
-      </sbmlRdf:Reaction>
-    </sbmlRdf:reaction>
+    <sbmlRdf:lengthUnit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000275#_547649"/>
     <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000043"/>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000065">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749281"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749269">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000041"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749257">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000040"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <bqbiol:isVersionOf rdf:resource="http://identifiers.org/kegg.reaction/R00224"/>
         <bqbiol:isVersionOf rdf:resource="http://identifiers.org/ec-code/4.1.1.1"/>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -831,24 +1217,64 @@
     </sbmlRdf:reaction>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000066">
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749329">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000036"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:reversible>
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749305">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000037"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <bqbiol:isVersionOf rdf:resource="http://identifiers.org/kegg.reaction/R00754"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749342"/>
+        </sbmlRdf:kineticLaw>
         <sbmlRdf:name></sbmlRdf:name>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749293">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000041"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <bqbiol:isVersionOf rdf:resource="http://identifiers.org/ec-code/1.1.1.71"/>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749317">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000042"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
         <bqbiol:isHomologTo rdf:resource="http://identifiers.org/reactome/REACT_799"/>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000056">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006068"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748846"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_748834">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000042"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006068">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006068"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -866,7 +1292,16 @@
         >0.01</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006096"/>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>Institute of Theoretical Chemistry, University of Vienna</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>luen@tbi.univie.ac.at</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Lukas</vCard:Given>
+        <vCard:Family>Endler</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <sbmlRdf:compartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000028"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000026">
@@ -896,11 +1331,29 @@
     <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000033"/>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000068">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749427"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749415">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000043"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000042#_749403">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000042#metaid_0000033"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <bqbiol:isHomologTo rdf:resource="http://identifiers.org/reactome/REACT_1571"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006001"/>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006001">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006001"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"

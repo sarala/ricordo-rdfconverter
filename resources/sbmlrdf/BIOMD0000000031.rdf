@@ -5,11 +5,16 @@
     xmlns:biodb="http://identifiers.org/biomodels.db/BIOMD0000000031#"
     xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:bqbiol="http://biomodels.net/biology-qualifiers#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dcterms="http://purl.org/dc/terms/">
   <sbmlRdf:SBMLModel rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000002">
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000031">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/uniprot/P26696"/>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.uniprot.org/uniprot/P26696">
+            <owl:sameAs rdf:resource="http://identifiers.org/uniprot/P26696"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -32,9 +37,7 @@
         </sbmlRdf:inCompartment>
       </sbmlRdf:Species>
     </sbmlRdf:species>
-    <dcterms:created rdf:parseType="Resource">
-      <dcterms:W3CDTF>Thu Jun 30 11:11:00 BST 2005</dcterms:W3CDTF>
-    </dcterms:created>
+    <sbmlRdf:lengthUnit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000275#_547649"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000020">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -45,7 +48,7 @@
     </sbmlRdf:parameter>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000030">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/uniprot/P26696"/>
+        <bqbiol:isVersionOf rdf:resource="http://purl.uniprot.org/uniprot/P26696"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -69,7 +72,11 @@
     </sbmlRdf:parameter>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000032">
-        <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q05116"/>
+        <bqbiol:is>
+          <rdf:Description rdf:about="http://purl.uniprot.org/uniprot/Q05116">
+            <owl:sameAs rdf:resource="http://identifiers.org/uniprot/Q05116"/>
+          </rdf:Description>
+        </bqbiol:is>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -86,15 +93,25 @@
     </sbmlRdf:species>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000046">
+        <sbmlRdf:name>dephosphorylation of P-MAPK</sbmlRdf:name>
+        <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</sbmlRdf:reversible>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006470">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006470"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670270"/>
+        </sbmlRdf:kineticLaw>
+        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/ec-code/3.1.3.16"/>
         <sbmlRdf:product>
-          <sbmlRdf:SBMLUnit rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#">
-            <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
-            >MOLE</sbmlRdf:kind>
-            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000031"/>
-            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000030"/>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670234">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
             <sbmlRdf:species>
               <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000029">
-                <bqbiol:isVersionOf rdf:resource="http://identifiers.org/uniprot/P26696"/>
+                <bqbiol:isVersionOf rdf:resource="http://purl.uniprot.org/uniprot/P26696"/>
                 <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
                 >false</sbmlRdf:constant>
                 <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -108,9 +125,69 @@
                 <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000028"/>
               </sbmlRdf:Species>
             </sbmlRdf:species>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
+        <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</sbmlRdf:fast>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670222">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000030"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <sbmlRdf:modifier>
+          <sbmlRdf:ModifierSpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670246">
+            <sbmlRdf:species>
+              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000033">
+                <bqbiol:is>
+                  <rdf:Description rdf:about="http://purl.uniprot.org/uniprot/Q90W58">
+                    <owl:sameAs rdf:resource="http://identifiers.org/uniprot/Q90W58"/>
+                  </rdf:Description>
+                </bqbiol:is>
+                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >true</sbmlRdf:constant>
+                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:boundaryCondition>
+                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >false</sbmlRdf:hasOnlySubstanceUnits>
+                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >NaN</sbmlRdf:initialConcentration>
+                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >100.0</sbmlRdf:initialAmount>
+                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000028"/>
+              </sbmlRdf:Species>
+            </sbmlRdf:species>
+          </sbmlRdf:ModifierSpeciesReference>
+        </sbmlRdf:modifier>
+        <sbmlRdf:modifier>
+          <sbmlRdf:ModifierSpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670258">
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000031"/>
+          </sbmlRdf:ModifierSpeciesReference>
+        </sbmlRdf:modifier>
+      </sbmlRdf:Reaction>
+    </sbmlRdf:reaction>
+    <sbmlRdf:reaction>
+      <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000044">
+        <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</sbmlRdf:reversible>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670114">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000031"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0000187">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0000187"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
+        <sbmlRdf:modifier>
+          <sbmlRdf:ModifierSpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670126">
             <sbmlRdf:species>
               <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000132">
-                <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q05116"/>
+                <bqbiol:is rdf:resource="http://purl.uniprot.org/uniprot/Q05116"/>
                 <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
                 >true</sbmlRdf:constant>
                 <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -125,93 +202,86 @@
                 <sbmlRdf:name>MAPKK2</sbmlRdf:name>
               </sbmlRdf:Species>
             </sbmlRdf:species>
-            <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-            >1.0</sbmlRdf:multipler>
-            <rdf:type rdf:resource="http://biomodels.net/qualifiers#KineticLaw"/>
-            <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-            >-9</sbmlRdf:scale>
-            <sbmlRdf:species>
-              <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000033">
-                <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q90W58"/>
-                <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >true</sbmlRdf:constant>
-                <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:boundaryCondition>
-                <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-                >false</sbmlRdf:hasOnlySubstanceUnits>
-                <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >NaN</sbmlRdf:initialConcentration>
-                <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >100.0</sbmlRdf:initialAmount>
-                <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000028"/>
-              </sbmlRdf:Species>
-            </sbmlRdf:species>
-            <rdf:type rdf:resource="http://biomodels.net/qualifiers#ModifierSpeciesReference"/>
+          </sbmlRdf:ModifierSpeciesReference>
+        </sbmlRdf:modifier>
+        <bqbiol:isHomologTo rdf:resource="http://identifiers.org/reactome/REACT_2247"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670150"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</sbmlRdf:fast>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0004708">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0004708"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670102">
             <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
             >1.0</sbmlRdf:stoichiometry>
-            <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-            >1.0</sbmlRdf:exponent>
-            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000032"/>
-            <rdf:type rdf:resource="http://biomodels.net/qualifiers#SpeciesReference"/>
-          </sbmlRdf:SBMLUnit>
-        </sbmlRdf:product>
-        <sbmlRdf:name>dephosphorylation of P-MAPK</sbmlRdf:name>
-        <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-        >false</sbmlRdf:reversible>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006470"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/ec-code/3.1.3.16"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
-        <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-        >false</sbmlRdf:fast>
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
-        <sbmlRdf:modifier rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
-      </sbmlRdf:Reaction>
-    </sbmlRdf:reaction>
-    <sbmlRdf:reaction>
-      <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000044">
-        <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-        >false</sbmlRdf:reversible>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0000187"/>
-        <bqbiol:isHomologTo rdf:resource="http://identifiers.org/reactome/REACT_2247"/>
-        <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-        >false</sbmlRdf:fast>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000030"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <bqbiol:isVersionOf rdf:resource="http://identifiers.org/ec-code/2.7.12.2"/>
         <sbmlRdf:name>phosphorylation of P-MAPK</sbmlRdf:name>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0004708"/>
-        <sbmlRdf:modifier rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
+        <sbmlRdf:modifier>
+          <sbmlRdf:ModifierSpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670138">
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000029"/>
+          </sbmlRdf:ModifierSpeciesReference>
+        </sbmlRdf:modifier>
         <bqbiol:isHomologTo rdf:resource="http://identifiers.org/reactome/REACT_136"/>
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
+    <bqbiol:isVersionOf>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0000165">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0000165"/>
+      </rdf:Description>
+    </bqbiol:isVersionOf>
     <sbmlRdf:compartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000028"/>
+    <sbmlRdf:notes>The model describes the double phosphorylation of MAP kinase by an ordered mechanism using the Michaelis-Menten formalism. Two different enzymes, MAPKK1 and MAPKK2, successively phosphorylate the MAP kinase, but one and the same phosphatase dephosphorylates both sites. The model reproduces figure S9 in the supplemental material of the article. The model is further described in: Signaling switches and bistability arising from multisite phosphorylation in protein kinase cascades. Markevich NI, Hoek JB, Kholodenko BN. J Cell Biol. 2004 Feb 2;164(3):353-9. PMID: 14744999 ; DOI: 10.1083/jcb.200308060 Abstract: Mitogen-activated protein kinase (MAPK) cascades can operate as bistable switches residing in either of two different stable states. MAPK cascades are often embedded in positive feedback loops, which are considered to be a prerequisite for bistable behavior. Here we demonstrate that in the absence of any imposed feedback regulation, bistability and hysteresis can arise solely from a distributive kinetic mechanism of the two-site MAPK phosphorylation and dephosphorylation. Importantly, the reported kinetic properties of the kinase (MEK) and phosphatase (MKP3) of extracellular signal-regulated kinase (ERK) fulfill the essential requirements for generating a bistable switch at a single MAPK cascade level. Likewise, a cycle where multisite phosphorylations are performed by different kinases, but dephosphorylation reactions are catalyzed by the same phosphatase, can also exhibit bistability and hysteresis. Hence, bistability induced by multisite covalent modification may be a widespread mechanism of the control of protein activity. This model originates from BioModels Database: A Database of Annotated Published Models (http://www.ebi.ac.uk/biomodels/). It is copyright (c) 2005-2010 The BioModels.net Team. For more information see the terms of use . To cite BioModels Database, please use: Li C, Donizelli M, Rodriguez N, Dharuri H, Endler L, Chelliah V, Li L, He E, Henry A, Stefan MI, Snoep JL, Hucka M, Le Novère N, Laibe C (2010) BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models. BMC Syst Biol., 4:92.</sbmlRdf:notes>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000045">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
+        <sbmlRdf:modifier>
+          <sbmlRdf:ModifierSpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670198">
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000029"/>
+          </sbmlRdf:ModifierSpeciesReference>
+        </sbmlRdf:modifier>
         <sbmlRdf:name>dephosphorylation of PP-MAPK</sbmlRdf:name>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0000188"/>
+        <bqbiol:isVersionOf rdf:resource="http://purl.obolibrary.org/obo/GO:0006470"/>
         <bqbiol:isVersionOf rdf:resource="http://identifiers.org/ec-code/3.1.3.16"/>
-        <sbmlRdf:modifier rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670162">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000031"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670174">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000030"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
+        <sbmlRdf:modifier>
+          <sbmlRdf:ModifierSpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670186">
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000033"/>
+          </sbmlRdf:ModifierSpeciesReference>
+        </sbmlRdf:modifier>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0000188">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0000188"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670210"/>
+        </sbmlRdf:kineticLaw>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:reversible>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006470"/>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>lenov@ebi.ac.uk</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Nicolas</vCard:Given>
-        <vCard:Family>Le Novère</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000022">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -220,9 +290,6 @@
         >500.0</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Wed May 16 18:27:50 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000026">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -231,7 +298,9 @@
         >18.0</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0000165"/>
+    <dcterms:modified rdf:parseType="Resource">
+      <dcterms:W3CDTF>Tue May 15 22:43:41 BST 2012</dcterms:W3CDTF>
+    </dcterms:modified>
     <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/MODEL6618738800"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000023">
@@ -241,7 +310,9 @@
         >0.084</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <bqbiol:occursIn rdf:resource="http://identifiers.org/taxonomy/8355"/>
+    <dcterms:created rdf:parseType="Resource">
+      <dcterms:W3CDTF>Thu Jun 30 11:11:00 BST 2005</dcterms:W3CDTF>
+    </dcterms:created>
     <sbmlRdf:areaUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000167#metaid_0000005"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000021">
@@ -267,12 +338,23 @@
         >0.06</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <sbmlRdf:lengthUnit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000275#"/>
+    <bqbiol:occursIn rdf:resource="http://identifiers.org/taxonomy/8355"/>
     <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031"/>
     <sbmlRdf:timeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000127#metaid_0000018"/>
     <sbmlRdf:substanceUnits>
       <sbmlRdf:SBMLUnitsDef rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000038">
-        <sbmlRdf:unit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
+        <sbmlRdf:unit>
+          <sbmlRdf:SBMLUnit rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670041">
+            <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:exponent>
+            <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+            >-9</sbmlRdf:scale>
+            <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:multipler>
+            <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
+            >MOLE</sbmlRdf:kind>
+          </sbmlRdf:SBMLUnit>
+        </sbmlRdf:unit>
         <sbmlRdf:name>nanomole (default)</sbmlRdf:name>
       </sbmlRdf:SBMLUnitsDef>
     </sbmlRdf:substanceUnits>
@@ -283,25 +365,44 @@
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000043">
         <bqbiol:isHomologTo rdf:resource="http://identifiers.org/reactome/REACT_136"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006468"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
         <bqbiol:isVersionOf rdf:resource="http://identifiers.org/ec-code/2.7.12.2"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0004708"/>
-        <sbmlRdf:modifier rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
+        <bqbiol:isVersionOf rdf:resource="http://purl.obolibrary.org/obo/GO:0004708"/>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670053">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000029"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <sbmlRdf:name>phosphorylation of MAPK</sbmlRdf:name>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
         <bqbiol:isHomologTo rdf:resource="http://identifiers.org/reactome/REACT_2247"/>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670065">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000030"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:reversible>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006468">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006468"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
+        <sbmlRdf:modifier>
+          <sbmlRdf:ModifierSpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670078">
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000032"/>
+          </sbmlRdf:ModifierSpeciesReference>
+        </sbmlRdf:modifier>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#_670090"/>
+        </sbmlRdf:kineticLaw>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
     <sbmlRdf:unitsDef rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000038"/>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Tue May 15 22:43:41 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
     <sbmlRdf:volumeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000388#metaid_0000005"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000031#metaid_0000027">
@@ -311,6 +412,16 @@
         >78.0</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>lenov@ebi.ac.uk</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Nicolas</vCard:Given>
+        <vCard:Family>Le Novère</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <bqmodel:isDescribedBy rdf:resource="http://identifiers.org/pubmed/14744999"/>
   </sbmlRdf:SBMLModel>
 </rdf:RDF>

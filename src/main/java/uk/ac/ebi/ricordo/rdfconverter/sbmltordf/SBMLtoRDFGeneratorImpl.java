@@ -37,7 +37,6 @@ import java.util.Arrays;
  *         Time: 14:57:03
  */
 public class SBMLtoRDFGeneratorImpl implements RDFGenerator {
-
     private final BioModelsWSClient client;
     private final SBMLtoRDFCreatorImpl sbmLtoRDFGenerator;
     Logger logger = Logger.getLogger(SBMLtoRDFGeneratorImpl.class);
@@ -64,7 +63,7 @@ public class SBMLtoRDFGeneratorImpl implements RDFGenerator {
         sbmLtoRDFGenerator.generateSBMLtoRDFFromURL(modelId);
     }
 
-    public void allModelsFromFolderToRDF(String folderPath) {
+    public void allBioModelsFromFolderToRDF(String folderPath) {
         File folder = new File(folderPath);
         if(folder.isDirectory()){
             ArrayList<File> files = new ArrayList<File>(Arrays.asList(folder.listFiles()));
@@ -79,7 +78,7 @@ public class SBMLtoRDFGeneratorImpl implements RDFGenerator {
 
     }
 
-    public void aModelFromFileToRDF(String filePath) {
+    public void aBioModelFromFileToRDF(String filePath) {
         File file = new File(filePath);
         if(file.exists()){
             String modelId = file.getName().substring(0,file.getName().indexOf("."));
@@ -87,6 +86,26 @@ public class SBMLtoRDFGeneratorImpl implements RDFGenerator {
             sbmLtoRDFGenerator.generateSBMLtoRDFFromFile(modelId, file);
         }else{
             logger.info("Path not found: " + filePath);
+        }
+    }
+
+    public void bioModelsReleaseSetUp(String folderPath) {
+        File folder = new File(folderPath);
+        if(folder.isDirectory()){
+            String [] biomodelDirList = folder.list();
+            for(String bioModelDir : biomodelDirList){
+                String bioModelDirPath = folderPath + "/"+ bioModelDir + "/";
+                File file = new File(bioModelDirPath +  bioModelDir + ".xml");
+                if(file.exists()){
+                    logger.info("Converting to RDF: " + bioModelDir);
+                    sbmLtoRDFGenerator.setOutputFolder(bioModelDirPath);
+                    sbmLtoRDFGenerator.generateSBMLtoRDFFromFile(bioModelDir, file);
+                }else{
+                    logger.info("Path not found: " + file.getPath());
+                }
+            }
+        }else{
+            logger.info("Path not found: " + folderPath);
         }
     }
 }

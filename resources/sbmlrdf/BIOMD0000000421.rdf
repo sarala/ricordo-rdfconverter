@@ -5,11 +5,9 @@
     xmlns:bqmodel="http://biomodels.net/model-qualifiers#"
     xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:bqbiol="http://biomodels.net/biology-qualifiers#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dcterms="http://purl.org/dc/terms/">
   <sbmlRdf:SBMLModel rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_876071">
-    <dcterms:created rdf:parseType="Resource">
-      <dcterms:W3CDTF>Thu May 10 18:54:38 BST 2012</dcterms:W3CDTF>
-    </dcterms:created>
     <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/MODEL1203010002"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_876104">
@@ -53,16 +51,6 @@
         >0.1</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>viji@ebi.ac.uk</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Vijayalakshmi</vCard:Given>
-        <vCard:Family>Chelliah</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_876076">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
@@ -78,7 +66,11 @@
         >10.0</sbmlRdf:initialAmount>
         <sbmlRdf:inCompartment>
           <sbmlRdf:Compartment rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_876072">
-            <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0005623"/>
+            <bqbiol:isVersionOf>
+              <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0005623">
+                <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0005623"/>
+              </rdf:Description>
+            </bqbiol:isVersionOf>
             <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000290"/>
             <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
             >true</sbmlRdf:constant>
@@ -94,25 +86,19 @@
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_876078">
         <sbmlRdf:kineticLaw>
-          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#">
-            <sbmlRdf:localParameters>
-              <sbmlRdf:LocalParameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_876086">
-                <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >0.1</sbmlRdf:value>
-              </sbmlRdf:LocalParameter>
-            </sbmlRdf:localParameters>
-            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000421#_876076"/>
-            <sbmlRdf:localParameters>
-              <sbmlRdf:LocalParameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_876085">
-                <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-                >0.1</sbmlRdf:value>
-              </sbmlRdf:LocalParameter>
-            </sbmlRdf:localParameters>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_982523"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_982511">
             <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
             >1.0</sbmlRdf:stoichiometry>
             <sbmlRdf:species>
               <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_876074">
-                <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0003675"/>
+                <bqbiol:isVersionOf>
+                  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0003675">
+                    <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0003675"/>
+                  </rdf:Description>
+                </bqbiol:isVersionOf>
                 <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000252"/>
                 <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
                 >false</sbmlRdf:constant>
@@ -127,10 +113,8 @@
                 <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000421#_876072"/>
               </sbmlRdf:Species>
             </sbmlRdf:species>
-            <rdf:type rdf:resource="http://biomodels.net/qualifiers#SpeciesReference"/>
-          </sbmlRdf:KineticLaw>
-        </sbmlRdf:kineticLaw>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000421#"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -138,13 +122,25 @@
         <sbmlRdf:name></sbmlRdf:name>
       </sbmlRdf:Reaction>
     </sbmlRdf:reaction>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Fri May 18 10:42:31 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_876080">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000421#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000421#"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_982547">
+            <sbmlRdf:localParameters>
+              <sbmlRdf:LocalParameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_876085">
+                <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >0.1</sbmlRdf:value>
+              </sbmlRdf:LocalParameter>
+            </sbmlRdf:localParameters>
+          </sbmlRdf:KineticLaw>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_982535">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000421#_876074"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -154,6 +150,16 @@
     </sbmlRdf:reaction>
     <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000421#_876074"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000421#_876089"/>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>Institute for Systems Biology (ISB) and Seattle BioMed</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>alexander.ratushny@systemsbiology.org</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Alexander</vCard:Given>
+        <vCard:Family>Ratushny</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_876100">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -170,20 +176,18 @@
         >NaN</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>Institute for Systems Biology (ISB) and Seattle BioMed</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>alexander.ratushny@systemsbiology.org</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Alexander</vCard:Given>
-        <vCard:Family>Ratushny</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_876082">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000421#"/>
-        <sbmlRdf:product rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000421#"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_982571"/>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:product>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_982559">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000421#_876076"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:product>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -209,11 +213,30 @@
         >40.0</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <sbmlRdf:notes>This model is from the article: Asymmetric positive feedback loops reliably control biological responses Alexander V Ratushny, Ramsey A Saleem, Katherine Sitko, Stephen A Ramsey &amp; John D Aitchison Mol Syst Biol. 2012 Apr 24;8:577. 22531117 , Abstract: Positive feedback is a common mechanism enabling biological systems to respond to stimuli in a switch-like manner. Such systems are often characterized by the requisite formation of a heterodimer where only one of the pair is subject to feedback. This ASymmetric Self-UpREgulation (ASSURE) motif is central to many biological systems, including cholesterol homeostasis (LXRα/RXRα), adipocyte differentiation (PPARγ/RXRα), development and differentiation (RAR/RXR), myogenesis (MyoD/E12) and cellular antiviral defense (IRF3/IRF7). To understand why this motif is so prevalent, we examined its properties in an evolutionarily conserved transcriptional regulatory network in yeast (Oaf1p/Pip2p). We demonstrate that the asymmetry in positive feedback confers a competitive advantage and allows the system to robustly increase its responsiveness while precisely tuning the response to a consistent level in the presence of varying stimuli. This study reveals evolutionary advantages for the ASSURE motif, and mechanisms for control, that are relevant to pharmacologic intervention and synthetic biology applications. To the extent possible under law, all copyright and related or neighbouring rights to this encoded model have been dedicated to the public domain worldwide. Please refer to CC0 Public Domain Dedication for more information. In summary, you are entitled to use this encoded model in absolutely any manner you deem suitable, verbatim, or with modification, alone or embedded it in a larger context, redistribute it, commercially or not, in a restricted way or not. To cite BioModels Database, please use: Li C, Donizelli M, Rodriguez N, Dharuri H, Endler L, Chelliah V, Li L, He E, Henry A, Stefan MI, Snoep JL, Hucka M, Le Novère N, Laibe C (2010) BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models. BMC Syst Biol., 4:92.</sbmlRdf:notes>
     <sbmlRdf:name>Ratushny2012_ASSURE_II</sbmlRdf:name>
+    <dcterms:modified rdf:parseType="Resource">
+      <dcterms:W3CDTF>Wed Jul 11 19:16:35 BST 2012</dcterms:W3CDTF>
+    </dcterms:modified>
     <sbmlRdf:reaction>
       <sbmlRdf:Reaction rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_876084">
-        <sbmlRdf:kineticLaw rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000421#"/>
-        <sbmlRdf:reactant rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000421#"/>
+        <sbmlRdf:kineticLaw>
+          <sbmlRdf:KineticLaw rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_982595">
+            <sbmlRdf:localParameters>
+              <sbmlRdf:LocalParameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_876086">
+                <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+                >0.1</sbmlRdf:value>
+              </sbmlRdf:LocalParameter>
+            </sbmlRdf:localParameters>
+          </sbmlRdf:KineticLaw>
+        </sbmlRdf:kineticLaw>
+        <sbmlRdf:reactant>
+          <sbmlRdf:SpeciesReference rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000421#_982583">
+            <sbmlRdf:stoichiometry rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:stoichiometry>
+            <sbmlRdf:species rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000421#_876076"/>
+          </sbmlRdf:SpeciesReference>
+        </sbmlRdf:reactant>
         <sbmlRdf:fast rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:fast>
         <sbmlRdf:reversible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -242,6 +265,23 @@
         >0.0010</sbmlRdf:value>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006355"/>
+    <bqbiol:isVersionOf>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006355">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006355"/>
+      </rdf:Description>
+    </bqbiol:isVersionOf>
+    <dcterms:created rdf:parseType="Resource">
+      <dcterms:W3CDTF>Thu May 10 18:54:38 BST 2012</dcterms:W3CDTF>
+    </dcterms:created>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>viji@ebi.ac.uk</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Vijayalakshmi</vCard:Given>
+        <vCard:Family>Chelliah</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
   </sbmlRdf:SBMLModel>
 </rdf:RDF>

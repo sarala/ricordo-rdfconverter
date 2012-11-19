@@ -5,6 +5,7 @@
     xmlns:bqmodel="http://biomodels.net/model-qualifiers#"
     xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:bqbiol="http://biomodels.net/biology-qualifiers#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dcterms="http://purl.org/dc/terms/">
   <sbmlRdf:SBMLModel rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000368#metaid_0000002">
     <sbmlRdf:timeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000228#metaid_0000003"/>
@@ -33,16 +34,7 @@
         <sbmlRdf:name>Z2</sbmlRdf:name>
       </sbmlRdf:Species>
     </sbmlRdf:species>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>EBI</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>schubert@ebi.ac.uk</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Michael</vCard:Given>
-        <vCard:Family>Schubert</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
+    <bqbiol:occursIn rdf:resource="http://identifiers.org/taxonomy/2759"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000368#metaid_0000018">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -55,7 +47,6 @@
     <bqmodel:isDescribedBy rdf:resource="http://identifiers.org/pubmed/7568009"/>
     <sbmlRdf:areaUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000422#area"/>
     <sbmlRdf:volumeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000228#metaid_0000004"/>
-    <bqbiol:occursIn rdf:resource="null:2759"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000368#metaid_0000023"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000368#metaid_0000017">
@@ -66,9 +57,6 @@
         <sbmlRdf:name>k1</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:created rdf:parseType="Resource">
-      <dcterms:W3CDTF>Tue Jun 14 11:56:31 BST 2011</dcterms:W3CDTF>
-    </dcterms:created>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000368#metaid_0000029"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000368#metaid_0000013">
@@ -117,9 +105,9 @@
         </sbmlRdf:symbol>
       </sbmlRdf:InitialAssignment>
     </sbmlRdf:initialAssignment>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Fri Apr 20 21:02:57 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
+    <dcterms:created rdf:parseType="Resource">
+      <dcterms:W3CDTF>Tue Jun 14 11:56:31 BST 2011</dcterms:W3CDTF>
+    </dcterms:created>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000368#metaid_0000020">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -170,7 +158,6 @@
         <sbmlRdf:name>Z3</sbmlRdf:name>
       </sbmlRdf:Species>
     </sbmlRdf:species>
-    <bqbiol:is rdf:resource="http://identifiers.org/obo.go/GO:0007596"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000368#metaid_0000024"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000368#metaid_0000022"/>
     <sbmlRdf:parameter>
@@ -191,6 +178,12 @@
         <sbmlRdf:name>mu1</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <sbmlRdf:notes>This model originates from BioModels Database: A Database of Annotated Published Models (http://www.ebi.ac.uk/biomodels/). It is copyright (c) 2005-2011 The BioModels.net Team. For more information see the terms of use . To cite BioModels Database, please use: Li C, Donizelli M, Rodriguez N, Dharuri H, Endler L, Chelliah V, Li L, He E, Henry A, Stefan MI, Snoep JL, Hucka M, Le Novère N, Laibe C (2010) BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models. BMC Syst Biol., 4:92.</sbmlRdf:notes>
+    <bqbiol:is>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0007596">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0007596"/>
+      </rdf:Description>
+    </bqbiol:is>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000368#metaid_0000015">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -218,6 +211,19 @@
         <sbmlRdf:name>E4</sbmlRdf:name>
       </sbmlRdf:Species>
     </sbmlRdf:species>
+    <dcterms:modified rdf:parseType="Resource">
+      <dcterms:W3CDTF>Fri Apr 20 21:02:57 BST 2012</dcterms:W3CDTF>
+    </dcterms:modified>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>EBI</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>schubert@ebi.ac.uk</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Michael</vCard:Given>
+        <vCard:Family>Schubert</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000368#metaid_0000004">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -274,9 +280,6 @@
     </sbmlRdf:parameter>
     <sbmlRdf:compartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000368#metaid_0000003"/>
     <sbmlRdf:name>Beltrami1995_ThrombinGeneration_C</sbmlRdf:name>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Wed May 16 18:56:50 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
     <sbmlRdf:substanceUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000068#metaid_0000013"/>
   </sbmlRdf:SBMLModel>
 </rdf:RDF>

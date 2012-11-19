@@ -4,6 +4,7 @@
     xmlns:bqmodel="http://biomodels.net/model-qualifiers#"
     xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:bqbiol="http://biomodels.net/biology-qualifiers#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:biodb="http://identifiers.org/biomodels.db/BIOMD0000000381#">
   <sbmlRdf:SBMLModel rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000381#metaid_0000002">
@@ -19,7 +20,6 @@
     </sbmlRdf:parameter>
     <sbmlRdf:lengthUnit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000422#length"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000381#metaid_0000030"/>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0042116"/>
     <sbmlRdf:volumeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000228#metaid_0000004"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000381#metaid_0000042">
@@ -63,9 +63,11 @@
         <sbmlRdf:name>e2</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Wed May 16 18:57:50 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
+    <bqbiol:isVersionOf>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006909">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006909"/>
+      </rdf:Description>
+    </bqbiol:isVersionOf>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000381#metaid_0000044">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000009"/>
@@ -116,19 +118,11 @@
         <sbmlRdf:name>Wmax</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:created rdf:parseType="Resource">
-      <dcterms:W3CDTF>Fri Oct 07 16:36:41 BST 2011</dcterms:W3CDTF>
-    </dcterms:created>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>ajmera@ebi.ac.uk</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Ishan</vCard:Given>
-        <vCard:Family>Ajmera</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
+    <bqbiol:isVersionOf>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0042116">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0042116"/>
+      </rdf:Description>
+    </bqbiol:isVersionOf>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000381#metaid_0000033"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000381#metaid_0000053">
@@ -179,6 +173,17 @@
     <dcterms:modified rdf:parseType="Resource">
       <dcterms:W3CDTF>Thu Mar 08 12:33:17 GMT 2012</dcterms:W3CDTF>
     </dcterms:modified>
+    <sbmlRdf:notes>This a model from the article: Modelling the onset of Type 1 diabetes: can impaired macrophage phagocytosis make the difference between health and disease? Maree AF, Kublik R, Finegood DT, Edelstein-Keshet L. Philos Transact A Math Phys Eng Sci. 2006 May 15;364(1842):1267-82. 16608707 , Abstract: A wave of apoptosis (programmed cell death) occurs normally in pancreatic beta-cells of newborn mice. We previously showed that macrophages from non-obese diabetic (NOD) mice become activated more slowly and engulf apoptotic cells at a lower rate than macrophages from control (Balb/c) mice. It has been hypothesized that this low clearance could result in secondary necrosis, escalating inflammation and self-antigen presentation that later triggers autoimmune, Type 1 diabetes (T1D). We here investigate whether this hypothesis could offer a reasonable and parsimonious explanation for onset of T1D in NOD mice. We quantify variants of the Copenhagen model (Freiesleben De Blasio et al. 1999 Diabetes 48, 1677), based on parameters from NOD and Balb/c experimental data. We show that the original Copenhagen model fails to explain observed phenomena within a reasonable range of parameter values, predicting an unrealistic all-or-none disease occurrence for both strains. However, if we take into account that, in general, activated macrophages produce harmful cytokines only when engulfing necrotic (but not apoptotic) cells, then the revised model becomes qualitatively and quantitatively reasonable. Further, we show that known differences between NOD and Balb/c mouse macrophage kinetics are large enough to account for the fact that an apoptotic wave can trigger escalating inflammatory response in NOD, but not Balb/c mice. In Balb/c mice, macrophages clear the apoptotic wave so efficiently, that chronic inflammation is prevented. This model originates from BioModels Database: A Database of Annotated Published Models (http://www.ebi.ac.uk/biomodels/). It is copyright (c) 2005-2011 The BioModels.net Team. For more information see the terms of use . To cite BioModels Database, please use: Li C, Donizelli M, Rodriguez N, Dharuri H, Endler L, Chelliah V, Li L, He E, Henry A, Stefan MI, Snoep JL, Hucka M, Le Novère N, Laibe C (2010) BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models. BMC Syst Biol., 4:92.</sbmlRdf:notes>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>ajmera@ebi.ac.uk</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Ishan</vCard:Given>
+        <vCard:Family>Ajmera</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000381#metaid_0000028"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000381#metaid_0000050">
@@ -281,7 +286,9 @@
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
     <bqbiol:occursIn rdf:resource="http://identifiers.org/taxonomy/10090"/>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006909"/>
+    <dcterms:created rdf:parseType="Resource">
+      <dcterms:W3CDTF>Fri Oct 07 16:36:41 BST 2011</dcterms:W3CDTF>
+    </dcterms:created>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000381#metaid_0000029"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000381#metaid_0000051">

@@ -4,6 +4,7 @@
     xmlns:bqmodel="http://biomodels.net/model-qualifiers#"
     xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:bqbiol="http://biomodels.net/biology-qualifiers#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:biodb="http://identifiers.org/biomodels.db/BIOMD0000000291#">
   <sbmlRdf:SBMLModel rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000002">
@@ -28,18 +29,36 @@
         <sbmlRdf:name>compartment</sbmlRdf:name>
       </sbmlRdf:Compartment>
     </sbmlRdf:compartment>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>viji@ebi.ac.uk</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Vijayalakshmi</vCard:Given>
+        <vCard:Family>Chelliah</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000010">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.chebi/CHEBI:27594"/>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:27594">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:27594"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >NaN</sbmlRdf:initialAmount>
         <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000003"/>
         <sbmlRdf:name>C</sbmlRdf:name>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:33839">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:33839"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:boundaryCondition>
         <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:hasOnlySubstanceUnits>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.chebi/CHEBI:33839"/>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000421"/>
         <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >1.174</sbmlRdf:initialConcentration>
@@ -70,12 +89,17 @@
         >NaN</sbmlRdf:initialAmount>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16990"/>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:16990">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16990"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000003"/>
         <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:hasOnlySubstanceUnits>
       </sbmlRdf:Species>
     </sbmlRdf:species>
+    <bqbiol:occursIn rdf:resource="http://identifiers.org/taxonomy/2759"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000031">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000189"/>
@@ -88,14 +112,14 @@
     </sbmlRdf:parameter>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000005">
-        <bqbiol:isPartOf rdf:resource="http://identifiers.org/obo.chebi/CHEBI:33839"/>
         <sbmlRdf:name>BC</sbmlRdf:name>
         <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >0.0</sbmlRdf:initialConcentration>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
-        <bqbiol:isPartOf rdf:resource="http://identifiers.org/obo.chebi/CHEBI:27594"/>
+        <bqbiol:isPartOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI:27594"/>
         <bqbiol:isPartOf rdf:resource="http://identifiers.org/kegg.compound/C00486"/>
+        <bqbiol:isPartOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI:33839"/>
         <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:hasOnlySubstanceUnits>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000296"/>
@@ -123,12 +147,15 @@
         <bqbiol:isPartOf rdf:resource="http://identifiers.org/kegg.compound/C00486"/>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:boundaryCondition>
-        <bqbiol:isPartOf rdf:resource="http://identifiers.org/uniprot/P02768"/>
+        <bqbiol:isPartOf>
+          <rdf:Description rdf:about="http://purl.uniprot.org/uniprot/P02768">
+            <owl:sameAs rdf:resource="http://identifiers.org/uniprot/P02768"/>
+          </rdf:Description>
+        </bqbiol:isPartOf>
       </sbmlRdf:Species>
     </sbmlRdf:species>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000025"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000034"/>
-    <bqbiol:occursIn rdf:resource="null:2759"/>
     <sbmlRdf:areaUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#area"/>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000004">
@@ -136,11 +163,11 @@
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:name>AlB</sbmlRdf:name>
-        <bqbiol:isPartOf rdf:resource="http://identifiers.org/uniprot/P02768"/>
         <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >0.0</sbmlRdf:initialConcentration>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:boundaryCondition>
+        <bqbiol:isPartOf rdf:resource="http://purl.uniprot.org/uniprot/P02768"/>
         <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >NaN</sbmlRdf:initialAmount>
         <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000003"/>
@@ -162,6 +189,11 @@
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
     <sbmlRdf:volumeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#volume"/>
+    <bqbiol:isVersionOf>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006789">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006789"/>
+      </rdf:Description>
+    </bqbiol:isVersionOf>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000011">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000009"/>
@@ -173,9 +205,7 @@
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
     <bqbiol:isPartOf rdf:resource="http://identifiers.org/kegg.pathway/ko00860"/>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Fri Apr 20 23:04:07 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
+    <sbmlRdf:notes>This a model from the article: Mathematical model of binding of albumin-bilirubin complex to the surface of carbon pyropolymer. Nikolaev AV, Rozhilo YA, Starozhilova TK, Sarnatskaya VV, Yushko LA, Mikhailovskii SV, Kholodov AS, Lobanov AI. Bull Exp Biol Med 2005 Sep;140(3):365-9. 16307060 , Abstract: We proposed a mathematical model and estimated the parameters of adsorption of albumin-bilirubin complex to the surface of carbon pyropolymer. Design data corresponded to the results of experimental studies. Our findings indicate that modeling of this process should take into account fractal properties of the surface of carbon pyropolymer. This model originates from BioModels Database: A Database of Annotated Published Models (http://www.ebi.ac.uk/biomodels/). It is copyright (c) 2005-2011 The BioModels.net Team. For more information see the terms of use . To cite BioModels Database, please use: Li C, Donizelli M, Rodriguez N, Dharuri H, Endler L, Chelliah V, Li L, He E, Henry A, Stefan MI, Snoep JL, Hucka M, Le Novère N, Laibe C (2010) BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models. BMC Syst Biol., 4:92.</sbmlRdf:notes>
     <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291"/>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000009">
@@ -184,9 +214,9 @@
         >NaN</sbmlRdf:initialAmount>
         <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >0.1754386</sbmlRdf:initialConcentration>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16990"/>
         <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000003"/>
         <bqbiol:isVersionOf rdf:resource="http://identifiers.org/kegg.compound/C00486"/>
+        <bqbiol:isVersionOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI:16990"/>
         <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:hasOnlySubstanceUnits>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000247"/>
@@ -225,25 +255,15 @@
         >NaN</sbmlRdf:initialAmount>
         <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >0.4615385</sbmlRdf:initialConcentration>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/uniprot/P02768"/>
         <sbmlRdf:name>A0</sbmlRdf:name>
         <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000003"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:boundaryCondition>
+        <bqbiol:isVersionOf rdf:resource="http://purl.uniprot.org/uniprot/P02768"/>
       </sbmlRdf:Species>
     </sbmlRdf:species>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>viji@ebi.ac.uk</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Vijayalakshmi</vCard:Given>
-        <vCard:Family>Chelliah</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000030">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000009"/>
@@ -256,16 +276,16 @@
     </sbmlRdf:parameter>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000006">
-        <bqbiol:isPartOf rdf:resource="http://identifiers.org/uniprot/P02768"/>
+        <bqbiol:isPartOf rdf:resource="http://purl.uniprot.org/uniprot/P02768"/>
         <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >NaN</sbmlRdf:initialAmount>
         <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000003"/>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000296"/>
         <sbmlRdf:name>AlCn</sbmlRdf:name>
-        <bqbiol:isPartOf rdf:resource="http://identifiers.org/obo.chebi/CHEBI:27594"/>
+        <bqbiol:isPartOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI:27594"/>
         <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >0.0</sbmlRdf:initialConcentration>
-        <bqbiol:isPartOf rdf:resource="http://identifiers.org/obo.chebi/CHEBI:33839"/>
+        <bqbiol:isPartOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI:33839"/>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:boundaryCondition>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -275,9 +295,6 @@
       </sbmlRdf:Species>
     </sbmlRdf:species>
     <sbmlRdf:name>Nikolaev2005_AlbuminBilirubinAdsorption</sbmlRdf:name>
-    <dcterms:created rdf:parseType="Resource">
-      <dcterms:W3CDTF>Mon Sep 20 11:43:27 BST 2010</dcterms:W3CDTF>
-    </dcterms:created>
     <sbmlRdf:lengthUnit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000292#length"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000015">
@@ -289,14 +306,13 @@
         <sbmlRdf:name>k5</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000032"/>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000037">
+        <bqbiol:isVersionOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI:33839"/>
+        <bqbiol:isVersionOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI:27594"/>
         <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000003"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.chebi/CHEBI:33839"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.chebi/CHEBI:27594"/>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000421"/>
         <sbmlRdf:initialAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
         >NaN</sbmlRdf:initialAmount>
@@ -309,7 +325,7 @@
         >false</sbmlRdf:hasOnlySubstanceUnits>
       </sbmlRdf:Species>
     </sbmlRdf:species>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006789"/>
+    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000032"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000033"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000012">
@@ -321,9 +337,6 @@
         <sbmlRdf:name>k2</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Wed May 16 18:50:10 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
     <dcterms:creator rdf:parseType="Resource">
       <vCard:ORG rdf:parseType="Resource">
         <vCard:Orgname>School of Pharmacy and Biomolecular Sciences, University of Brighton</vCard:Orgname>
@@ -335,6 +348,9 @@
       </vCard:N>
     </dcterms:creator>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000028"/>
+    <dcterms:created rdf:parseType="Resource">
+      <dcterms:W3CDTF>Mon Sep 20 11:43:27 BST 2010</dcterms:W3CDTF>
+    </dcterms:created>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000017">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000009"/>
@@ -356,6 +372,9 @@
         <sbmlRdf:name>k10</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <dcterms:modified rdf:parseType="Resource">
+      <dcterms:W3CDTF>Fri Apr 20 23:04:07 BST 2012</dcterms:W3CDTF>
+    </dcterms:modified>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000008">
         <sbmlRdf:initialConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -365,12 +384,12 @@
         <sbmlRdf:hasOnlySubstanceUnits rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:hasOnlySubstanceUnits>
         <sbmlRdf:inCompartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000291#metaid_0000003"/>
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/uniprot/P02768"/>
         <sbmlRdf:name>Al</sbmlRdf:name>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:boundaryCondition>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
+        <bqbiol:isVersionOf rdf:resource="http://purl.uniprot.org/uniprot/P02768"/>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000245"/>
       </sbmlRdf:Species>
     </sbmlRdf:species>

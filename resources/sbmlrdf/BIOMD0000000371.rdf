@@ -5,13 +5,18 @@
     xmlns:biodb="http://identifiers.org/biomodels.db/BIOMD0000000371#"
     xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:bqbiol="http://biomodels.net/biology-qualifiers#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dcterms="http://purl.org/dc/terms/">
   <sbmlRdf:SBMLModel rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000002">
     <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000371"/>
     <sbmlRdf:volumeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000071#metaid_0011035"/>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000043">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0005251"/>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0005251">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0005251"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -36,16 +41,6 @@
         <sbmlRdf:name>n</sbmlRdf:name>
       </sbmlRdf:Species>
     </sbmlRdf:species>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>The University of Auckland,The Bioengineering Institute</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>c.lloyd@aukland.ac.nz</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Catherine</vCard:Given>
-        <vCard:Family>Lloyd</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000065">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000009"/>
@@ -57,6 +52,7 @@
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
     <bqbiol:occursIn rdf:resource="http://identifiers.org/taxonomy/9606"/>
+    <sbmlRdf:lengthUnit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000275#_547649"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000061">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000009"/>
@@ -87,9 +83,6 @@
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
     <sbmlRdf:compartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000031"/>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Thu Mar 08 12:39:46 GMT 2012</dcterms:W3CDTF>
-    </dcterms:modified>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000047">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000009"/>
@@ -101,6 +94,9 @@
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
     <sbmlRdf:substanceUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000071#metaid_0000035"/>
+    <dcterms:created rdf:parseType="Resource">
+      <dcterms:W3CDTF>Wed Sep 28 22:16:51 BST 2011</dcterms:W3CDTF>
+    </dcterms:created>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000056">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000009"/>
@@ -111,13 +107,13 @@
         <sbmlRdf:name>V_n</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <sbmlRdf:lengthUnit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000275#"/>
     <sbmlRdf:timeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000071#metaid_0000038"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000033"/>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Wed May 16 18:56:50 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0044342"/>
+    <bqbiol:isVersionOf>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0030073">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0030073"/>
+      </rdf:Description>
+    </bqbiol:isVersionOf>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000034"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000054">
@@ -157,9 +153,11 @@
       </sbmlRdf:Species>
     </sbmlRdf:species>
     <sbmlRdf:name>DeVries2000_PancreaticBetaCells_InsulinSecretion</sbmlRdf:name>
-    <dcterms:created rdf:parseType="Resource">
-      <dcterms:W3CDTF>Wed Sep 28 22:16:51 BST 2011</dcterms:W3CDTF>
-    </dcterms:created>
+    <bqbiol:isVersionOf>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0044342">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0044342"/>
+      </rdf:Description>
+    </bqbiol:isVersionOf>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000030">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -190,7 +188,11 @@
         <sbmlRdf:name>i_s</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <dcterms:modified rdf:parseType="Resource">
+      <dcterms:W3CDTF>Thu Mar 08 12:39:46 GMT 2012</dcterms:W3CDTF>
+    </dcterms:modified>
     <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/MODEL0911270002"/>
+    <sbmlRdf:notes>This a model from the article: Channel sharing in pancreatic beta -cells revisited: enhancement of emergent bursting by noise. De Vries G, Sherman A. J Theor Biol 2000 Dec 21;207(4):513-30 11093836 , Abstract: Secretion of insulin by electrically coupled populations of pancreatic beta -cells is governed by bursting electrical activity. Isolated beta -cells, however, exhibit atypical bursting or continuous spike activity. We study bursting as an emergent property of the population, focussing on interactions among the subclass of spiking cells. These are modelled by equipping the fast subsystem with a saddle-node-loop bifurcation, which makes it monostable. Such cells can only spike tonically or remain silent when isolated, but can be induced to burst with weak diffusive coupling. With stronger coupling, the cells revert to tonic spiking. We demonstrate that the addition of noise dramatically increases, via a phenomenon like stochastic resonance, the coupling range over which bursting is seen. Copyright 2000 Academic Press. This model was taken from the CellML repository and automatically converted to SBML. The original model was: De Vries G, Sherman A. (2000) - version01 This model originates from BioModels Database: A Database of Annotated Published Models (http://www.ebi.ac.uk/biomodels/). It is copyright (c) 2005-2011 The BioModels.net Team. For more information see the terms of use . To cite BioModels Database, please use: Li C, Donizelli M, Rodriguez N, Dharuri H, Endler L, Chelliah V, Li L, He E, Henry A, Stefan MI, Snoep JL, Hucka M, Le Novère N, Laibe C (2010) BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models. BMC Syst Biol., 4:92.</sbmlRdf:notes>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000058">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000009"/>
@@ -201,7 +203,6 @@
         <sbmlRdf:name>lamda</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030073"/>
     <bqmodel:isDescribedBy rdf:resource="http://identifiers.org/pubmed/11093836"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000035"/>
     <sbmlRdf:parameter>
@@ -213,6 +214,16 @@
         <sbmlRdf:name>i_Ca</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>ajmera@ebi.ac.uk</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Ishan</vCard:Given>
+        <vCard:Family>Ajmera</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000036"/>
     <sbmlRdf:areaUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000167#metaid_0000005"/>
     <sbmlRdf:parameter>
@@ -243,6 +254,16 @@
       </sbmlRdf:Species>
     </sbmlRdf:species>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000037"/>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>The University of Auckland,The Bioengineering Institute</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>c.lloyd@aukland.ac.nz</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Catherine</vCard:Given>
+        <vCard:Family>Lloyd</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000039"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000066">
@@ -263,16 +284,6 @@
         <sbmlRdf:name>V_s</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>ajmera@ebi.ac.uk</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Ishan</vCard:Given>
-        <vCard:Family>Ajmera</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000041"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000371#metaid_0000040"/>
     <sbmlRdf:parameter>

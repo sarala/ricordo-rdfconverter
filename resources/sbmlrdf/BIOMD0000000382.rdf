@@ -4,6 +4,7 @@
     xmlns:bqmodel="http://biomodels.net/model-qualifiers#"
     xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:bqbiol="http://biomodels.net/biology-qualifiers#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:biodb="http://identifiers.org/biomodels.db/BIOMD0000000382#"
     xmlns:dcterms="http://purl.org/dc/terms/">
   <sbmlRdf:SBMLModel rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000002">
@@ -31,10 +32,17 @@
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000030"/>
     <sbmlRdf:substanceUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000383#metaid_0000007"/>
     <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/MODEL1110180000"/>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Wed May 16 18:57:50 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
     <sbmlRdf:volumeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000228#metaid_0000004"/>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>ajmera@ebi.ac.uk</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Ishan</vCard:Given>
+        <vCard:Family>Ajmera</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <bqbiol:occursIn rdf:resource="http://identifiers.org/taxonomy/9606"/>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000009">
@@ -65,7 +73,11 @@
     </sbmlRdf:species>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000006">
-        <bqmodel:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17234"/>
+        <bqmodel:is>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:17234">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17234"/>
+          </rdf:Description>
+        </bqmodel:is>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -81,16 +93,11 @@
       </sbmlRdf:Species>
     </sbmlRdf:species>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000035"/>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>ajmera@ebi.ac.uk</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Ishan</vCard:Given>
-        <vCard:Family>Ajmera</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
+    <bqbiol:encodes>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0015758">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0015758"/>
+      </rdf:Description>
+    </bqbiol:encodes>
     <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000382"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000015">
@@ -145,7 +152,11 @@
     </sbmlRdf:parameter>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000004">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/uniprot/P01308"/>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.uniprot.org/uniprot/P01308">
+            <owl:sameAs rdf:resource="http://identifiers.org/uniprot/P01308"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -161,10 +172,6 @@
       </sbmlRdf:Species>
     </sbmlRdf:species>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000031"/>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Thu Jan 19 17:16:40 GMT 2012</dcterms:W3CDTF>
-    </dcterms:modified>
-    <sbmlRdf:name>Sturis1991_InsulinGlucoseModel_UltradianOscillation</sbmlRdf:name>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000007">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000225"/>
@@ -182,7 +189,7 @@
         <sbmlRdf:name>h1</sbmlRdf:name>
       </sbmlRdf:Species>
     </sbmlRdf:species>
-    <bqbiol:encodes rdf:resource="http://identifiers.org/obo.go/GO:0030073"/>
+    <sbmlRdf:name>Sturis1991_InsulinGlucoseModel_UltradianOscillation</sbmlRdf:name>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000008">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000225"/>
@@ -200,9 +207,9 @@
         <sbmlRdf:name>h2</sbmlRdf:name>
       </sbmlRdf:Species>
     </sbmlRdf:species>
-    <bqbiol:encodes rdf:resource="http://identifiers.org/obo.go/GO:0015758"/>
     <sbmlRdf:compartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000003"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000032"/>
+    <sbmlRdf:notes>This a model from the article: Computer model for mechanisms underlying ultradian oscillations of insulin and glucose. Sturis J, Polonsky KS, Mosekilde E, Van Cauter E. Am J Physiol. 1991 May;260(5 Pt 1):E801-9. 2035636 , Abstract: Oscillations in human insulin secretion have been observed in two distinct period ranges, 10-15 min (i.e. rapid) and 100-150 min (i.e., ultradian). The cause of the ultradian oscillations remains to be elucidated. To determine whether the oscillations could result from the feedback loops between insulin and glucose, a parsimonious mathematical model including the major mechanisms involved in glucose regulation was developed. This model comprises two major negative feedback loops describing the effects of insulin on glucose utilization and glucose production, respectively, and both loops include the stimulatory effect of glucose on insulin secretion. Model formulations and parameters are representative of results from published clinical investigations. The occurrence of sustained insulin and glucose oscillations was found to be dependent on two essential features: 1) a time delay of 30-45 min for the effect of insulin on glucose production and 2) a sluggish effect of insulin on glucose utilization, because insulin acts from a compartment remote from plasma. When these characteristics were incorporated in the model, numerical simulations mimicked all experimental findings so far observed for these ultradian oscillations, including 1) self-sustained oscillations during constant glucose infusion at various rates; 2) damped oscillations after meal or oral glucose ingestion; 3) increased amplitude of oscillation after increased stimulation of insulin secretion, without change in frequency; and 4) slight advance of the glucose oscillation compared with the insulin oscillation.(ABSTRACT TRUNCATED AT 250 WORDS) This model originates from BioModels Database: A Database of Annotated Published Models. It is copyright (c) 2005-2011 The BioModels.net Team. For more information see the terms of use . To cite BioModels Database, please use: Li C, Donizelli M, Rodriguez N, Dharuri H, Endler L, Chelliah V, Li L, He E, Henry A, Stefan MI, Snoep JL, Hucka M, Le Novère N, Laibe C (2010) BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models. BMC Syst Biol., 4:92.</sbmlRdf:notes>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000014">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000393"/>
@@ -224,7 +231,13 @@
         <sbmlRdf:name>f1</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <dcterms:modified rdf:parseType="Resource">
+      <dcterms:W3CDTF>Thu Jan 19 17:16:40 GMT 2012</dcterms:W3CDTF>
+    </dcterms:modified>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000024"/>
+    <dcterms:created rdf:parseType="Resource">
+      <dcterms:W3CDTF>Tue Oct 18 11:36:35 BST 2011</dcterms:W3CDTF>
+    </dcterms:created>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000025"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000021">
@@ -248,7 +261,7 @@
     </sbmlRdf:parameter>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000005">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/uniprot/P01308"/>
+        <bqbiol:isVersionOf rdf:resource="http://purl.uniprot.org/uniprot/P01308"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -264,6 +277,11 @@
       </sbmlRdf:Species>
     </sbmlRdf:species>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000034"/>
+    <bqbiol:encodes>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0030073">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0030073"/>
+      </rdf:Description>
+    </bqbiol:encodes>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000033"/>
     <sbmlRdf:areaUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000422#area"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000036"/>
@@ -279,9 +297,6 @@
         <sbmlRdf:name>f4</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:created rdf:parseType="Resource">
-      <dcterms:W3CDTF>Tue Oct 18 11:36:35 BST 2011</dcterms:W3CDTF>
-    </dcterms:created>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000382#metaid_0000020">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000225"/>

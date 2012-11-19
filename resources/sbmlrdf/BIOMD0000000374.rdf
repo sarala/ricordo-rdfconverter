@@ -5,6 +5,7 @@
     xmlns:biodb="http://identifiers.org/biomodels.db/BIOMD0000000374#"
     xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:bqbiol="http://biomodels.net/biology-qualifiers#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dcterms="http://purl.org/dc/terms/">
   <sbmlRdf:SBMLModel rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000002">
     <sbmlRdf:parameter>
@@ -64,16 +65,6 @@
         <sbmlRdf:name>tau_j</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>The University of Auckland,The Bioengineering Institute</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>c.lloyd@aukland.ac.nz</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Catherine</vCard:Given>
-        <vCard:Family>Lloyd</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000074"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000071"/>
     <sbmlRdf:parameter>
@@ -96,16 +87,6 @@
         <sbmlRdf:name>f</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>ajmera@ebi.ac.uk</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Ishan</vCard:Given>
-        <vCard:Family>Ajmera</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000058">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000009"/>
@@ -117,9 +98,6 @@
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000062"/>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Wed May 16 18:57:10 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000374#COPASI4">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -141,7 +119,11 @@
     </sbmlRdf:parameter>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000094">
-        <bqmodel:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:29108"/>
+        <bqmodel:is>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:29108">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:29108"/>
+          </rdf:Description>
+        </bqmodel:is>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -226,6 +208,16 @@
         <sbmlRdf:name>h_infinity</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>ajmera@ebi.ac.uk</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Ishan</vCard:Given>
+        <vCard:Family>Ajmera</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000015">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -235,8 +227,12 @@
         <sbmlRdf:name>m_f_infinity</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <bqbiol:isVersionOf>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0044342">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0044342"/>
+      </rdf:Description>
+    </bqbiol:isVersionOf>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000087"/>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0015278"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000066"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000042">
@@ -325,6 +321,9 @@
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000084"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000081"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000080"/>
+    <dcterms:modified rdf:parseType="Resource">
+      <dcterms:W3CDTF>Thu Mar 08 12:51:27 GMT 2012</dcterms:W3CDTF>
+    </dcterms:modified>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000045">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -344,6 +343,16 @@
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000070"/>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>The University of Auckland,The Bioengineering Institute</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>c.lloyd@aukland.ac.nz</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Catherine</vCard:Given>
+        <vCard:Family>Lloyd</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_000001">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -366,7 +375,7 @@
     <sbmlRdf:compartment rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000059"/>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000093">
-        <bqmodel:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:29108"/>
+        <bqmodel:is rdf:resource="http://purl.obolibrary.org/obo/CHEBI:29108"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -401,6 +410,7 @@
         <sbmlRdf:name>g_K</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <sbmlRdf:notes>This a model from the article: A role for calcium release-activated current (CRAC) in cholinergic modulation of electrical activity in pancreatic beta-cells. Bertram R, Smolen P, Sherman A, Mears D, Atwater I, Martin F, Soria B. Biophys J 1995 Jun;68(6):2323-32 7647236 , Abstract: S. Bordin and colleagues have proposed that the depolarizing effects of acetylcholine and other muscarinic agonists on pancreatic beta-cells are mediated by a calcium release-activated current (CRAC). We support this hypothesis with additional data, and present a theoretical model which accounts for most known data on muscarinic effects. Additional phenomena, such as the biphasic responses of beta-cells to changes in glucose concentration and the depolarizing effects of the sarco-endoplasmic reticulum calcium ATPase pump poison thapsigargin, are also accounted for by our model. The ability of this single hypothesis, that CRAC is present in beta-cells, to explain so many phenomena motivates a more complete characterization of this current. This model was taken from the CellML repository and automatically converted to SBML. The original model was: Bertram R, Smolen P, Sherman A, Mears D, Atwater I, Martin F, Soria B. (1995) - version=1.0 The original CellML model was created by: Catherine Lloyd c.lloyd@auckland.ac.nz The University of Auckland This model originates from BioModels Database: A Database of Annotated Published Models (http://www.ebi.ac.uk/biomodels/). It is copyright (c) 2005-2011 The BioModels.net Team. For more information see the terms of use . To cite BioModels Database, please use: Li C, Donizelli M, Rodriguez N, Dharuri H, Endler L, Chelliah V, Li L, He E, Henry A, Stefan MI, Snoep JL, Hucka M, Le Novère N, Laibe C (2010) BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models. BMC Syst Biol., 4:92.</sbmlRdf:notes>
     <bqmodel:isDescribedBy rdf:resource="http://identifiers.org/pubmed/7647236"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000077"/>
     <sbmlRdf:parameter>
@@ -432,7 +442,11 @@
     </sbmlRdf:parameter>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000091">
-        <bqmodel:is rdf:resource="http://identifiers.org/obo.go/GO:0005251"/>
+        <bqmodel:is>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0005251">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0005251"/>
+          </rdf:Description>
+        </bqmodel:is>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -522,6 +536,11 @@
         <sbmlRdf:name>g_Ca_f</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <bqbiol:isVersionOf>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0015278">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0015278"/>
+      </rdf:Description>
+    </bqbiol:isVersionOf>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000090">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -571,6 +590,9 @@
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000072"/>
+    <dcterms:created rdf:parseType="Resource">
+      <dcterms:W3CDTF>Thu Sep 29 23:07:50 BST 2011</dcterms:W3CDTF>
+    </dcterms:created>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000017">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000009"/>
@@ -581,9 +603,6 @@
         <sbmlRdf:name>g_Ca_s</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Thu Mar 08 12:51:27 GMT 2012</dcterms:W3CDTF>
-    </dcterms:modified>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000060"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000040">
@@ -605,7 +624,6 @@
         <sbmlRdf:name>g_leak</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <sbmlRdf:lengthUnit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000275#"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000079"/>
     <bqbiol:occursIn rdf:resource="http://identifiers.org/obo.bto/BTO:0000783"/>
     <sbmlRdf:parameter>
@@ -627,9 +645,7 @@
         <sbmlRdf:name>V_CRAC</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:created rdf:parseType="Resource">
-      <dcterms:W3CDTF>Thu Sep 29 23:07:50 BST 2011</dcterms:W3CDTF>
-    </dcterms:created>
+    <sbmlRdf:lengthUnit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000275#_547649"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000067"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000374#metaid_0000019">
@@ -649,7 +665,6 @@
         <sbmlRdf:name>r_infinity</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0044342"/>
     <bqbiol:occursIn rdf:resource="http://identifiers.org/taxonomy/9606"/>
   </sbmlRdf:SBMLModel>
 </rdf:RDF>

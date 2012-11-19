@@ -5,9 +5,9 @@
     xmlns:bqmodel="http://biomodels.net/model-qualifiers#"
     xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:bqbiol="http://biomodels.net/biology-qualifiers#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dcterms="http://purl.org/dc/terms/">
   <sbmlRdf:SBMLModel rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000002">
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0044342"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000111">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000009"/>
@@ -57,6 +57,11 @@
         <sbmlRdf:name>Vd</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <bqbiol:isVersionOf>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0019722">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0019722"/>
+      </rdf:Description>
+    </bqbiol:isVersionOf>
     <sbmlRdf:volumeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000240#metaid_0000003"/>
     <sbmlRdf:compartment>
       <sbmlRdf:Compartment rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000058">
@@ -88,9 +93,6 @@
         <sbmlRdf:name>i_K_dr</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Wed May 16 18:57:30 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000098">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -149,7 +151,11 @@
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000061"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000035">
-        <bqmodel:is rdf:resource="http://identifiers.org/obo.chebi/CHEBI:29108"/>
+        <bqmodel:is>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/CHEBI:29108">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.chebi/CHEBI:29108"/>
+          </rdf:Description>
+        </bqmodel:is>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000247"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
@@ -179,10 +185,9 @@
     </sbmlRdf:parameter>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000068"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000064"/>
-    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000070"/>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000112">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.chebi/CHEBI:29108"/>
+        <bqbiol:isVersionOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI:29108"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -197,16 +202,7 @@
         <sbmlRdf:name>Ca_lum</sbmlRdf:name>
       </sbmlRdf:Species>
     </sbmlRdf:species>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>ajmera@ebi.ac.uk</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Ishan</vCard:Given>
-        <vCard:Family>Ajmera</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
+    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000070"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000034">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000568"/>
@@ -303,7 +299,7 @@
     </sbmlRdf:parameter>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000084">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.chebi/CHEBI:29108"/>
+        <bqbiol:isVersionOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI:29108"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -328,7 +324,9 @@
         <sbmlRdf:name>i_K_ATP</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0019722"/>
+    <dcterms:created rdf:parseType="Resource">
+      <dcterms:W3CDTF>Thu Sep 29 23:17:54 BST 2011</dcterms:W3CDTF>
+    </dcterms:created>
     <sbmlRdf:timeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000078#metaid_0000007"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000104">
@@ -370,7 +368,11 @@
     </sbmlRdf:parameter>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000081">
-        <bqbiol:hasProperty rdf:resource="http://identifiers.org/obo.go/GO:0022836"/>
+        <bqbiol:hasProperty>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0022836">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0022836"/>
+          </rdf:Description>
+        </bqbiol:hasProperty>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -385,9 +387,6 @@
         <sbmlRdf:name>h</sbmlRdf:name>
       </sbmlRdf:Species>
     </sbmlRdf:species>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Thu Mar 08 12:59:29 GMT 2012</dcterms:W3CDTF>
-    </dcterms:modified>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000069"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000048">
@@ -403,7 +402,7 @@
     <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378"/>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000082">
-        <bqbiol:hasProperty rdf:resource="http://identifiers.org/obo.go/GO:0022836"/>
+        <bqbiol:hasProperty rdf:resource="http://purl.obolibrary.org/obo/GO:0022836"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -419,6 +418,11 @@
       </sbmlRdf:Species>
     </sbmlRdf:species>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000059"/>
+    <bqbiol:isVersionOf>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0044342">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0044342"/>
+      </rdf:Description>
+    </bqbiol:isVersionOf>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000033">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000567"/>
@@ -429,6 +433,16 @@
         <sbmlRdf:name>R</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>EMBL-EBI</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>ajmera@ebi.ac.uk</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Ishan</vCard:Given>
+        <vCard:Family>Ajmera</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000051">
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -454,6 +468,7 @@
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000062"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000078"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000074"/>
+    <sbmlRdf:notes>This a model from the article: Effects of extracellular calcium on electrical bursting and intracellular and luminal calcium oscillations in insulin secreting pancreatic beta-cells. Chay TR Biophys J. 1997 Sep;73(3):1673-88. 9284334 , Abstract: The extracellular calcium concentration has interesting effects on bursting of pancreatic beta-cells. The mechanism underlying the extracellular Ca2+ effect is not well understood. By incorporating a low-threshold transient inward current to the store-operated bursting model of Chay, this paper elucidates the role of the extracellular Ca2+ concentration in influencing electrical activity, intracellular Ca2+ concentration, and the luminal Ca2+ concentration in the intracellular Ca2+ store. The possibility that this inward current is a carbachol-sensitive and TTX-insensitive Na+ current discovered by others is discussed. In addition, this paper explains how these three variables respond when various pharmacological agents are applied to the store-operated model. This model was taken from the CellML repository and automatically converted to SBML. The original model was: Chay TR (1997) - version05 The original CellML model was created by: Lloyd, Catherine, May c.lloyd@aukland.ac.nz The University of Auckland The Bioengineering Institute This model originates from BioModels Database: A Database of Annotated Published Models (http://www.ebi.ac.uk/biomodels/). It is copyright (c) 2005-2011 The BioModels.net Team. For more information see the terms of use . To cite BioModels Database, please use: Li C, Donizelli M, Rodriguez N, Dharuri H, Endler L, Chelliah V, Li L, He E, Henry A, Stefan MI, Snoep JL, Hucka M, Le Novère N, Laibe C (2010) BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models. BMC Syst Biol., 4:92.</sbmlRdf:notes>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000056">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000009"/>
@@ -493,9 +508,6 @@
         <sbmlRdf:name>V_K</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:created rdf:parseType="Resource">
-      <dcterms:W3CDTF>Thu Sep 29 23:17:54 BST 2011</dcterms:W3CDTF>
-    </dcterms:created>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000085">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000002"/>
@@ -515,6 +527,9 @@
         <sbmlRdf:name>i_fast</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <dcterms:modified rdf:parseType="Resource">
+      <dcterms:W3CDTF>Thu Mar 08 12:59:29 GMT 2012</dcterms:W3CDTF>
+    </dcterms:modified>
     <sbmlRdf:substanceUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000078#metaid_0000008"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000092">
@@ -577,7 +592,11 @@
     <sbmlRdf:name>Chay1997_CalciumConcentration</sbmlRdf:name>
     <sbmlRdf:species>
       <sbmlRdf:Species rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000083">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0005251"/>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0005251">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0005251"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:boundaryCondition rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
@@ -596,6 +615,16 @@
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000067"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000072"/>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000065"/>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>The University of Auckland,The Bioengineering Institute</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>c.lloyd@aukland.ac.nz</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Catherine</vCard:Given>
+        <vCard:Family>Lloyd</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000063"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000036">
@@ -607,16 +636,6 @@
         <sbmlRdf:name>g_fast</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>The University of Auckland,The Bioengineering Institute</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>c.lloyd@aukland.ac.nz</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Catherine</vCard:Given>
-        <vCard:Family>Lloyd</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000378#metaid_0000040">
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000009"/>

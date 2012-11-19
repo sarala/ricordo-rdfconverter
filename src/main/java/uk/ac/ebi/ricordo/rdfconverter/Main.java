@@ -33,9 +33,9 @@ public class Main {
     public static void main (String[] args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:spring-config.xml");
         RDFGenerator sbmlToRdfGenerator = (SBMLtoRDFGeneratorImpl)ctx.getBean("sbmlToRdfGeneratorImpl");
-        sbmlToRdfGenerator.allModelsFromBioModelsDBToRDF();
-        //sbmlToRdfGenerator.aModelFromBioModelsDBToRDF("BIOMD0000000001");
-//        sbmlToRdfGenerator.allModelsFromFolderToRDF("C:\\Users\\sarala.EBI\\Documents\\GitHub\\ricordo-rdfconverter\\resources\\sbmlxml\\");
-//        sbmlToRdfGenerator.aModelFromFileToRDF("C:\\Users\\sarala.EBI\\Documents\\GitHub\\ricordo-rdfconverter\\resources\\sbmlxml\\BIOMD0000000001.xml");
+//        sbmlToRdfGenerator.allModelsFromBioModelsDBToRDF();
+//          sbmlToRdfGenerator.aModelFromBioModelsDBToRDF("BIOMD0000000001");
+//        sbmlToRdfGenerator.allBioModelsFromFolderToRDF("C:\\Users\\sarala.EBI\\Documents\\GitHub\\ricordo-rdfconverter\\resources\\sbmlxml\\");
+        sbmlToRdfGenerator.aBioModelFromFileToRDF("C:\\Users\\sarala.EBI\\Documents\\GitHub\\ricordo-rdfconverter\\resources\\sbmlxml\\BIOMD0000000239.xml");
     }
 }

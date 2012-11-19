@@ -4,20 +4,20 @@
     xmlns:bqmodel="http://biomodels.net/model-qualifiers#"
     xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:bqbiol="http://biomodels.net/biology-qualifiers#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:biodb="http://identifiers.org/biomodels.db/BIOMD0000000020#">
   <sbmlRdf:SBMLModel rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000002">
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000018">
+        <sbmlRdf:notes>resting membrane potential</sbmlRdf:notes>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000259"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
         <sbmlRdf:units>
           <sbmlRdf:SBMLUnitsDef rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000050">
             <sbmlRdf:unit>
-              <sbmlRdf:SBMLUnit rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#">
-                <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
-                >VOLT</sbmlRdf:kind>
+              <sbmlRdf:SBMLUnit rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#_591709">
                 <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
                 >1.0</sbmlRdf:exponent>
                 <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
@@ -25,7 +25,7 @@
                 <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
                 >1.0</sbmlRdf:multipler>
                 <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
-                >SECOND</sbmlRdf:kind>
+                >VOLT</sbmlRdf:kind>
               </sbmlRdf:SBMLUnit>
             </sbmlRdf:unit>
             <sbmlRdf:name>mV</sbmlRdf:name>
@@ -36,9 +36,9 @@
         <sbmlRdf:name>E_R</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0005249"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000021">
+        <sbmlRdf:notes>maximum potassium channel conductance</sbmlRdf:notes>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000257"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
@@ -47,13 +47,19 @@
         <sbmlRdf:name>g_K</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000135"/>
-    <dcterms:created rdf:parseType="Resource">
-      <dcterms:W3CDTF>Thu Mar 31 14:09:21 BST 2005</dcterms:W3CDTF>
-    </dcterms:created>
+    <sbmlRdf:rule>
+      <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000135">
+        <sbmlRdf:notes>E = V + E_R</sbmlRdf:notes>
+      </rdf:Description>
+    </sbmlRdf:rule>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000014">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0022840"/>
+        <sbmlRdf:notes>leakage current</sbmlRdf:notes>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0022840">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0022840"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -63,6 +69,7 @@
     </sbmlRdf:parameter>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000010">
+        <sbmlRdf:notes>membrane depolarisation</sbmlRdf:notes>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000259"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
@@ -74,6 +81,7 @@
     </sbmlRdf:parameter>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000028">
+        <sbmlRdf:notes>membrane depolarisation</sbmlRdf:notes>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -83,15 +91,39 @@
     </sbmlRdf:parameter>
     <sbmlRdf:unitsDef>
       <sbmlRdf:SBMLUnitsDef rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000003">
-        <sbmlRdf:unit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#"/>
+        <sbmlRdf:unit>
+          <sbmlRdf:SBMLUnit rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#_591697">
+            <sbmlRdf:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:exponent>
+            <sbmlRdf:scale rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+            >-3</sbmlRdf:scale>
+            <sbmlRdf:multipler rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.0</sbmlRdf:multipler>
+            <sbmlRdf:kind rdf:datatype="java:org.sbml.jsbml.Unit$Kind"
+            >SECOND</sbmlRdf:kind>
+          </sbmlRdf:SBMLUnit>
+        </sbmlRdf:unit>
         <sbmlRdf:name>millisecond</sbmlRdf:name>
       </sbmlRdf:SBMLUnitsDef>
     </sbmlRdf:unitsDef>
-    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000033"/>
-    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000048"/>
+    <sbmlRdf:rule>
+      <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000033">
+        <sbmlRdf:notes>V_Na = E_Na - E_R</sbmlRdf:notes>
+      </rdf:Description>
+    </sbmlRdf:rule>
+    <sbmlRdf:rule>
+      <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000048">
+        <sbmlRdf:notes>dV/dt = (I - (i_Na + i_K + i_L))/Cm</sbmlRdf:notes>
+      </rdf:Description>
+    </sbmlRdf:rule>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000012">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0005248"/>
+        <sbmlRdf:notes>sodium current</sbmlRdf:notes>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0005248">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0005248"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -101,6 +133,7 @@
     </sbmlRdf:parameter>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000027">
+        <sbmlRdf:notes>auxiliary beta_m</sbmlRdf:notes>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -110,6 +143,7 @@
     </sbmlRdf:parameter>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000024">
+        <sbmlRdf:notes>potassium equilibrium potential</sbmlRdf:notes>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000259"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
@@ -119,18 +153,6 @@
         <sbmlRdf:name>E_K</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <sbmlRdf:parameter>
-      <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0001023">
-        <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000259"/>
-        <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-        >false</sbmlRdf:constant>
-        <sbmlRdf:units rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000050"/>
-        <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
-        >-115.0</sbmlRdf:value>
-        <sbmlRdf:name>V_Na</sbmlRdf:name>
-      </sbmlRdf:Parameter>
-    </sbmlRdf:parameter>
-    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000039"/>
     <dcterms:creator rdf:parseType="Resource">
       <vCard:ORG rdf:parseType="Resource">
         <vCard:Orgname>EMBL-EBI</vCard:Orgname>
@@ -141,18 +163,41 @@
         <vCard:Family>Endler</vCard:Family>
       </vCard:N>
     </dcterms:creator>
+    <sbmlRdf:parameter>
+      <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0001023">
+        <sbmlRdf:notes>sodium potential displacement</sbmlRdf:notes>
+        <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000259"/>
+        <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >false</sbmlRdf:constant>
+        <sbmlRdf:units rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000050"/>
+        <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+        >-115.0</sbmlRdf:value>
+        <sbmlRdf:name>V_Na</sbmlRdf:name>
+      </sbmlRdf:Parameter>
+    </sbmlRdf:parameter>
+    <sbmlRdf:rule>
+      <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000039">
+        <sbmlRdf:notes>beta_h = 1.0 /(exp[0.1 * (V + 30.0)] + 1.0)</sbmlRdf:notes>
+      </rdf:Description>
+    </sbmlRdf:rule>
+    <dcterms:modified rdf:parseType="Resource">
+      <dcterms:W3CDTF>Wed Feb 02 23:00:36 GMT 2011</dcterms:W3CDTF>
+    </dcterms:modified>
     <sbmlRdf:rule>
       <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000046">
-        <bqbiol:isPartOf rdf:resource="http://identifiers.org/obo.go/GO:0005248"/>
+        <sbmlRdf:notes>dh/dt = alpha_h * (1.0 - h) - beta_h * h</sbmlRdf:notes>
+        <bqbiol:isPartOf rdf:resource="http://purl.obolibrary.org/obo/GO:0005248"/>
       </rdf:Description>
     </sbmlRdf:rule>
     <sbmlRdf:rule>
       <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000045">
-        <bqbiol:isPartOf rdf:resource="http://identifiers.org/obo.go/GO:0005248"/>
+        <sbmlRdf:notes>dm/dt = alpha_m * (1.0 - m) - beta_m * m</sbmlRdf:notes>
+        <bqbiol:isPartOf rdf:resource="http://purl.obolibrary.org/obo/GO:0005248"/>
       </rdf:Description>
     </sbmlRdf:rule>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0001025">
+        <sbmlRdf:notes>leakage potential displacement</sbmlRdf:notes>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000259"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
@@ -162,12 +207,9 @@
         <sbmlRdf:name>V_L</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0005248"/>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Wed May 16 18:27:10 BST 2012</dcterms:W3CDTF>
-    </dcterms:modified>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000023">
+        <sbmlRdf:notes>sodium equilibrium potential</sbmlRdf:notes>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000259"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
@@ -179,6 +221,7 @@
     </sbmlRdf:parameter>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000020">
+        <sbmlRdf:notes>maximum sodium channel conductance</sbmlRdf:notes>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000257"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
@@ -187,14 +230,44 @@
         <sbmlRdf:name>g_Na</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0001135"/>
-    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000040"/>
-    <bqbiol:occursIn rdf:resource="http://identifiers.org/obo.go/GO:0042757"/>
+    <bqbiol:isVersionOf rdf:resource="http://purl.obolibrary.org/obo/GO:0005248"/>
+    <sbmlRdf:rule>
+      <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0001135">
+        <sbmlRdf:notes>V_neg = -V</sbmlRdf:notes>
+      </rdf:Description>
+    </sbmlRdf:rule>
+    <sbmlRdf:rule>
+      <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000040">
+        <sbmlRdf:notes>alpha_n = 0.01 * (V + 10.0)/(exp[0.1 * (V + 10.0)] - 1.0)</sbmlRdf:notes>
+      </rdf:Description>
+    </sbmlRdf:rule>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>SBML Team - Science and Technology Research Institute - University of Hertfordshire</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>m.j.1.schilstra@herts.ac.uk</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Maria</vCard:Given>
+        <vCard:Family>Schilstra</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020"/>
-    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000034"/>
-    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000036"/>
+    <sbmlRdf:rule>
+      <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000034">
+        <sbmlRdf:notes>V_K = E_K - E_R</sbmlRdf:notes>
+      </rdf:Description>
+    </sbmlRdf:rule>
+    <sbmlRdf:rule>
+      <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000036">
+        <sbmlRdf:notes>alpha_m = 0.1 * (V + 25.0)/(exp[0.1 * (V + 25.0)] - 1.0)</sbmlRdf:notes>
+      </rdf:Description>
+    </sbmlRdf:rule>
+    <dcterms:created rdf:parseType="Resource">
+      <dcterms:W3CDTF>Thu Mar 31 14:09:21 BST 2005</dcterms:W3CDTF>
+    </dcterms:created>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000017">
+        <sbmlRdf:notes>potassium channel activation coefficient n t=0 = α_n V=0 /(α_n V=0 + β_n V=0 )</sbmlRdf:notes>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -202,13 +275,19 @@
         <sbmlRdf:name>n</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000035"/>
-    <dcterms:modified rdf:parseType="Resource">
-      <dcterms:W3CDTF>Wed Feb 02 23:00:36 GMT 2011</dcterms:W3CDTF>
-    </dcterms:modified>
-    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000037"/>
+    <sbmlRdf:rule>
+      <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000035">
+        <sbmlRdf:notes>V_L = E_L - E_R</sbmlRdf:notes>
+      </rdf:Description>
+    </sbmlRdf:rule>
+    <sbmlRdf:rule>
+      <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000037">
+        <sbmlRdf:notes>beta_m = 4.0 * exp[V / 18.0]</sbmlRdf:notes>
+      </rdf:Description>
+    </sbmlRdf:rule>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000026">
+        <sbmlRdf:notes>auxiliary alpha_m</sbmlRdf:notes>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -218,7 +297,12 @@
     </sbmlRdf:parameter>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000013">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0008076"/>
+        <sbmlRdf:notes>potassium current</sbmlRdf:notes>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0008076">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0008076"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -227,8 +311,14 @@
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
     <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/MODEL6617668482"/>
+    <bqbiol:isVersionOf>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0019227">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0019227"/>
+      </rdf:Description>
+    </bqbiol:isVersionOf>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000016">
+        <sbmlRdf:notes>sodium channel inactivation coefficient h t=0 = α_h V=0 /(α_h V=0 + β_h V=0 )</sbmlRdf:notes>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -238,11 +328,17 @@
     </sbmlRdf:parameter>
     <sbmlRdf:rule>
       <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000047">
-        <bqbiol:isPartOf rdf:resource="http://identifiers.org/obo.go/GO:0005249"/>
+        <sbmlRdf:notes>dn/dt = alpha_n * (1.0 - n) - beta_n * n</sbmlRdf:notes>
+        <bqbiol:isPartOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0005249">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0005249"/>
+          </rdf:Description>
+        </bqbiol:isPartOf>
       </rdf:Description>
     </sbmlRdf:rule>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000030">
+        <sbmlRdf:notes>auxiliary alpha_n</sbmlRdf:notes>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -261,18 +357,9 @@
         <sbmlRdf:name>unit_compartment</sbmlRdf:name>
       </sbmlRdf:Compartment>
     </sbmlRdf:compartment>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>University of Auckland</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>c.lloyd@auckland.ac.nz</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Catherine</vCard:Given>
-        <vCard:Family>Lloyd</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000022">
+        <sbmlRdf:notes>maximum leakage conductance</sbmlRdf:notes>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000257"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
@@ -283,12 +370,20 @@
     </sbmlRdf:parameter>
     <sbmlRdf:rule>
       <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000042">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006814"/>
+        <sbmlRdf:notes>i_Na = g_Na * m^3.0 * h * (V - V_Na)</sbmlRdf:notes>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006814">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006814"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
       </rdf:Description>
     </sbmlRdf:rule>
     <sbmlRdf:substanceUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000121#metaid_0000050"/>
+    <sbmlRdf:notes>This is an implementation of the Hodgkin-Huxley model of the electrical behavior of the squid axon membrane from: A quantitative description of membrane current and its application to conduction and excitation in nerve. A. L. Hodgkin and A. F. Huxley. (1952 ) Journal of Physiology 119(4): pp 500-544; pmID: 12991237 . Abstract: This article concludes a series of papers concerned with the flow of electric current through the surface membrane of a giant nerve fibre (Hodgkin,Huxley &amp; Katz, 1952; Hodgkin &amp; Huxley, 1952 a-c). Its general object is to discuss the results of the preceding papers (Part I), to put them into mathematical form (Part II) and to show that they will account for conduction and excitation in quantitative terms (Part III). This SBML model uses the same formalism as the one described in the paper, contrary to modern versions: * V describes the the membrane depolarisation relative to the resting potential of the membrane * opposing to modern practice, depolarization is negative , not positive , so the sign of V is different * inward transmembrane currents are considered positive (inward current positive), contrary to modern use The changeable parameters are the equilibrium potentials( E_R, E_K, E_L, E_Na ), the membrane depolarization ( V ) and the initial sodium and potassium channel activation and inactivation coefficients ( m,h,n ). The initial values of m,h,n for the model were calculated for V = 0 using the equations from the article: n t=0 = α_n V=0 /(α_n V=0 + β_n V=0 ) and equivalent expressions for h and m . For single excitations apply a negative membrane depolarization (V &lt; 0). To achieve oscillatory behavior either change the resting potential to a more positive value or apply a constant negative ionic current (I &lt; 0). Two assignments for parameters in the model, alpha_n and alpha_m, are not defined at V=-10 resp. -25 mV. We did not change this to keep the formulas similar to the original publication and as most integrators seem not to have any problem with it. The limits at V=-10 and -25 mV are 0.1 for alpha_n resp. 1 for alpha_m. We thank Mark W. Johnson for finding a bug in the model and his helpful comments. This model originates from BioModels Database: A Database of Annotated Published Models. It is copyright (c) 2005-2009 The BioModels Team. For more information see the terms of use . To cite BioModels Database, please use Le Novère N., Bornstein B., Broicher A., Courtot M., Donizelli M., Dharuri H., Li L., Sauro H., Schilstra M., Shapiro B., Snoep J.L., Hucka M. (2006) BioModels Database: A Free, Centralized Database of Curated, Published, Quantitative Kinetic Models of Biochemical and Cellular Systems Nucleic Acids Res., 34: D689-D691.</sbmlRdf:notes>
+    <bqbiol:isVersionOf rdf:resource="http://purl.obolibrary.org/obo/GO:0005249"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0001011">
+        <sbmlRdf:notes>negative membrane depolarisation</sbmlRdf:notes>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000259"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
@@ -298,20 +393,19 @@
         <sbmlRdf:name>V_neg</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000038"/>
-    <sbmlRdf:rule rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000041"/>
-    <dcterms:creator rdf:parseType="Resource">
-      <vCard:ORG rdf:parseType="Resource">
-        <vCard:Orgname>SBML Team - Science and Technology Research Institute - University of Hertfordshire</vCard:Orgname>
-      </vCard:ORG>
-      <vCard:EMAIL>m.j.1.schilstra@herts.ac.uk</vCard:EMAIL>
-      <vCard:N rdf:parseType="Resource">
-        <vCard:Given>Maria</vCard:Given>
-        <vCard:Family>Schilstra</vCard:Family>
-      </vCard:N>
-    </dcterms:creator>
+    <sbmlRdf:rule>
+      <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000041">
+        <sbmlRdf:notes>beta_n = 0.125 * exp[V / 80.0]</sbmlRdf:notes>
+      </rdf:Description>
+    </sbmlRdf:rule>
+    <sbmlRdf:rule>
+      <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000038">
+        <sbmlRdf:notes>alpha_h = 0.07 * exp[V / 20.0]</sbmlRdf:notes>
+      </rdf:Description>
+    </sbmlRdf:rule>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000019">
+        <sbmlRdf:notes>membrane capacitance</sbmlRdf:notes>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000258"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
@@ -322,10 +416,10 @@
     </sbmlRdf:parameter>
     <sbmlRdf:name>hodgkin-huxley squid-axon 1952</sbmlRdf:name>
     <sbmlRdf:areaUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000167#metaid_0000005"/>
-    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0019227"/>
     <sbmlRdf:volumeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000019#metaid_0000323"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000015">
+        <sbmlRdf:notes>sodium channel activation coefficient m t=0 = α_m V=0 /(α_m V=0 + β_m V=0 )</sbmlRdf:notes>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -333,8 +427,14 @@
         <sbmlRdf:name>m</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <bqbiol:occursIn>
+      <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0042757">
+        <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0042757"/>
+      </rdf:Description>
+    </bqbiol:occursIn>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000029">
+        <sbmlRdf:notes>auxiliary beta_h</sbmlRdf:notes>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -344,6 +444,7 @@
     </sbmlRdf:parameter>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000011">
+        <sbmlRdf:notes>applied current</sbmlRdf:notes>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -355,6 +456,7 @@
     <bqbiol:occursIn rdf:resource="http://identifiers.org/taxonomy/6618"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000025">
+        <sbmlRdf:notes>leakage equilibrium potential</sbmlRdf:notes>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000259"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >true</sbmlRdf:constant>
@@ -364,8 +466,10 @@
         <sbmlRdf:name>E_L</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
+    <sbmlRdf:lengthUnit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000275#_547649"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000031">
+        <sbmlRdf:notes>auxiliary beta_n</sbmlRdf:notes>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
         <sbmlRdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
@@ -375,13 +479,29 @@
     </sbmlRdf:parameter>
     <sbmlRdf:rule>
       <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000044">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006811"/>
+        <sbmlRdf:notes>i_L = g_L * (V - V_L)</sbmlRdf:notes>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006811">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006811"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
       </rdf:Description>
     </sbmlRdf:rule>
     <sbmlRdf:timeUnits rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000003"/>
+    <dcterms:creator rdf:parseType="Resource">
+      <vCard:ORG rdf:parseType="Resource">
+        <vCard:Orgname>University of Auckland</vCard:Orgname>
+      </vCard:ORG>
+      <vCard:EMAIL>c.lloyd@auckland.ac.nz</vCard:EMAIL>
+      <vCard:N rdf:parseType="Resource">
+        <vCard:Given>Catherine</vCard:Given>
+        <vCard:Family>Lloyd</vCard:Family>
+      </vCard:N>
+    </dcterms:creator>
     <bqmodel:isDescribedBy rdf:resource="http://identifiers.org/pubmed/12991237"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0001010">
+        <sbmlRdf:notes>transmembrane potential</sbmlRdf:notes>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000259"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
@@ -391,9 +511,9 @@
         <sbmlRdf:name>E</sbmlRdf:name>
       </sbmlRdf:Parameter>
     </sbmlRdf:parameter>
-    <sbmlRdf:lengthUnit rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000275#"/>
     <sbmlRdf:parameter>
       <sbmlRdf:Parameter rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0001024">
+        <sbmlRdf:notes>potassium potential displacement</sbmlRdf:notes>
         <bqbiol:is rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000259"/>
         <sbmlRdf:constant rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
         >false</sbmlRdf:constant>
@@ -405,7 +525,12 @@
     </sbmlRdf:parameter>
     <sbmlRdf:rule>
       <rdf:Description rdf:about="http://identifiers.org/biomodels.db/BIOMD0000000020#metaid_0000043">
-        <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006813"/>
+        <sbmlRdf:notes>i_K = g_K * n^4.0 * (V - V_K)</sbmlRdf:notes>
+        <bqbiol:isVersionOf>
+          <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO:0006813">
+            <owl:sameAs rdf:resource="http://identifiers.org/obo.go/GO:0006813"/>
+          </rdf:Description>
+        </bqbiol:isVersionOf>
       </rdf:Description>
     </sbmlRdf:rule>
   </sbmlRdf:SBMLModel>
