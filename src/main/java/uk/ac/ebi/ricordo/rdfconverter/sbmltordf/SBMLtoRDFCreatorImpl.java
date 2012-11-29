@@ -581,10 +581,6 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
     //Trying to comply with EBI rdf uri rules
     private Resource getModifiedAnnotationResource(String annotationUri) {
         Resource annotationResource = rdfModel.createResource(annotationUri);
-        System.out.println(annotationUri);
-/*        //to deal with biomodels bug
-        if(annotationUri.lastIndexOf("/")==-1)
-            return annotationResource;*/
         String annotationNS = annotationUri.substring(0, annotationUri.lastIndexOf("/"));
         String mappedString = MappingExtractor.identMap.get(annotationNS);
         if(mappedString!=null){

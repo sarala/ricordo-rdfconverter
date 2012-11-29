@@ -28,5 +28,5 @@ public interface RDFGenerator {
     public void aModelFromBioModelsDBToRDF(String modelId);
     public void allBioModelsFromFolderToRDF(String folderPath);
     public void aBioModelFromFileToRDF(String filePath);
-    public void bioModelsReleaseSetUp(String folderPath);
+    public void bioModelsReleaseSetUp(String folderPath, String fileNamePattern);
 }

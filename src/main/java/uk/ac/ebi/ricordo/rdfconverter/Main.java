@@ -19,6 +19,8 @@ package uk.ac.ebi.ricordo.rdfconverter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import uk.ac.ebi.ricordo.rdfconverter.sbmltordf.SBMLtoRDFGeneratorImpl;
+import uk.ac.ebi.ricordo.rdfconverter.tordf.ProvenanceGenerator;
+import uk.ac.ebi.ricordo.rdfconverter.tordf.ProvenanceGeneratorImpl;
 import uk.ac.ebi.ricordo.rdfconverter.tordf.RDFGenerator;
 
 /**
@@ -36,6 +38,11 @@ public class Main {
 //        sbmlToRdfGenerator.allModelsFromBioModelsDBToRDF();
 //          sbmlToRdfGenerator.aModelFromBioModelsDBToRDF("BIOMD0000000001");
 //        sbmlToRdfGenerator.allBioModelsFromFolderToRDF("C:\\Users\\sarala.EBI\\Documents\\GitHub\\ricordo-rdfconverter\\resources\\sbmlxml\\");
-        sbmlToRdfGenerator.aBioModelFromFileToRDF("C:\\Users\\sarala.EBI\\Documents\\GitHub\\ricordo-rdfconverter\\resources\\sbmlxml\\BIOMD0000000239.xml");
+//        sbmlToRdfGenerator.aBioModelFromFileToRDF("C:\\Users\\sarala.EBI\\Documents\\GitHub\\ricordo-rdfconverter\\resources\\sbmlxml\\BIOMD0000000239.xml");
+//        sbmlToRdfGenerator.bioModelsReleaseSetUp("C:\\Users\\sarala.EBI\\Documents\\GitHub\\ricordo-rdfconverter\\resources\\sbmlfoldertest\\", "(BIOMD|MODEL)\\d{10}"+".xml");
+
+//        ProvenanceGenerator provenanceGenerator = (ProvenanceGeneratorImpl)ctx.getBean("provenanceGenerator");
+//        provenanceGenerator.generateProvenace();
+
     }
 }

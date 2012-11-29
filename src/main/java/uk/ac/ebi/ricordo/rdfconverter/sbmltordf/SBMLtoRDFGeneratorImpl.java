@@ -21,11 +21,8 @@ import uk.ac.ebi.biomodels.ws.BioModelsWSClient;
 import uk.ac.ebi.biomodels.ws.BioModelsWSException;
 import uk.ac.ebi.ricordo.rdfconverter.tordf.RDFGenerator;
 
-import javax.xml.stream.XMLStreamException;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -89,23 +86,21 @@ public class SBMLtoRDFGeneratorImpl implements RDFGenerator {
         }
     }
 
-    public void bioModelsReleaseSetUp(String folderPath) {
+    public void bioModelsReleaseSetUp(String folderPath, String fileNamePattern) {
         File folder = new File(folderPath);
-        if(folder.isDirectory()){
-            String [] biomodelDirList = folder.list();
-            for(String bioModelDir : biomodelDirList){
-                String bioModelDirPath = folderPath + "/"+ bioModelDir + "/";
-                File file = new File(bioModelDirPath +  bioModelDir + ".xml");
-                if(file.exists()){
-                    logger.info("Converting to RDF: " + bioModelDir);
-                    sbmLtoRDFGenerator.setOutputFolder(bioModelDirPath);
-                    sbmLtoRDFGenerator.generateSBMLtoRDFFromFile(bioModelDir, file);
-                }else{
-                    logger.info("Path not found: " + file.getPath());
+        String [] contentlist = folder.list();
+        for(int i =0; i<contentlist.length; i++){
+            File content = new File(folder.getPath()+File.separator+contentlist[i]);
+            if(content.isDirectory()){
+                bioModelsReleaseSetUp(content.getPath(), fileNamePattern);
+            }
+            else if (content.isFile()){
+                if(content.getName().matches(fileNamePattern)){
+                    logger.info("Converting to RDF: " + folder.getName());
+                    sbmLtoRDFGenerator.setOutputFolder(folder.getPath() + File.separator);
+                    sbmLtoRDFGenerator.generateSBMLtoRDFFromFile(folder.getName(), content);
                 }
             }
-        }else{
-            logger.info("Path not found: " + folderPath);
         }
     }
 }

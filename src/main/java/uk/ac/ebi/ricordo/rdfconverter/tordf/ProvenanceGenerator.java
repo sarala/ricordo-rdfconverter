@@ -20,10 +20,9 @@ package uk.ac.ebi.ricordo.rdfconverter.tordf;
  * Created by IntelliJ IDEA.
  *
  * @author Sarala Wimalaratne
- *         Date: 15/11/12
- *         Time: 16:29
+ *         Date: 29/11/12
+ *         Time: 14:25
  */
-public class ProvenanceGenerator {
-    private com.hp.hpl.jena.rdf.model.Model rdfModel;
-
+public interface ProvenanceGenerator {
+    public void generateProvenace();
 }

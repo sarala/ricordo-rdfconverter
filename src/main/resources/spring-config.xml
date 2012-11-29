@@ -4,7 +4,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations" value="classpath:config.properties" />
+        <property name="locations">
+            <list>
+                <value>classpath:config.properties</value>
+                <value>classpath:voidconfig.properties</value>
+            </list>
+        </property>
     </bean>
 
     <bean id="sbmlToRdf" class="uk.ac.ebi.ricordo.rdfconverter.sbmltordf.SBMLtoRDFCreatorImpl">
@@ -21,6 +26,34 @@
     <bean id="mappingExtractor" class="uk.ac.ebi.ricordo.rdfconverter.sbmltordf.MappingExtractor">
         <constructor-arg name="mappingFile" type="java.io.File" value="${mappingFile}"/>
     </bean>
+    
+    <bean id="provenanceGenerator" class="uk.ac.ebi.ricordo.rdfconverter.tordf.ProvenanceGeneratorImpl">
+        <property name="bv_title" value="${bv_title}"/>
+        <property name="bv_description" value="${bv_description}"/>
+        <property name="bv_createdBy" value="${bv_createdBy}"/>
+        <property name="bv_primaryTopic" value="${bv_primaryTopic}"/>
+
+        <property name="bd_homepage" value="${bd_homepage}"/>
+        <property name="bd_title" value="${bd_title}"/>
+        <property name="bd_description" value="${bd_description}"/>
+        <property name="bd_contributor" value="${bd_contributor}"/>
+        <property name="bd_uriSpace" value="${bd_uriSpace}"/>
+        <property name="bd_wasDerivedFrom" value="${bd_wasDerivedFrom}"/>
+        <property name="bd_sparqlEndpoint" value="${bd_sparqlEndpoint}"/>
+        <property name="bd_dataDump" value="${bd_dataDump}"/>
+        <property name="bd_subset" value="${bd_subset}"/>
+
+        <property name="lv_license" value="${lv_license}"/>
+        <property name="lv_version" value="${lv_version}"/>
+        <property name="lv_dataDump" value="${lv_dataDump}"/>
+        <property name="lv_previousVersion" value="${lv_previousVersion}"/>
+        <property name="lv_vocabulary" value="${lv_vocabulary}"/>
+        <property name="lv_subset_title_uriSpace" value="${lv_subset_title_uriSpace}"/>
+
+        <property name="provenanceFolder" value="${provenanceFolder}"/>
+        <property name="provenanceFileName" value="${provenanceFileName}"/>
+    </bean>
+
 
 
 
