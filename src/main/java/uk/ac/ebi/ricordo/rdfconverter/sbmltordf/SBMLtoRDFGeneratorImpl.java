@@ -55,6 +55,18 @@ public class SBMLtoRDFGeneratorImpl implements RDFGenerator {
         }
     }
 
+    public void allNonCuratedModelsFromBioModelsDBToRDF(){
+        try {
+            for(String modelId : client.getAllNonCuratedModelsId()){
+                logger.info("Converting to RDF: " + modelId);
+                sbmLtoRDFGenerator.generateSBMLtoRDFFromURL(modelId);
+            }
+
+        } catch (BioModelsWSException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void aModelFromBioModelsDBToRDF(String modelId){
         logger.info("Converting to RDF: " + modelId);
         sbmLtoRDFGenerator.generateSBMLtoRDFFromURL(modelId);
@@ -86,18 +98,19 @@ public class SBMLtoRDFGeneratorImpl implements RDFGenerator {
         }
     }
 
-    public void bioModelsReleaseSetUp(String folderPath, String fileNamePattern) {
+    public void bioModelsReleaseSetUp(String folderPath, String fileNamePattern, boolean batch) {
         File folder = new File(folderPath);
         String [] contentlist = folder.list();
         for(int i =0; i<contentlist.length; i++){
             File content = new File(folder.getPath()+File.separator+contentlist[i]);
             if(content.isDirectory()){
-                bioModelsReleaseSetUp(content.getPath(), fileNamePattern);
+                bioModelsReleaseSetUp(content.getPath(), fileNamePattern, batch);
             }
             else if (content.isFile()){
                 if(content.getName().matches(fileNamePattern)){
                     logger.info("Converting to RDF: " + folder.getName());
-                    sbmLtoRDFGenerator.setOutputFolder(folder.getPath() + File.separator);
+                    if(!batch)
+                        sbmLtoRDFGenerator.setOutputFolder(folder.getPath() + File.separator);
                     sbmLtoRDFGenerator.generateSBMLtoRDFFromFile(folder.getName(), content);
                 }
             }

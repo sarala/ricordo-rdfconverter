@@ -25,8 +25,9 @@ package uk.ac.ebi.ricordo.rdfconverter.tordf;
  */
 public interface RDFGenerator {
     public void allModelsFromBioModelsDBToRDF();
+    public void allNonCuratedModelsFromBioModelsDBToRDF();
     public void aModelFromBioModelsDBToRDF(String modelId);
     public void allBioModelsFromFolderToRDF(String folderPath);
     public void aBioModelFromFileToRDF(String filePath);
-    public void bioModelsReleaseSetUp(String folderPath, String fileNamePattern);
+    public void bioModelsReleaseSetUp(String folderPath, String fileNamePattern, boolean batch);
 }

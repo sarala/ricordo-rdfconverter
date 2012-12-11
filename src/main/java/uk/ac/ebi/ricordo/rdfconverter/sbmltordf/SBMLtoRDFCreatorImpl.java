@@ -24,6 +24,8 @@ import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 import com.hp.hpl.jena.vocabulary.VCARD;
+import org.apache.commons.validator.UrlValidator;
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.sbml.jsbml.*;
 import org.sbml.jsbml.xml.XMLNode;
@@ -43,6 +45,7 @@ import java.util.List;
  *         Time: 10:42:35
  */
 public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
+    Logger logger = Logger.getLogger(SBMLtoRDFCreatorImpl.class);
     private com.hp.hpl.jena.rdf.model.Model rdfModel;
     private Model sbmlModel;
     private String outputFolder ="";
@@ -200,7 +203,13 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             modelResource.addProperty(SBMLConstants.CONVERSIONfACTOR, resourceMap.get(sbmlModel.getConversionFactor()));
         extractRDF(modelResource, sbmlModel.getCVTerms());
         if(!sbmlModel.getNotesString().isEmpty())
-         modelResource.addProperty(SBMLConstants.NOTES, getNotesAsText(sbmlModel.getNotesString()));
+            modelResource.addProperty(SBMLConstants.NOTES, getNotesAsText(sbmlModel.getNotesString()));
+
+        if(modelId.startsWith("BIOMD"))
+            modelResource.addLiteral(SBMLConstants.CURATED, true);
+        else
+            modelResource.addLiteral(SBMLConstants.CURATED, false);
+
         createHistory(modelResource);
     }
 
@@ -388,6 +397,7 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
 
     private void createKineticLaw(Reaction reaction, Resource reactionResource) {
         KineticLaw kineticLaw = reaction.getKineticLaw();
+        if(kineticLaw==null) return;
         Resource kineticLawResource = rdfModel.createResource(modelns+kineticLaw.getMetaId());
         kineticLawResource.addProperty(RDF.type,SBMLConstants.KINETICLAW_CLASS);
         if(!kineticLaw.getSBOTermID().isEmpty())
@@ -568,12 +578,18 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
 
         for(CVTerm cvterm: cvTerms){
             for(String uri : cvterm.getResources()){
-                Resource annotationResource = getModifiedAnnotationResource(uri);
-                if(cvterm.getQualifierType() == CVTerm.Type.MODEL_QUALIFIER){
-                    resource.addProperty(SBMLConstants.createProperty(SBMLConstants.BMURI,cvterm.getModelQualifierType().getElementNameEquivalent()), annotationResource);
-                }else  if(cvterm.getQualifierType() == CVTerm.Type.BIOLOGICAL_QUALIFIER){
-                    resource.addProperty(SBMLConstants.createProperty(SBMLConstants.BQURI, cvterm.getBiologicalQualifierType().getElementNameEquivalent()), annotationResource);
+                UrlValidator urlValidator = new UrlValidator();
+                if(urlValidator.isValid(uri)){
+                    Resource annotationResource = getModifiedAnnotationResource(uri);
+                    if(cvterm.getQualifierType() == CVTerm.Type.MODEL_QUALIFIER){
+                        resource.addProperty(SBMLConstants.createProperty(SBMLConstants.BMURI,cvterm.getModelQualifierType().getElementNameEquivalent()), annotationResource);
+                    }else  if(cvterm.getQualifierType() == CVTerm.Type.BIOLOGICAL_QUALIFIER){
+                        resource.addProperty(SBMLConstants.createProperty(SBMLConstants.BQURI, cvterm.getBiologicalQualifierType().getElementNameEquivalent()), annotationResource);
+                    }
+                }else{
+                    logger.warn("Invalid resource url in " + modelId + ": "+ uri);
                 }
+
             }
         }
     }

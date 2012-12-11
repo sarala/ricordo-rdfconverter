@@ -134,6 +134,8 @@ public class SBMLConstants {
     public static final Property VOLUMEUNITS = m.createProperty(RSMURI + "volumeUnits" );
     public static final Property USEVALUESFROMTRIGGERTIME = m.createProperty(RSMURI + "useValuesFromTriggerTime" );
 
+    public static final Property CURATED = m.createProperty(BMURI + "curated" );
+
     public static final Property DCTERMSW3CDTF = m.createProperty(DCTerms.getURI() + "W3CDTF" );
 
     public static Property createProperty(String namespace, String qualifier){
