@@ -629,4 +629,7 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
         this.outputFolder = outputFolder;
     }
 
+    public String getOutputFolder() {
+        return outputFolder;
+    }
 }

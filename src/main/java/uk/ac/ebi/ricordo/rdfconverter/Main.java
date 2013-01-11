@@ -37,11 +37,11 @@ public class Main {
         RDFGenerator sbmlToRdfGenerator = (SBMLtoRDFGeneratorImpl)ctx.getBean("sbmlToRdfGeneratorImpl");
 //        sbmlToRdfGenerator.allNonCuratedModelsFromBioModelsDBToRDF();
 //        sbmlToRdfGenerator.allModelsFromBioModelsDBToRDF();
-          sbmlToRdfGenerator.aModelFromBioModelsDBToRDF("BIOMD0000000063");
-//        sbmlToRdfGenerator.allBioModelsFromFolderToRDF("C:\\Users\\sarala.EBI\\Downloads\\BioModels_Database-r23_pub-sbml_files\\non_curated\\");
+//          sbmlToRdfGenerator.aModelFromBioModelsDBToRDF("BIOMD0000000063");
+//        sbmlToRdfGenerator.allBioModelsFromFolderToRDF("/nfs/research2/lenovere/WWW/biomodels/models-main/release/release_20121211/sbml_files/curated/");
 //        sbmlToRdfGenerator.aBioModelFromFileToRDF("C:\\Users\\sarala.EBI\\Documents\\GitHub\\ricordo-rdfconverter\\resources\\sbmlxml\\MODEL1107050000.xml");
 //        sbmlToRdfGenerator.bioModelsReleaseSetUp("C:\\Users\\sarala.EBI\\Documents\\GitHub\\ricordo-rdfconverter\\resources\\sbmlfoldertest\\", "(BIOMD|MODEL)\\d{10}"+".xml");
-//        sbmlToRdfGenerator.bioModelsReleaseSetUp("C:\\Users\\sarala.EBI\\Downloads\\Path2Models-non_metabolic\\", "(BMID)\\d{10}"+".xml", true);
+        sbmlToRdfGenerator.pathToModelSetUp("/nfs/production/biomodels/biomodels/r24/metabolic/", "(BIOMD|MODEL|BMID)\\d{12}"+"_url.xml");
 
 //        ProvenanceGenerator provenanceGenerator = (ProvenanceGeneratorImpl)ctx.getBean("provenanceGenerator");
 //        provenanceGenerator.generateProvenace();

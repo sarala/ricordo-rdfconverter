@@ -116,4 +116,26 @@ public class SBMLtoRDFGeneratorImpl implements RDFGenerator {
             }
         }
     }
+
+    public void pathToModelSetUp(String folderPath, String fileNamePattern) {
+        File folder = new File(folderPath);
+        String [] contentlist = folder.list();
+        for(int i =0; i<contentlist.length; i++){
+            File content = new File(folder.getPath()+File.separator+contentlist[i]);
+            if(content.isDirectory()){
+                pathToModelSetUp(content.getPath(), fileNamePattern);
+            }
+            else if (content.isFile()){
+                if(content.getName().matches(fileNamePattern)){
+                    logger.info("Converting to RDF: " + folder.getName());
+                    String outputFolder = sbmLtoRDFGenerator.getOutputFolder();
+                    String tempOutputFolder = outputFolder + content.getParentFile().getParentFile().getName() + File.separator;
+                    new File(tempOutputFolder).mkdir();
+                    sbmLtoRDFGenerator.setOutputFolder(tempOutputFolder);
+                    sbmLtoRDFGenerator.generateSBMLtoRDFFromFile(folder.getName(), content);
+                    sbmLtoRDFGenerator.setOutputFolder(outputFolder);
+                }
+            }
+        }
+    }
 }
