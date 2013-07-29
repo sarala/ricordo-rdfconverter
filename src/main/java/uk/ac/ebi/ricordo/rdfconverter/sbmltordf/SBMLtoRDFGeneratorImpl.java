@@ -19,10 +19,8 @@ package uk.ac.ebi.ricordo.rdfconverter.sbmltordf;
 import org.apache.log4j.Logger;
 import uk.ac.ebi.biomodels.ws.BioModelsWSClient;
 import uk.ac.ebi.biomodels.ws.BioModelsWSException;
-import uk.ac.ebi.ricordo.rdfconverter.tordf.RDFGenerator;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -33,7 +31,7 @@ import java.util.Arrays;
  *         Date: 10-Feb-2012
  *         Time: 14:57:03
  */
-public class SBMLtoRDFGeneratorImpl implements RDFGenerator {
+public class SBMLtoRDFGeneratorImpl implements SBMLtoRDFGenerator {
     private final BioModelsWSClient client;
     private final SBMLtoRDFCreatorImpl sbmLtoRDFGenerator;
     Logger logger = Logger.getLogger(SBMLtoRDFGeneratorImpl.class);

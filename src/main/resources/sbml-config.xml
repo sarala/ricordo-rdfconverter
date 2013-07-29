@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:sbml-config.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="sbmlToRdf" class="uk.ac.ebi.ricordo.rdfconverter.sbmltordf.SBMLtoRDFCreatorImpl">
+        <property name="outputFolder" value="${outputFolder}"/>
+        <property name="mappingExtractor" ref="mappingExtractor"/>
+    </bean>
+
+    <bean id="biomodelswsclient" class="uk.ac.ebi.biomodels.ws.BioModelsWSClient"/>
+
+    <bean id="sbmlToRdfGeneratorImpl" class="uk.ac.ebi.ricordo.rdfconverter.sbmltordf.SBMLtoRDFGeneratorImpl">
+        <constructor-arg name="client" ref="biomodelswsclient"/>
+        <constructor-arg name="sbmLtoRDFGenerator" ref="sbmlToRdf"/>
+    </bean>
+
+    <bean id="mappingExtractor" class="uk.ac.ebi.ricordo.rdfconverter.util.MappingExtractor">
+        <constructor-arg name="mappingFile" type="java.io.File" value="${sbml-mapping}"/>
+    </bean>
+
+</beans>

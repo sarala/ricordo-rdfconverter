@@ -6,28 +6,12 @@
     <bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath:config.properties</value>
                 <value>classpath:voidconfig.properties</value>
             </list>
         </property>
     </bean>
 
-    <bean id="sbmlToRdf" class="uk.ac.ebi.ricordo.rdfconverter.sbmltordf.SBMLtoRDFCreatorImpl">
-        <property name="outputFolder" value="${outputFolder}"/>
-    </bean>
-
-    <bean id="biomodelswsclient" class="uk.ac.ebi.biomodels.ws.BioModelsWSClient"/>
-
-    <bean id="sbmlToRdfGeneratorImpl" class="uk.ac.ebi.ricordo.rdfconverter.sbmltordf.SBMLtoRDFGeneratorImpl">
-        <constructor-arg name="client" ref="biomodelswsclient"/>
-        <constructor-arg name="sbmLtoRDFGenerator" ref="sbmlToRdf"/>
-    </bean>
-
-    <bean id="mappingExtractor" class="uk.ac.ebi.ricordo.rdfconverter.sbmltordf.MappingExtractor">
-        <constructor-arg name="mappingFile" type="java.io.File" value="${mappingFile}"/>
-    </bean>
-    
-    <bean id="provenanceGenerator" class="uk.ac.ebi.ricordo.rdfconverter.tordf.ProvenanceGeneratorImpl">
+    <bean id="provenanceGenerator" class="uk.ac.ebi.ricordo.rdfconverter.provenance.ProvenanceGeneratorImpl">
         <property name="bv_title" value="${bv_title}"/>
         <property name="bv_description" value="${bv_description}"/>
         <property name="bv_createdBy" value="${bv_createdBy}"/>
@@ -53,9 +37,5 @@
         <property name="provenanceFolder" value="${provenanceFolder}"/>
         <property name="provenanceFileName" value="${provenanceFileName}"/>
     </bean>
-
-
-
-
 
 </beans>

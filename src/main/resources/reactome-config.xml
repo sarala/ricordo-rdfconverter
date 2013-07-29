@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:reactome-config.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="reactomeModifier" class="uk.ac.ebi.ricordo.rdfconverter.reactometordf.ReactomeModifierImpl">
+        <property name="bioPaxMappingExtractor" ref="reactomeMappingExtractor"/>
+        <property name="outputFolder" value="${output-folder}"/>
+    </bean>
+
+    <bean id="reactometoRDFGenerator" class="uk.ac.ebi.ricordo.rdfconverter.reactometordf.ReactometoRDFGeneratorImpl">
+        <constructor-arg name="reactomeModifier" ref="reactomeModifier"/>
+        <property name="inputFile" value="${input-file}"/>
+        <property name="inputFolder" value="${input-folder}"/>
+    </bean>
+
+    <bean id="reactomeMappingExtractor" class="uk.ac.ebi.ricordo.rdfconverter.util.MappingExtractor">
+        <constructor-arg name="mappingFile" type="java.io.File" value="${reactome-mapping}"/>
+    </bean>
+
+
+
+</beans>

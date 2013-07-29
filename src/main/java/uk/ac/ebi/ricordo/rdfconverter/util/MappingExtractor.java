@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.ac.ebi.ricordo.rdfconverter.sbmltordf;
+package uk.ac.ebi.ricordo.rdfconverter.util;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -28,7 +28,7 @@ import java.util.HashMap;
  *         Time: 20:40
  */
 public class MappingExtractor {
-    public static HashMap<String,String> identMap = new HashMap<String, String>();
+    private HashMap<String,String> identMap = new HashMap<String, String>();
 
     public MappingExtractor(File mappingFile) {
         populateIdentMap(mappingFile);
@@ -39,11 +39,16 @@ public class MappingExtractor {
             BufferedReader reader = new BufferedReader(new FileReader(mappingFile));
             String line = null;
             while ((line = reader.readLine()) != null) {
-                String [] stringMap = line.split(" ");
-                identMap.put(stringMap [0], stringMap [1]);
+                int splitPoint=line.lastIndexOf(" ");
+                //String [] stringMap = line.split("|");
+                identMap.put(line.substring(0,splitPoint), line.substring(splitPoint+1));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public HashMap<String, String> getIdentMap() {
+        return identMap;
     }
 }

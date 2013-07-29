@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.ac.ebi.ricordo.rdfconverter.tordf;
+package uk.ac.ebi.ricordo.rdfconverter.provenance;
 
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;

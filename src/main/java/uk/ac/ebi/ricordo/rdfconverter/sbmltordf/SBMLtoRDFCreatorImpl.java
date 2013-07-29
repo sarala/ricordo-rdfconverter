@@ -28,7 +28,7 @@ import org.apache.commons.validator.UrlValidator;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.sbml.jsbml.*;
-import org.sbml.jsbml.xml.XMLNode;
+import uk.ac.ebi.ricordo.rdfconverter.util.MappingExtractor;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
@@ -52,6 +52,7 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
     private String modelId="";
     private HashMap<String, Resource> resourceMap = new HashMap<String, Resource>();
     private String modelns ="";
+    private MappingExtractor mappingExtractor;
 
     public void generateSBMLtoRDFFromURL(String modelId){
         this.modelId = modelId;
@@ -579,14 +580,15 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
         for(CVTerm cvterm: cvTerms){
             for(String uri : cvterm.getResources()){
                 UrlValidator urlValidator = new UrlValidator();
-                if(urlValidator.isValid(uri)){
+                if(urlValidator.isValid(uri) || uri.startsWith("http://identifiers.org/") ){
                     Resource annotationResource = getModifiedAnnotationResource(uri);
                     if(cvterm.getQualifierType() == CVTerm.Type.MODEL_QUALIFIER){
                         resource.addProperty(SBMLConstants.createProperty(SBMLConstants.BMURI,cvterm.getModelQualifierType().getElementNameEquivalent()), annotationResource);
                     }else  if(cvterm.getQualifierType() == CVTerm.Type.BIOLOGICAL_QUALIFIER){
                         resource.addProperty(SBMLConstants.createProperty(SBMLConstants.BQURI, cvterm.getBiologicalQualifierType().getElementNameEquivalent()), annotationResource);
                     }
-                }else{
+                }
+                else{
                     logger.warn("Invalid resource url in " + modelId + ": "+ uri);
                 }
 
@@ -598,7 +600,7 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
     private Resource getModifiedAnnotationResource(String annotationUri) {
         Resource annotationResource = rdfModel.createResource(annotationUri);
         String annotationNS = annotationUri.substring(0, annotationUri.lastIndexOf("/"));
-        String mappedString = MappingExtractor.identMap.get(annotationNS);
+        String mappedString = mappingExtractor.getIdentMap().get(annotationNS);
         if(mappedString!=null){
             String sameAsString = mappedString+annotationUri.substring(annotationUri.lastIndexOf("/"));
             Resource sameAsResource = rdfModel.createResource(sameAsString);
@@ -631,5 +633,9 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
 
     public String getOutputFolder() {
         return outputFolder;
+    }
+
+    public void setMappingExtractor(MappingExtractor mappingExtractor) {
+        this.mappingExtractor = mappingExtractor;
     }
 }
