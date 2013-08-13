@@ -46,27 +46,25 @@ public class ProvenanceGeneratorImpl implements ProvenanceGenerator {
     public static final String BASEURI ="#";
     public static final String BASEPREFIX="";
 
-    private String bv_title;
-    private String bv_description;
-    private String bv_createdBy;
-    private String bv_primaryTopic;
+    private String vd_homepage;
+    private String vd_title;
+    private String vd_description;
+    private String vd_creator;
+    private String vd_primaryTopic;
 
-    private String bd_homepage;
-    private String bd_title;
-    private String bd_description;
-    private String bd_contributor;
-    private String bd_uriSpace;
-    private String bd_wasDerivedFrom;
-    private String bd_sparqlEndpoint;
-    private String bd_dataDump;
-    private String bd_subset;
-
-    private String lv_license;
-    private String lv_version;
-    private String lv_dataDump;
-    private String lv_previousVersion;
-    private String lv_vocabulary;
-    private String lv_subset_title_uriSpace;
+    private String dd_homepage;
+    private String dd_title;
+    private String dd_description;
+    private String dd_license;
+    private String dd_publisher;
+    private String dd_uriSpace;
+    private String dd_importedBy;
+    private String dd_importedFrom;
+    private String dd_sparqlEndpoint;
+    private String dd_vocabulary;
+    private String dd_version;
+    private String dd_previousVersion;
+    private String dd_dataDump;
 
     private String provenanceFolder;
     private String provenanceFileName;
@@ -78,7 +76,6 @@ public class ProvenanceGeneratorImpl implements ProvenanceGenerator {
         setNS();
         createVoidDescription();
         createDatasetDescription();
-        latestVersionDescription();
         writeToFile();
     }
 
@@ -94,59 +91,37 @@ public class ProvenanceGeneratorImpl implements ProvenanceGenerator {
     }
 
     private void createVoidDescription(){
-        Resource voidDescription = rdfModel.createResource(BASEURI);
+        Resource voidDescription = rdfModel.createResource(vd_homepage);
         Resource datasetDescription = rdfModel.createResource(VOIDSURI+"DatasetDescription");
         voidDescription.addProperty(RDF.type, datasetDescription);
-        voidDescription.addLiteral(DCTerms.title, bv_title);
-        voidDescription.addLiteral(DCTerms.description, bv_description);
-        voidDescription.addProperty(rdfModel.createProperty(PAVURI + "createdBy"), rdfModel.createResource(bv_createdBy));
-        voidDescription.addLiteral(rdfModel.createProperty(PAVURI + "createdOn" ), Calendar.getInstance().getTime().toString());
-        voidDescription.addProperty(rdfModel.createProperty(FOAFURI + "primaryTopic"),rdfModel.createResource(bv_primaryTopic));
+        voidDescription.addLiteral(DCTerms.title, vd_title);
+        voidDescription.addLiteral(DCTerms.description, vd_description);
+        voidDescription.addProperty(DCTerms.creator, rdfModel.createResource(vd_creator));
+        voidDescription.addLiteral(DCTerms.created, Calendar.getInstance().getTime().toString());
+        voidDescription.addProperty(rdfModel.createProperty(FOAFURI + "primaryTopic"), rdfModel.createResource(vd_primaryTopic));
     }
 
     private void createDatasetDescription(){
-        Resource datasetDescription = rdfModel.createResource(bv_primaryTopic);
+        Resource datasetDescription = rdfModel.createResource(vd_primaryTopic);
         datasetDescription.addProperty(RDF.type, dataset);
-        datasetDescription.addProperty(rdfModel.createProperty(FOAFURI + "homepage"), rdfModel.createResource(bd_homepage));
-        datasetDescription.addLiteral(DCTerms.title, bd_title);
-        datasetDescription.addLiteral(DCTerms.description, bd_description);
-        String [] contributors = bd_contributor.split(",");
-        for(int i = 0; i <contributors.length; i++){
-            datasetDescription.addProperty(DCTerms.contributor, rdfModel.createResource(contributors[i]));
-        }
-        datasetDescription.addLiteral(rdfModel.createProperty(VOIDSURI + "uriSpace"), bd_uriSpace);
-        datasetDescription.addProperty(rdfModel.createProperty(PROVOURI + "wasDerivedFrom"), rdfModel.createResource(bd_wasDerivedFrom));
-        datasetDescription.addProperty(rdfModel.createProperty(VOIDSURI + "sparqlEndPoint"), rdfModel.createResource(bd_sparqlEndpoint));
-        datasetDescription.addProperty(rdfModel.createProperty(VOIDSURI + "dataDump"), rdfModel.createResource(bd_dataDump));
-        datasetDescription.addProperty(rdfModel.createProperty(VOIDSURI + "subset"),rdfModel.createResource(bd_subset));
-    }
-
-    private void latestVersionDescription(){
-        Resource latestVD = rdfModel.createResource(bd_subset);
-        latestVD.addProperty(RDF.type, dataset);
-        latestVD.addProperty(DCTerms.license, rdfModel.createResource(lv_license));
-        latestVD.addLiteral(rdfModel.createProperty(PROVOURI + "generatedAtTime"), Calendar.getInstance().getTime().toString());
-        latestVD.addLiteral(rdfModel.createProperty(PAVURI + "createdOn" ), Calendar.getInstance().getTime().toString());
-        latestVD.addLiteral(rdfModel.createProperty(PAVURI + "version" ), lv_version);
-        latestVD.addProperty(rdfModel.createProperty(VOIDSURI + "dataDump"),rdfModel.createResource(lv_dataDump));
-        latestVD.addProperty(rdfModel.createProperty(PAVURI + "previousVersion"), rdfModel.createResource(lv_previousVersion));
-        String [] vocabularies = lv_vocabulary.split(",");
+        datasetDescription.addLiteral(DCTerms.title, dd_title);
+        datasetDescription.addLiteral(DCTerms.description, dd_description);
+        datasetDescription.addProperty(rdfModel.createProperty(FOAFURI + "homepage"), rdfModel.createResource(dd_homepage));
+        datasetDescription.addProperty(DCTerms.license, rdfModel.createResource(dd_license));
+        datasetDescription.addLiteral(rdfModel.createProperty(VOIDSURI + "uriSpace"), dd_uriSpace);
+        datasetDescription.addProperty(DCTerms.publisher, rdfModel.createResource(dd_publisher));
+        datasetDescription.addProperty(rdfModel.createProperty(PAVURI + "importedFrom"), rdfModel.createResource(dd_importedFrom));
+        datasetDescription.addProperty(rdfModel.createProperty(PAVURI + "importedBy"), rdfModel.createResource(dd_importedBy));
+        datasetDescription.addProperty(rdfModel.createProperty(VOIDSURI + "sparqlEndPoint"), rdfModel.createResource(dd_sparqlEndpoint));
+        String [] vocabularies = dd_vocabulary.split(",");
         for(int i = 0; i <vocabularies.length; i++){
-            latestVD.addProperty(rdfModel.createProperty(VOIDSURI + "vocabulary"), rdfModel.createResource(vocabularies[i]));
+            datasetDescription.addProperty(rdfModel.createProperty(VOIDSURI + "vocabulary"), rdfModel.createResource(vocabularies[i]));
         }
+        datasetDescription.addLiteral(rdfModel.createProperty(PAVURI + "version" ), dd_version);
+        datasetDescription.addProperty(rdfModel.createProperty(PAVURI + "previousVersion"), rdfModel.createResource(dd_previousVersion));
+        datasetDescription.addLiteral(rdfModel.createProperty(PAVURI + "importedOn" ), Calendar.getInstance().getTime().toString());
+        datasetDescription.addProperty(rdfModel.createProperty(VOIDSURI + "dataDump"), rdfModel.createResource(dd_dataDump));
 
-        String [] subsets = lv_subset_title_uriSpace.split(";");
-        for(int i=0; i<subsets.length;i++){
-            String [] subsetDescriptions = subsets[i].split(",");
-            if(subsetDescriptions.length!=3){
-                break;
-            }
-            Resource subsetResource = rdfModel.createResource(subsetDescriptions[0]);
-            latestVD.addProperty(rdfModel.createProperty(VOIDSURI + "subset"), subsetResource);
-            subsetResource.addProperty(RDF.type, dataset);
-            subsetResource.addLiteral(DCTerms.title, subsetDescriptions[1]);
-            subsetResource.addLiteral(rdfModel.createProperty(VOIDSURI + "uriSpace"), subsetDescriptions[2]);
-        }
     }
 
     private void writeToFile(){
@@ -159,82 +134,76 @@ public class ProvenanceGeneratorImpl implements ProvenanceGenerator {
         }
     }
 
-
-
-    public void setBv_title(String bv_title) {
-        this.bv_title = bv_title;
+    public void setDd_dataDump(String dd_dataDump) {
+        this.dd_dataDump = dd_dataDump;
     }
 
-    public void setBv_description(String bv_description) {
-        this.bv_description = bv_description;
+    public void setVd_homepage(String vd_homepage) {
+        this.vd_homepage = vd_homepage;
     }
 
-    public void setBv_createdBy(String bv_createdBy) {
-        this.bv_createdBy = bv_createdBy;
+    public void setVd_title(String vd_title) {
+        this.vd_title = vd_title;
     }
 
-    public void setBv_primaryTopic(String bv_primaryTopic) {
-        this.bv_primaryTopic = bv_primaryTopic;
+    public void setVd_description(String vd_description) {
+        this.vd_description = vd_description;
     }
 
-    public void setBd_homepage(String bd_homepage) {
-        this.bd_homepage = bd_homepage;
+    public void setVd_creator(String vd_creator) {
+        this.vd_creator = vd_creator;
     }
 
-    public void setBd_title(String bd_title) {
-        this.bd_title = bd_title;
+    public void setVd_primaryTopic(String vd_primaryTopic) {
+        this.vd_primaryTopic = vd_primaryTopic;
     }
 
-    public void setBd_description(String bd_description) {
-        this.bd_description = bd_description;
+    public void setDd_homepage(String dd_homepage) {
+        this.dd_homepage = dd_homepage;
     }
 
-    public void setBd_contributor(String bd_contributor) {
-        this.bd_contributor = bd_contributor;
+    public void setDd_title(String dd_title) {
+        this.dd_title = dd_title;
     }
 
-    public void setBd_uriSpace(String bd_uriSpace) {
-        this.bd_uriSpace = bd_uriSpace;
+    public void setDd_description(String dd_description) {
+        this.dd_description = dd_description;
     }
 
-    public void setBd_wasDerivedFrom(String bd_wasDerivedFrom) {
-        this.bd_wasDerivedFrom = bd_wasDerivedFrom;
+    public void setDd_license(String dd_license) {
+        this.dd_license = dd_license;
     }
 
-    public void setBd_sparqlEndpoint(String bd_sparqlEndpoint) {
-        this.bd_sparqlEndpoint = bd_sparqlEndpoint;
+    public void setDd_publisher(String dd_publisher) {
+        this.dd_publisher = dd_publisher;
     }
 
-    public void setBd_dataDump(String bd_dataDump) {
-        this.bd_dataDump = bd_dataDump;
+    public void setDd_uriSpace(String dd_uriSpace) {
+        this.dd_uriSpace = dd_uriSpace;
     }
 
-    public void setBd_subset(String bd_subset) {
-        this.bd_subset = bd_subset;
+    public void setDd_importedBy(String dd_importedBy) {
+        this.dd_importedBy = dd_importedBy;
     }
 
-    public void setLv_license(String lv_license) {
-        this.lv_license = lv_license;
+    public void setDd_importedFrom(String dd_importedFrom) {
+        this.dd_importedFrom = dd_importedFrom;
     }
 
-    public void setLv_version(String lv_version) {
-        this.lv_version = lv_version;
+    public void setDd_sparqlEndpoint(String dd_sparqlEndpoint) {
+        this.dd_sparqlEndpoint = dd_sparqlEndpoint;
     }
 
-    public void setLv_dataDump(String lv_dataDump) {
-        this.lv_dataDump = lv_dataDump;
+    public void setDd_vocabulary(String dd_vocabulary) {
+        this.dd_vocabulary = dd_vocabulary;
     }
 
-    public void setLv_previousVersion(String lv_previousVersion) {
-        this.lv_previousVersion = lv_previousVersion;
+    public void setDd_version(String dd_version) {
+        this.dd_version = dd_version;
     }
 
-    public void setLv_vocabulary(String lv_vocabulary) {
-        this.lv_vocabulary = lv_vocabulary;
-    }
-
-    public void setLv_subset_title_uriSpace(String lv_subset_title_uriSpace) {
-        this.lv_subset_title_uriSpace = lv_subset_title_uriSpace;
+    public void setDd_previousVersion(String dd_previousVersion) {
+        this.dd_previousVersion = dd_previousVersion;
     }
 
     public void setProvenanceFolder(String provenanceFolder) {
@@ -244,5 +213,4 @@ public class ProvenanceGeneratorImpl implements ProvenanceGenerator {
     public void setProvenanceFileName(String provenanceFileName) {
         this.provenanceFileName = provenanceFileName;
     }
-
 }
