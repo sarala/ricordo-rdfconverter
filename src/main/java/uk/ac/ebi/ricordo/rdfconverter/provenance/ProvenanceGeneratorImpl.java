@@ -118,7 +118,7 @@ public class ProvenanceGeneratorImpl implements ProvenanceGenerator {
             datasetDescription.addProperty(rdfModel.createProperty(VOIDSURI + "vocabulary"), rdfModel.createResource(vocabularies[i]));
         }
         datasetDescription.addLiteral(rdfModel.createProperty(PAVURI + "version" ), dd_version);
-        datasetDescription.addProperty(rdfModel.createProperty(PAVURI + "previousVersion"), rdfModel.createResource(dd_previousVersion));
+//        datasetDescription.addProperty(rdfModel.createProperty(PAVURI + "previousVersion"), rdfModel.createResource(dd_previousVersion));
         datasetDescription.addLiteral(rdfModel.createProperty(PAVURI + "importedOn" ), Calendar.getInstance().getTime().toString());
         datasetDescription.addProperty(rdfModel.createProperty(VOIDSURI + "dataDump"), rdfModel.createResource(dd_dataDump));
 
