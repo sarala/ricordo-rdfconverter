@@ -35,10 +35,10 @@ import java.util.Calendar;
 public class ProvenanceGeneratorImpl implements ProvenanceGenerator {
     public static final String FOAFURI ="http://xmlns.com/foaf/0.1/";
     public static final String FOAFPREFIX="foaf";
-    public static final String PAVURI ="http://purl.org/pav/";
+    public static final String PAVURI ="http://purl.org/pav/2.0/";
     public static final String PAVPREFIX="pav";
-    public static final String PROVOURI ="http://www.w3.org/TR/prov-o/";
-    public static final String PROVOPREFIX="provo";
+    public static final String PROVOURI ="http://www.w3.org/ns/prov#";
+    public static final String PROVOPREFIX="prov";
     public static final String SKOSURI ="http://www.w3.org/2004/02/skos/core#";
     public static final String SKOSPREFIX="skos";
     public static final String VOIDSURI ="http://rdfs.org/ns/void#";
