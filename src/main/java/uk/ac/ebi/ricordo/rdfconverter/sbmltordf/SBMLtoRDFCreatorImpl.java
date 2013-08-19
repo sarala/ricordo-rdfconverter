@@ -105,7 +105,7 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
     }
 
     private void createModelResource(){
-        Resource modelResource = rdfModel.createResource(modelns+sbmlModel.getMetaId());
+        Resource modelResource = rdfModel.createResource(SBMLConstants.URI + modelId);
 
         createUnitsDefs(modelResource);
         createParameters(modelResource);
