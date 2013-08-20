@@ -67,7 +67,7 @@ public class ReactomeModifierImpl implements ReactomeModifier{
 
     private void writeModel(File inputFile) {
         try {
-            FileOutputStream outputStream = new FileOutputStream(outputFolder + inputFile.getName());
+            FileOutputStream outputStream = new FileOutputStream(outputFolder + inputFile.getName().replaceAll(" ","_"));
             handler.convertToOWL(model,outputStream);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
