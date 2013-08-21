@@ -6,7 +6,7 @@
     <bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath:reactome-config.properties</value>
+                <value>classpath*:reactome-config.properties</value>
             </list>
         </property>
     </bean>
@@ -23,7 +23,7 @@
     </bean>
 
     <bean id="reactomeMappingExtractor" class="uk.ac.ebi.ricordo.rdfconverter.util.MappingExtractor">
-        <constructor-arg name="mappingFile" type="java.io.File" value="${reactome-mapping}"/>
+        <constructor-arg name="mappingFile" value="${reactome-mapping}"/>
     </bean>
 
 

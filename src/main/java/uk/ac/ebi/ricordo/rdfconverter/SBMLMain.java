@@ -15,7 +15,7 @@ import uk.ac.ebi.ricordo.rdfconverter.sbmltordf.SBMLtoRDFGeneratorImpl;
 public class SBMLMain {
 
     public static void main (String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:sbml-config.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath*:sbml-config.xml");
         SBMLtoRDFGenerator sbmlToRdfGenerator = (SBMLtoRDFGeneratorImpl)ctx.getBean("sbmlToRdfGeneratorImpl");
 //        sbmlToRdfGenerator.allNonCuratedModelsFromBioModelsDBToRDF();
 //        sbmlToRdfGenerator.allModelsFromBioModelsDBToRDF();

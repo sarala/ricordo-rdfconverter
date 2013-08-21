@@ -16,6 +16,9 @@
 
 package uk.ac.ebi.ricordo.rdfconverter.util;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.HashMap;
@@ -30,13 +33,14 @@ import java.util.HashMap;
 public class MappingExtractor {
     private HashMap<String,String> identMap = new HashMap<String, String>();
 
-    public MappingExtractor(File mappingFile) {
+    public MappingExtractor(String mappingFile) {
         populateIdentMap(mappingFile);
     }
 
-    private void populateIdentMap(File mappingFile) {
+    private void populateIdentMap(String mappingFile) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(mappingFile));
+            Resource resource = new ClassPathResource(mappingFile);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()));
             String line = null;
             while ((line = reader.readLine()) != null) {
                 int splitPoint=line.lastIndexOf(" ");

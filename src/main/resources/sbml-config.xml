@@ -6,7 +6,7 @@
     <bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath:sbml-config.properties</value>
+                <value>classpath*:sbml-config.properties</value>
             </list>
         </property>
     </bean>
@@ -24,7 +24,7 @@
     </bean>
 
     <bean id="mappingExtractor" class="uk.ac.ebi.ricordo.rdfconverter.util.MappingExtractor">
-        <constructor-arg name="mappingFile" type="java.io.File" value="${sbml-mapping}"/>
+        <constructor-arg name="mappingFile" value="${sbml-mapping}"/>
     </bean>
 
 </beans>
