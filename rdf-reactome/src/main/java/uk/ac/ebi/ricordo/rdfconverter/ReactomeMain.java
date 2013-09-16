@@ -32,7 +32,7 @@ public class ReactomeMain {
     public static void main (String[] args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath*:reactome-config.xml");
         ReactometoRDFGenerator reactometoRDFGenerator = (ReactometoRDFGenerator)ctx.getBean("reactometoRDFGenerator");
-        reactometoRDFGenerator.aModeltoRDF();
-//      reactometoRDFGenerator.allModelstoRDF();
+//        reactometoRDFGenerator.aModeltoRDF();
+      reactometoRDFGenerator.allModelstoRDF();
     }
 }
