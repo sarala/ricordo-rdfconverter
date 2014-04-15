@@ -53,6 +53,7 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
     private HashMap<String, Resource> resourceMap = new HashMap<String, Resource>();
     private String modelns ="";
     private MappingExtractor mappingExtractor;
+    private String inputFolder;
 
     public void generateSBMLtoRDFFromURL(String modelId){
         this.modelId = modelId;
@@ -620,7 +621,8 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
     private void writeToFile(){
         try{
             FileOutputStream fileOutputStream = new FileOutputStream(outputFolder +modelId+".rdf");
-            rdfModel.write(fileOutputStream, "RDF/XML-ABBREV");
+//            rdfModel.write(fileOutputStream, "RDF/XML-ABBREV");
+            rdfModel.getWriter().write(rdfModel,fileOutputStream,null);
             fileOutputStream.close();
         }catch(IOException e){
             e.printStackTrace();
@@ -637,5 +639,13 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
 
     public void setMappingExtractor(MappingExtractor mappingExtractor) {
         this.mappingExtractor = mappingExtractor;
+    }
+
+    public void setInputFolder(String inputFolder) {
+        this.inputFolder = inputFolder;
+    }
+
+    public String getInputFolder() {
+        return inputFolder;
     }
 }

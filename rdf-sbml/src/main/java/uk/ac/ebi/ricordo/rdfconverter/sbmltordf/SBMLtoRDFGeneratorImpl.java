@@ -70,19 +70,27 @@ public class SBMLtoRDFGeneratorImpl implements SBMLtoRDFGenerator {
         sbmLtoRDFGenerator.generateSBMLtoRDFFromURL(modelId);
     }
 
-    public void allBioModelsFromFolderToRDF(String folderPath) {
+    public void allBioModelsFromFolderToRDF(){
+        allBioModelsFromFolderToRDF(sbmLtoRDFGenerator.getInputFolder());
+    }
+
+    private void allBioModelsFromFolderToRDF(String folderPath) {
         File folder = new File(folderPath);
         if(folder.isDirectory()){
             ArrayList<File> files = new ArrayList<File>(Arrays.asList(folder.listFiles()));
             for(File file:files){
-                String modelId = file.getName().substring(0,file.getName().indexOf("."));
-                logger.info("Converting to RDF: " + modelId);
-                sbmLtoRDFGenerator.generateSBMLtoRDFFromFile(modelId, file);
+                if(file.isFile()) {
+                    String modelId = file.getName().substring(0, file.getName().indexOf("."));
+                    logger.info("Converting to RDF: " + modelId);
+                    sbmLtoRDFGenerator.generateSBMLtoRDFFromFile(modelId, file);
+                }
+                else{
+                    logger.info("No SBML/XML files found in this folder " + folderPath);
+                }
             }
         }else{
             logger.info("Path not found: " + folderPath);
         }
-
     }
 
     public void aBioModelFromFileToRDF(String filePath) {
@@ -96,7 +104,14 @@ public class SBMLtoRDFGeneratorImpl implements SBMLtoRDFGenerator {
         }
     }
 
-    public void bioModelsReleaseSetUp(String folderPath, String fileNamePattern, boolean batch) {
+    /* Generating RDF files for BioModels release
+    *  batch (true) will write the output into the folder specified in the sbml-config file
+    * */
+    public void bioModelsReleaseSetUp(String fileNamePattern, boolean batch) {
+        bioModelsReleaseSetUp(sbmLtoRDFGenerator.getInputFolder(),fileNamePattern,batch);
+    }
+
+     private void bioModelsReleaseSetUp(String folderPath, String fileNamePattern, boolean batch) {
         File folder = new File(folderPath);
         String [] contentlist = folder.list();
         for(int i =0; i<contentlist.length; i++){

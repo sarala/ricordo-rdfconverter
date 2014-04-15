@@ -12,6 +12,7 @@
     </bean>
 
     <bean id="sbmlToRdf" class="uk.ac.ebi.ricordo.rdfconverter.sbmltordf.SBMLtoRDFCreatorImpl">
+        <property name="inputFolder" value="${inputFolder}"/>
         <property name="outputFolder" value="${outputFolder}"/>
         <property name="mappingExtractor" ref="mappingExtractor"/>
     </bean>
