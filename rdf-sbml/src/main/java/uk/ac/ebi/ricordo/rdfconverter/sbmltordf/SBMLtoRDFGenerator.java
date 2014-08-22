@@ -28,6 +28,7 @@ public interface SBMLtoRDFGenerator {
     public void allNonCuratedModelsFromBioModelsDBToRDF();
     public void aModelFromBioModelsDBToRDF(String modelId);
     public void allBioModelsFromFolderToRDF();
+    public void allBioModelsFromFolderToRDF(String path);
     public void aBioModelFromFileToRDF(String filePath);
     public void bioModelsReleaseSetUp(String fileNamePattern, boolean batch);
     public void pathToModelSetUp(String folderPath, String fileNamePattern);
