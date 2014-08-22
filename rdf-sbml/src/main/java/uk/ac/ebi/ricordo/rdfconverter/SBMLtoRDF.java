@@ -36,10 +36,13 @@ public class SBMLtoRDF {
         switch (option){
             case 1:
                 sbmlToRdfGenerator.bioModelsReleaseSetUp("(BIOMD|MODEL)\\d{10}"+".xml", false);
+                break;
             case 2:
                 sbmlToRdfGenerator.bioModelsReleaseSetUp("(BIOMD|MODEL)\\d{10}"+".xml", true);
+                break;
             case 3:
                 sbmlToRdfGenerator.allBioModelsFromFolderToRDF();
+                break;
         }
     }
 
