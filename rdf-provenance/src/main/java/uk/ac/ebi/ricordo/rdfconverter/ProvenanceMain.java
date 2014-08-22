@@ -15,8 +15,8 @@ import uk.ac.ebi.ricordo.rdfconverter.provenance.ProvenanceGeneratorImpl;
 public class ProvenanceMain {
 
     public static void main (String [] args){
-            ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:provenance-config.xml");
-            ProvenanceGenerator provenanceGenerator = (ProvenanceGeneratorImpl)ctx.getBean("provenanceGenerator");
-            provenanceGenerator.generateProvenace();
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:provenance-config.xml");
+        ProvenanceGenerator provenanceGenerator = (ProvenanceGeneratorImpl)ctx.getBean("provenanceGenerator");
+        provenanceGenerator.generateProvenace();
     }
 }
