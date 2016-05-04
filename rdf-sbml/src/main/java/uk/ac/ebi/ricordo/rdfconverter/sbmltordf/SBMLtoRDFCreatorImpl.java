@@ -41,8 +41,9 @@ import java.util.List;
  * Created by IntelliJ IDEA.
  *
  * @author Sarala Wimalaratne
- *         Date: 10-Feb-2012
- *         Time: 10:42:35
+ * @author Mihai Glonț
+ * @since 20120210
+ *      Last Modified Date: 20160504
  */
 public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
     Logger logger = Logger.getLogger(SBMLtoRDFCreatorImpl.class);
@@ -63,9 +64,9 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             URL url= new URL("http://www.ebi.ac.uk/biomodels-main/download?mid="+modelId+"&anno=url");
             document = reader.readSBMLFromStream(url.openStream());
         } catch (XMLStreamException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         }
         generateSBMLtoRDF(document);
     }
@@ -77,9 +78,9 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
         try {
             document = reader.readSBML(file);
         } catch (XMLStreamException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         }
         generateSBMLtoRDF(document);
     }
@@ -133,8 +134,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
                 sboIdentifiersOrg(unitResource, unitDefinition.getSBOTermID());
             extractRDF(unitResource, unitDefinition.getCVTerms());
             modelResource.addProperty(SBMLConstants.UNITSDEF, unitResource);
-            if(!unitDefinition.getNotesString().isEmpty())
-                unitResource.addProperty(SBMLConstants.NOTES, getNotesAsText(unitDefinition.getNotesString()));
+            try {
+                if(!unitDefinition.getNotesString().isEmpty())
+                    unitResource.addProperty(SBMLConstants.NOTES, getNotesAsText(unitDefinition.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
 
             resourceMap.put(unitDefinition.getId(), unitResource);
             createListOfUnits(unitDefinition, unitResource);
@@ -154,8 +159,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             if (!unitDefinition.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(unitResource, unitDefinition.getSBOTermID());
             extractRDF(unitResource, unitDefinition.getCVTerms());
-            if(!unit.getNotesString().isEmpty())
-                unitResource.addProperty(SBMLConstants.NOTES, getNotesAsText(unit.getNotesString()));
+            try {
+                if(!unit.getNotesString().isEmpty())
+                    unitResource.addProperty(SBMLConstants.NOTES, getNotesAsText(unit.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
             unitDefResource.addProperty(SBMLConstants.UNIT, unitResource);
         }
     }
@@ -183,8 +192,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             if (!parameter.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(parameterResource, parameter.getSBOTermID());
             extractRDF(parameterResource, parameter.getCVTerms());
-            if(!parameter.getNotesString().isEmpty())
-                parameterResource.addProperty(SBMLConstants.NOTES, getNotesAsText(parameter.getNotesString()));
+            try {
+                if(!parameter.getNotesString().isEmpty())
+                    parameterResource.addProperty(SBMLConstants.NOTES, getNotesAsText(parameter.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
             modelResource.addProperty(SBMLConstants.PARAMETER, parameterResource);
             resourceMap.put(parameter.getId(), parameterResource);
 
@@ -204,8 +217,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
         if(!sbmlModel.getConversionFactor().isEmpty())
             modelResource.addProperty(SBMLConstants.CONVERSIONfACTOR, resourceMap.get(sbmlModel.getConversionFactor()));
         extractRDF(modelResource, sbmlModel.getCVTerms());
-        if(!sbmlModel.getNotesString().isEmpty())
-            modelResource.addProperty(SBMLConstants.NOTES, getNotesAsText(sbmlModel.getNotesString()));
+        try {
+            if(!sbmlModel.getNotesString().isEmpty())
+                modelResource.addProperty(SBMLConstants.NOTES, getNotesAsText(sbmlModel.getNotesString()));
+        } catch (XMLStreamException e) {
+            logger.error(e.getMessage(), e);
+        }
 
         if(modelId.startsWith("BIOMD"))
             modelResource.addLiteral(SBMLConstants.CURATED, true);
@@ -266,8 +283,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             if (!compartment.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(compartmentResource, compartment.getSBOTermID());
             extractRDF(compartmentResource, compartment.getCVTerms());
-            if(!compartment.getNotesString().isEmpty())
-                compartmentResource.addProperty(SBMLConstants.NOTES, getNotesAsText(compartment.getNotesString()));
+            try {
+                if(!compartment.getNotesString().isEmpty())
+                    compartmentResource.addProperty(SBMLConstants.NOTES, getNotesAsText(compartment.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
             modelResource.addProperty(SBMLConstants.COMPARTMENT, compartmentResource);
             resourceMap.put(compartment.getId(), compartmentResource);
         }
@@ -292,8 +313,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             if (!species.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(speciesResource, species.getSBOTermID());
             extractRDF(speciesResource, species.getCVTerms());
-            if(!species.getNotesString().isEmpty())
-                speciesResource.addProperty(SBMLConstants.NOTES, getNotesAsText(species.getNotesString()));
+            try {
+                if(!species.getNotesString().isEmpty())
+                    speciesResource.addProperty(SBMLConstants.NOTES, getNotesAsText(species.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
             modelResource.addProperty(SBMLConstants.SPECIES, speciesResource);
             resourceMap.put(species.getId(), speciesResource);
         }
@@ -308,8 +333,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             if (!initialAssignment.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(initAssigResource, initialAssignment.getSBOTermID());
             extractRDF(initAssigResource, initialAssignment.getCVTerms());
-            if(!initialAssignment.getNotesString().isEmpty())
-                initAssigResource.addProperty(SBMLConstants.NOTES, getNotesAsText(initialAssignment.getNotesString()));
+            try {
+                if(!initialAssignment.getNotesString().isEmpty())
+                    initAssigResource.addProperty(SBMLConstants.NOTES, getNotesAsText(initialAssignment.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
             modelResource.addProperty(SBMLConstants.INITASSIGNMENT,initAssigResource);
         }
 
@@ -328,8 +357,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             if (!reaction.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(reactionResource, reaction.getSBOTermID());
             extractRDF(reactionResource, reaction.getCVTerms());
-            if(!reaction.getNotesString().isEmpty())
-                reactionResource.addProperty(SBMLConstants.NOTES, getNotesAsText(reaction.getNotesString()));
+            try {
+                if(!reaction.getNotesString().isEmpty())
+                    reactionResource.addProperty(SBMLConstants.NOTES, getNotesAsText(reaction.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
 
             modelResource.addProperty(SBMLConstants.REACTION, reactionResource);
 
@@ -353,8 +386,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             if (!speciesReference.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(speciesRefResource, speciesReference.getSBOTermID());
             extractRDF(speciesRefResource, speciesReference.getCVTerms());
-            if(!speciesReference.getNotesString().isEmpty())
-                speciesRefResource.addProperty(SBMLConstants.NOTES, getNotesAsText(speciesReference.getNotesString()));
+            try {
+                if(!speciesReference.getNotesString().isEmpty())
+                    speciesRefResource.addProperty(SBMLConstants.NOTES, getNotesAsText(speciesReference.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
             reactionResource.addProperty(SBMLConstants.REACTANT, speciesRefResource);
             resourceMap.put(speciesReference.getId(), speciesRefResource);
         }
@@ -372,8 +409,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             if (!speciesReference.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(speciesRefResource, speciesReference.getSBOTermID());
             extractRDF(speciesRefResource, speciesReference.getCVTerms());
-            if(!speciesReference.getNotesString().isEmpty())
-                speciesRefResource.addProperty(SBMLConstants.NOTES, getNotesAsText(speciesReference.getNotesString()));
+            try {
+                if(!speciesReference.getNotesString().isEmpty())
+                    speciesRefResource.addProperty(SBMLConstants.NOTES, getNotesAsText(speciesReference.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
             reactionResource.addProperty(SBMLConstants.PRODUCT, speciesRefResource);
             resourceMap.put(speciesReference.getId(), speciesRefResource);
         }
@@ -390,8 +431,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             if (!speciesReference.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(speciesRefResource, speciesReference.getSBOTermID());
             extractRDF(speciesRefResource, speciesReference.getCVTerms());
-            if(!speciesReference.getNotesString().isEmpty())
-                speciesRefResource.addProperty(SBMLConstants.NOTES, getNotesAsText(speciesReference.getNotesString()));
+            try {
+                if(!speciesReference.getNotesString().isEmpty())
+                    speciesRefResource.addProperty(SBMLConstants.NOTES, getNotesAsText(speciesReference.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
             reactionResource.addProperty(SBMLConstants.MODIFIER, speciesRefResource);
             resourceMap.put(speciesReference.getId(), speciesRefResource);
         }
@@ -405,8 +450,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
         if(!kineticLaw.getSBOTermID().isEmpty())
             sboIdentifiersOrg(kineticLawResource, kineticLaw.getSBOTermID());
         extractRDF(kineticLawResource,kineticLaw.getCVTerms());
-        if(!kineticLaw.getNotesString().isEmpty())
-            kineticLawResource.addProperty(SBMLConstants.NOTES, getNotesAsText(kineticLaw.getNotesString()));
+        try {
+            if(!kineticLaw.getNotesString().isEmpty())
+                kineticLawResource.addProperty(SBMLConstants.NOTES, getNotesAsText(kineticLaw.getNotesString()));
+        } catch (XMLStreamException e) {
+            logger.error(e.getMessage(), e);
+        }
         reactionResource.addProperty(SBMLConstants.KINETICLAW, kineticLawResource);
         createLocalParameters(kineticLaw,kineticLawResource);
     }
@@ -423,8 +472,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             if(!localParameter.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(localParamResource, localParameter.getSBOTermID());
             extractRDF(localParamResource,localParameter.getCVTerms());
-            if(!localParameter.getNotesString().isEmpty())
-                localParamResource.addProperty(SBMLConstants.NOTES, getNotesAsText(localParameter.getNotesString()));
+                try {
+                    if(!localParameter.getNotesString().isEmpty())
+                        localParamResource.addProperty(SBMLConstants.NOTES, getNotesAsText(localParameter.getNotesString()));
+                } catch (XMLStreamException e) {
+                    logger.error(e.getMessage(), e);
+                }
             kineticLawResource.addProperty(SBMLConstants.LOCALPARAMETERS, localParamResource);
         }
 
@@ -450,8 +503,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             if (!rule.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(ruleResource, rule.getSBOTermID());
             extractRDF(ruleResource, rule.getCVTerms());
-            if(!rule.getNotesString().isEmpty())
-                ruleResource.addProperty(SBMLConstants.NOTES, getNotesAsText(rule.getNotesString()));
+            try {
+                if(!rule.getNotesString().isEmpty())
+                    ruleResource.addProperty(SBMLConstants.NOTES, getNotesAsText(rule.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
             modelResource.addProperty(SBMLConstants.RULE, ruleResource);
         }
     }
@@ -461,12 +518,20 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
         for (Constraint constraint : listOfConstraints){
             Resource constraintResource = rdfModel.createResource(modelns+constraint.getMetaId());
             constraintResource.addProperty(RDF.type, SBMLConstants.CONSTRAINT_CLASS);
-            constraintResource.addLiteral(SBMLConstants.MESSAGE, constraint.getMessageString());
+            try {
+                constraintResource.addLiteral(SBMLConstants.MESSAGE, constraint.getMessageString());
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
             if (!constraint.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(constraintResource, constraint.getSBOTermID());
             extractRDF(constraintResource, constraint.getCVTerms());
-            if(!constraint.getNotesString().isEmpty())
-                constraintResource.addProperty(SBMLConstants.NOTES, getNotesAsText(constraint.getNotesString()));
+            try {
+                if(!constraint.getNotesString().isEmpty())
+                    constraintResource.addProperty(SBMLConstants.NOTES, getNotesAsText(constraint.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
             modelResource.addProperty(SBMLConstants.CONSTRAINT, constraintResource);
         }
     }
@@ -483,8 +548,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             if (!event.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(eventResource, event.getSBOTermID());
             extractRDF(eventResource, event.getCVTerms());
-            if(!event.getNotesString().isEmpty())
-                eventResource.addProperty(SBMLConstants.NOTES, getNotesAsText(event.getNotesString()));
+            try {
+                if(!event.getNotesString().isEmpty())
+                    eventResource.addProperty(SBMLConstants.NOTES, getNotesAsText(event.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
             modelResource.addProperty(SBMLConstants.EVENT, eventResource);
 
             createTrigger(event,eventResource);
@@ -504,8 +573,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
         if (!trigger.getSBOTermID().isEmpty())
             sboIdentifiersOrg(triggerResource, trigger.getSBOTermID());
         extractRDF(triggerResource, trigger.getCVTerms());
-        if(!trigger.getNotesString().isEmpty())
-            triggerResource.addProperty(SBMLConstants.NOTES, getNotesAsText(trigger.getNotesString()));
+        try {
+            if(!trigger.getNotesString().isEmpty())
+                triggerResource.addProperty(SBMLConstants.NOTES, getNotesAsText(trigger.getNotesString()));
+        } catch (XMLStreamException e) {
+            logger.error(e.getMessage(), e);
+        }
         eventResource.addProperty(SBMLConstants.TRIGGER,triggerResource);
     }
 
@@ -517,8 +590,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
         if (!priority.getSBOTermID().isEmpty())
             sboIdentifiersOrg(priorityResource, priority.getSBOTermID());
         extractRDF(priorityResource, priority.getCVTerms());
-        if(!priority.getNotesString().isEmpty())
-            priorityResource.addProperty(SBMLConstants.NOTES, getNotesAsText(priority.getNotesString()));
+        try {
+            if(!priority.getNotesString().isEmpty())
+                priorityResource.addProperty(SBMLConstants.NOTES, getNotesAsText(priority.getNotesString()));
+        } catch (XMLStreamException e) {
+            logger.error(e.getMessage(), e);
+        }
         eventResource.addProperty(SBMLConstants.PRIORITY,priorityResource);
     }
 
@@ -530,8 +607,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
         if (!delay.getSBOTermID().isEmpty())
             sboIdentifiersOrg(delayResource, delay.getSBOTermID());
         extractRDF(delayResource, delay.getCVTerms());
-        if(!delay.getNotesString().isEmpty())
-            delayResource.addProperty(SBMLConstants.NOTES, getNotesAsText(delay.getNotesString()));
+        try {
+            if(!delay.getNotesString().isEmpty())
+                delayResource.addProperty(SBMLConstants.NOTES, getNotesAsText(delay.getNotesString()));
+        } catch (XMLStreamException e) {
+            logger.error(e.getMessage(), e);
+        }
         eventResource.addProperty(SBMLConstants.DELAY,delayResource);
     }
 
@@ -545,8 +626,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             if (!eventAssignment.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(eventAssignmentResource, eventAssignment.getSBOTermID());
             extractRDF(eventAssignmentResource, eventAssignment.getCVTerms());
-            if(!eventAssignment.getNotesString().isEmpty())
-                eventAssignmentResource.addProperty(SBMLConstants.NOTES, getNotesAsText(eventAssignment.getNotesString()));
+            try {
+                if(!eventAssignment.getNotesString().isEmpty())
+                    eventAssignmentResource.addProperty(SBMLConstants.NOTES, getNotesAsText(eventAssignment.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
             eventResource.addProperty(SBMLConstants.EVENTASSIGNMENT,eventAssignmentResource);
         }
     }
@@ -561,8 +646,12 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             if (!functionDefinition.getSBOTermID().isEmpty())
                 sboIdentifiersOrg(functionResource, functionDefinition.getSBOTermID());
             extractRDF(functionResource, functionDefinition.getCVTerms());
-            if(!functionDefinition.getNotesString().isEmpty())
-                functionResource.addProperty(SBMLConstants.NOTES, getNotesAsText(functionDefinition.getNotesString()));
+            try {
+                if(!functionDefinition.getNotesString().isEmpty())
+                    functionResource.addProperty(SBMLConstants.NOTES, getNotesAsText(functionDefinition.getNotesString()));
+            } catch (XMLStreamException e) {
+                logger.error(e.getMessage(), e);
+            }
             modelResource.addProperty(SBMLConstants.FUNCTIONDEF, functionResource);
         }
     }
@@ -625,7 +714,7 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
             rdfModel.getWriter().write(rdfModel,fileOutputStream,null);
             fileOutputStream.close();
         }catch(IOException e){
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         }
     }
 
