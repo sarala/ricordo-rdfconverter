@@ -20,7 +20,11 @@ public class SBMLtoRDF {
         }
         else{
             try {
-                runSBMLtoRDF(Integer.parseInt(args[0]));
+                String inputFolderPath = null;
+                if (args.length > 1) {
+                    inputFolderPath = args[1];
+                }
+                runSBMLtoRDF(Integer.parseInt(args[0]), inputFolderPath);
             } catch (NumberFormatException e) {
                 System.err.println("Argument '" + args[0] + "' must be an integer.");
                 printHelp();
@@ -29,7 +33,7 @@ public class SBMLtoRDF {
         }
     }
 
-    public static void runSBMLtoRDF(int option){
+    public static void runSBMLtoRDF(int option, String path) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath*:sbml-config.xml");
         SBMLtoRDFGenerator sbmlToRdfGenerator = (SBMLtoRDFGeneratorImpl)ctx.getBean("sbmlToRdfGeneratorImpl");
 
@@ -41,7 +45,11 @@ public class SBMLtoRDF {
                 sbmlToRdfGenerator.bioModelsReleaseSetUp("(BIOMD|MODEL)\\d{10}"+".xml", true);
                 break;
             case 3:
-                sbmlToRdfGenerator.allBioModelsFromFolderToRDF();
+                if (null != path && !path.trim().isEmpty()) {
+                    sbmlToRdfGenerator.allBioModelsFromFolderToRDF(path);
+                } else {
+                    sbmlToRdfGenerator.allBioModelsFromFolderToRDF();
+                }
                 break;
         }
     }
@@ -50,6 +58,7 @@ public class SBMLtoRDF {
         System.out.println("Please enter a valid option number. Folder paths need to set up in sbml-config.properties");
         System.out.println("[1] - BioModels release set up");
         System.out.println("[2] - BioModels release set up as a batch");
-        System.out.println("[3] - Generate RDF from a folder");
+        System.out.println("[3] - Generate RDF from a folder. If a path is provided, " +
+                "it becomes the default input path");
     }
 }

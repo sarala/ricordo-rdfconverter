@@ -74,7 +74,7 @@ public class SBMLtoRDFGeneratorImpl implements SBMLtoRDFGenerator {
         allBioModelsFromFolderToRDF(sbmLtoRDFGenerator.getInputFolder());
     }
 
-    private void allBioModelsFromFolderToRDF(String folderPath) {
+    public void allBioModelsFromFolderToRDF(String folderPath) {
         File folder = new File(folderPath);
         if(folder.isDirectory()) {
             File[] files = folder.listFiles();
