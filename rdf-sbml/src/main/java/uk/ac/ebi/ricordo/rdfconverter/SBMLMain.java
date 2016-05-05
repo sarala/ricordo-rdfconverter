@@ -20,8 +20,8 @@ public class SBMLMain {
 //        sbmlToRdfGenerator.allNonCuratedModelsFromBioModelsDBToRDF();
 //        sbmlToRdfGenerator.allModelsFromBioModelsDBToRDF();
 //          sbmlToRdfGenerator.aModelFromBioModelsDBToRDF("BIOMD0000000063");
-//        sbmlToRdfGenerator.allBioModelsFromFolderToRDF("C:\\Users\\sarala.EBI\\Downloads\\r26sbml\\curated\\");
-//        sbmlToRdfGenerator.aBioModelFromFileToRDF("C:\\Users\\sarala.EBI\\Downloads\\BIOMD0000000001.xml");
+//        sbmlToRdfGenerator.allBioModelsFromFolderToRDF("/Users/sarala/Downloads/noncura/");
+//        sbmlToRdfGenerator.aBioModelFromFileToRDF("/Users/sarala/Downloads/MODEL1507180026.xml");
 //        sbmlToRdfGenerator.bioModelsReleaseSetUp("C:\\Users\\sarala.EBI\\Documents\\GitHub\\ricordo-rdfconverter\\resources\\sbmlfoldertest\\", "(BIOMD|MODEL)\\d{10}"+".xml");
 //        sbmlToRdfGenerator.pathToModelSetUp("/nfs/production/biomodels/biomodels/releases/r24/metabolic/", "(BIOMD|MODEL|BMID)\\d{12}"+"_url.xml");
 

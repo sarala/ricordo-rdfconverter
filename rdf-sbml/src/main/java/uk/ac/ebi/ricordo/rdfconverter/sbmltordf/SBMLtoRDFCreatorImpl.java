@@ -63,12 +63,14 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
         try {
             URL url= new URL("http://www.ebi.ac.uk/biomodels-main/download?mid="+modelId+"&anno=url");
             document = reader.readSBMLFromStream(url.openStream());
+            generateSBMLtoRDF(document);
         } catch (XMLStreamException e) {
             logger.error(e.getMessage(), e);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
         }
-        generateSBMLtoRDF(document);
     }
 
     public void generateSBMLtoRDFFromFile(String modelId, File file) {
@@ -77,12 +79,15 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
         SBMLDocument document = null;
         try {
             document = reader.readSBML(file);
+            generateSBMLtoRDF(document);
         } catch (XMLStreamException e) {
             logger.error(e.getMessage(), e);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
+        }catch (Exception e) {
+            logger.error(e.getMessage(), e);
         }
-        generateSBMLtoRDF(document);
+
     }
 
     private void generateSBMLtoRDF(SBMLDocument document){
