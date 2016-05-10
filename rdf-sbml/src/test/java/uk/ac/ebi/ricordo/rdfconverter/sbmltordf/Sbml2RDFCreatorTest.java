@@ -30,7 +30,7 @@ public class Sbml2RDFCreatorTest {
     private SBMLtoRDFCreator sbmlToRdf;
 
     @Test
-    @Ignore // OOME from exponential space needed to copy listener lists every time a new child is added to an ast node.
+    // this test passes since moving to JSBML 1.2 (SVN Revision 2504)
     public void MODEL1112110002JSBML_OOME() {
         final File model = new File("src/test/resources/MODEL1112110002.xml");
         assertTrue("the model file does not exist", model.exists() && model.canRead());

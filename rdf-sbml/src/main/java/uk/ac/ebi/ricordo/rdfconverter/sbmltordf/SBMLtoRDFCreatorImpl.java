@@ -55,7 +55,6 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
     private String modelns ="";
     private MappingExtractor mappingExtractor;
     private String inputFolder;
-    private final List<String> blacklist = java.util.Collections.singletonList("MODEL1112110002"); //FIXME
 
     public void generateSBMLtoRDFFromURL(String modelId){
         this.modelId = modelId;
@@ -75,10 +74,6 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
     }
 
     public void generateSBMLtoRDFFromFile(String modelId, File file) {
-        if (blacklist.contains(modelId)) {
-            logger.warn("Ignoring blacklisted model with id " + modelId);
-            return;
-        }
         this.modelId = modelId;
         SBMLReader reader  = new SBMLReader();
         SBMLDocument document = null;
