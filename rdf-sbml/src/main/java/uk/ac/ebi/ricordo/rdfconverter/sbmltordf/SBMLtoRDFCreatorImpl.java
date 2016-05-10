@@ -713,11 +713,9 @@ public class SBMLtoRDFCreatorImpl implements SBMLtoRDFCreator {
     }
 
     private void writeToFile(){
-        try{
-            FileOutputStream fileOutputStream = new FileOutputStream(outputFolder +modelId+".rdf");
+        try (FileOutputStream fileOutputStream = new FileOutputStream(outputFolder +modelId+".rdf")) {
 //            rdfModel.write(fileOutputStream, "RDF/XML-ABBREV");
             rdfModel.getWriter().write(rdfModel,fileOutputStream,null);
-            fileOutputStream.close();
         }catch(IOException e){
             logger.error(e.getMessage(), e);
         }
